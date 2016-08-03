@@ -1,0 +1,11 @@
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\MandCo.Data.ws1160\obj\Release\MandCo.Data.ws1160.csprojResolveAssemblyReference.cache
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\MandCo.Data.ws1160\obj\Release\MandCo.Data.ws1160.Properties.Resources.resources
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\MandCo.Data.ws1160\obj\Release\MandCo.Data.ws1160.csproj.GenerateResource.Cache
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\MandCo.Data.ws1160\bin\Release\MandCo.Data.ws1160.dll
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\MandCo.Data.ws1160\bin\Release\MandCo.Data.ws1160.pdb
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\MandCo.Data.ws1160\bin\Release\MandCo.Data.dll
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\MandCo.Data.ws1160\bin\Release\System.Data.SQLite.dll
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\MandCo.Data.ws1160\bin\Release\Oracle.ManagedDataAccess.dll
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\MandCo.Data.ws1160\bin\Release\System.Data.SQLite.xml
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\MandCo.Data.ws1160\obj\Release\MandCo.Data.ws1160.dll
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\MandCo.Data.ws1160\obj\Release\MandCo.Data.ws1160.pdb

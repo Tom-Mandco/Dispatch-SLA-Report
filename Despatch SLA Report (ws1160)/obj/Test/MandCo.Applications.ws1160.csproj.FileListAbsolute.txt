@@ -1,0 +1,22 @@
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\NLog.config
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\Despatch SLA Report (ws1160).exe.config
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\Despatch SLA Report (ws1160).exe
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\Despatch SLA Report (ws1160).pdb
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\Ninject.dll
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\NLog.dll
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\Ninject.xml
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\NLog.xml
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\obj\Test\MandCo.Applications.ws1160.csprojResolveAssemblyReference.cache
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\obj\Test\MandCo.Applications.ws1160.MainForm.resources
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\obj\Test\MandCo.Applications.ws1160.Properties.Resources.resources
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\obj\Test\MandCo.Applications.ws1160.csproj.GenerateResource.Cache
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\obj\Test\Despatch SLA Report (ws1160).exe
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\obj\Test\Despatch SLA Report (ws1160).pdb
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\MandCo.Data.dll
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\MandCo.Data.ws1160.dll
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\MandCo.Service.ws1160.dll
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\System.Data.SQLite.dll
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\Oracle.ManagedDataAccess.dll
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\MandCo.Data.ws1160.pdb
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\MandCo.Service.ws1160.pdb
+c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\System.Data.SQLite.xml
