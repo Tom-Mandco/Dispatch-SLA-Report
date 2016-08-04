@@ -50,7 +50,8 @@
     <Compile Include="Classes\OracleRepository.cs" />
     <Compile Include="Classes\SqlLoader.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
-    <Compile Include="Models\Configuration_Data.cs" />
+    <Compile Include="Models\Config_Information.cs" />
+    <Compile Include="Models\Raw_Configuration_Data.cs" />
     <Compile Include="Models\DisplayData.cs" />
     <Compile Include="Models\SLA_Report_Details.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

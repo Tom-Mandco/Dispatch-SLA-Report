@@ -21,7 +21,16 @@ using System;
         {
             using (new SharedConnection(dbConnection))
             {
-                var result = dbConnection.Query<SLA_Report_Details>(SqlLoader.GetSql("web despatch package peerformance"));
+                var result = dbConnection.Query<SLA_Report_Details>(SqlLoader.GetSql("GetAllSLAReportDetails"));
+                return result.Any() ? result : null;
+            }
+        }
+
+        public IEnumerable<Raw_Configuration_Data> GetRawConfigVariables()
+        {
+            using (new SharedConnection(dbConnection))
+            {
+                var result = dbConnection.Query<Raw_Configuration_Data>(SqlLoader.GetSql("GetConfigurationVariables"));
                 return result.Any() ? result : null;
             }
         }

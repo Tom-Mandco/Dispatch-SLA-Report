@@ -20,3 +20,25 @@ c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws116
 c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\MandCo.Data.ws1160.pdb
 c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\MandCo.Service.ws1160.pdb
 c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\Despatch SLA Report (ws1160)\bin\Test\System.Data.SQLite.xml
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\Despatch SLA Report (ws1160).exe.config
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\obj\Test\Despatch SLA Report (ws1160).exe
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\obj\Test\Despatch SLA Report (ws1160).pdb
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\NLog.config
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\Despatch SLA Report (ws1160).exe
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\Despatch SLA Report (ws1160).pdb
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\MandCo.Data.dll
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\MandCo.Data.ws1160.dll
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\MandCo.Service.ws1160.dll
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\Ninject.dll
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\NLog.dll
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\System.Data.SQLite.dll
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\Oracle.ManagedDataAccess.dll
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\MandCo.Data.ws1160.pdb
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\MandCo.Service.ws1160.pdb
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\Ninject.xml
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\NLog.xml
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\bin\Test\System.Data.SQLite.xml
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\obj\Test\MandCo.Applications.ws1160.csprojResolveAssemblyReference.cache
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\obj\Test\MandCo.Applications.ws1160.MainForm.resources
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\obj\Test\MandCo.Applications.ws1160.Properties.Resources.resources
+F:\dev\Git\Dispatch-SLA-Report\Despatch SLA Report (ws1160)\obj\Test\MandCo.Applications.ws1160.csproj.GenerateResource.Cache

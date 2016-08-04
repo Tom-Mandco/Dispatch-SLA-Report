@@ -23,11 +23,6 @@
             this.slaReportDetails = slaReportDetails;
         }
 
-        private IEnumerable<SLA_Report_Details> RetrieveSLAReportDetails(DateTime fromDate, DateTime toDate)
-        {
-            var result = performLookup.GetOrderDataFromSLATable(fromDate, toDate);
-            return result;
-        }
 
         public DataTable BindSLAData_ToDataTable(DateTime fromDate, DateTime toDate)
         {
@@ -36,5 +31,24 @@
 
             return result;
         }
+
+        public Config_Information GetConfigInformation()
+        {
+            Config_Information result = new Config_Information();
+
+            result = performLookup.GetConfigurationInformation();
+
+            return result;
+        }
+
+
+        #region Utilities
+        private IEnumerable<SLA_Report_Details> RetrieveSLAReportDetails(DateTime fromDate, DateTime toDate)
+        {
+            var result = performLookup.GetOrderDataFromSLATable(fromDate, toDate);
+            return result;
+        }
+        #endregion
+
     }
 }

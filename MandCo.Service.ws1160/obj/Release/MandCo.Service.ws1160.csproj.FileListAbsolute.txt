@@ -9,3 +9,14 @@ c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws116
 c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\MandCo.Service.ws1160\bin\Release\System.Data.SQLite.xml
 c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\MandCo.Service.ws1160\obj\Release\MandCo.Service.ws1160.dll
 c:\users\tsmith\documents\visual studio 2013\Projects\Despatch SLA Report (ws1160)\MandCo.Service.ws1160\obj\Release\MandCo.Service.ws1160.pdb
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.ws1160\bin\Release\MandCo.Service.ws1160.dll
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.ws1160\bin\Release\MandCo.Service.ws1160.pdb
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.ws1160\bin\Release\MandCo.Data.ws1160.dll
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.ws1160\bin\Release\MandCo.Data.dll
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.ws1160\bin\Release\System.Data.SQLite.dll
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.ws1160\bin\Release\Oracle.ManagedDataAccess.dll
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.ws1160\bin\Release\MandCo.Data.ws1160.pdb
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.ws1160\bin\Release\System.Data.SQLite.xml
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.ws1160\obj\Release\MandCo.Service.ws1160.csprojResolveAssemblyReference.cache
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.ws1160\obj\Release\MandCo.Service.ws1160.dll
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.ws1160\obj\Release\MandCo.Service.ws1160.pdb

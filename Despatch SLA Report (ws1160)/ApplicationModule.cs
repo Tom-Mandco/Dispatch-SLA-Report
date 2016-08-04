@@ -40,7 +40,9 @@
             Bind(typeof(IPerformLookup)).To(typeof(PerformLookup));
             Bind(typeof(IDataTableFactory)).To(typeof(DataTableFactory));
 
-            Bind<Configuration_Data>().ToSelf();
+
+            Bind<Raw_Configuration_Data>().ToSelf();
+            Bind<Config_Information>().ToSelf();
             Bind<DisplayData>().ToSelf();
             Bind<SLA_Report_Details>().ToSelf();
         }
