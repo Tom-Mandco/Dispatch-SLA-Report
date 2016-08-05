@@ -44,7 +44,7 @@
             Bind<Raw_Configuration_Data>().ToSelf();
             Bind<Config_Information>().ToSelf();
             Bind<DisplayData>().ToSelf();
-            Bind<SLA_Report_Details>().ToSelf();
+            Bind<Raw_SLA_Report_Details>().ToSelf();
         }
     }
 }

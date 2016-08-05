@@ -3,23 +3,32 @@
     using Interfaces;
     using MandCo.Data.ws1160.Models;
     using System;
+using System.Data;
 
     class App : IApp
     {
         private readonly ILog logger;
         private readonly IDataHandler dataHandler;
 
-        public App(ILog logger, IDataHandler dataHandler)
+        private DataTable detailBreakDownDT;
+
+        public App(ILog logger, IDataHandler dataHandler, DataTable detailBreakDownDT)
         {
             this.logger = logger;
             this.dataHandler = dataHandler;
+            this.detailBreakDownDT = detailBreakDownDT;
         }
 
         public void BindSLADataTableToDGVDataSource(MainForm mainForm, bool useCustomDateTimes)
         {
             try
             {
-                mainForm.dgvDetailBreakdown.DataSource = dataHandler.BindSLAData_ToDataTable(DateTime.Now.AddHours(-24), DateTime.Now);
+                detailBreakDownDT = dataHandler.BindSLAData_ToDataTable(mainForm.dtpReportFrom.Value, mainForm.dtpReportTo.Value);
+
+                DataView detailBreakDownDV = new DataView(detailBreakDownDT);
+                //detailBreakDownDV.RowFilter = string.Format("Date => #{0}# AND ",DateTime.);
+
+                mainForm.dgvDetailBreakdown.DataSource = detailBreakDownDV;
             }
             catch (Exception ex)
             {
@@ -39,8 +48,8 @@
 
             lblText += string.Format("Express SLA Time: {1}{0}Express Cutoff Time: {2}{0}Express SLA Percentage (High): {3}{0}Express SLA Percentage (Low): {4}{0}",
                                      Environment.NewLine,
-                                     configInformation.Express_SLA_Time,
-                                     configInformation.Express_Cutoff_Time,
+                                     configInformation.Express_SLA_Time.ToShortTimeString(),
+                                     configInformation.Express_Cutoff_Time.ToLongTimeString(),
                                      configInformation.Express_SLA_Percentage_High,
                                      configInformation.Express_SLA_Percentage_Low);
 

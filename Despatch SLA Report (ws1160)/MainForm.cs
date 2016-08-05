@@ -26,6 +26,8 @@
         private void MainForm_Load(object sender, EventArgs e)
         {
             app.BindConfigDataToForm(this);
+            dtpReportFrom.Value = DateTime.Now.AddDays(-7);
+            app.BindSLADataTableToDGVDataSource(this, true);
             this.Refresh();
         }
     }

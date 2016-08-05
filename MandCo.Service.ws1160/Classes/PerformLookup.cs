@@ -10,12 +10,12 @@
     public class PerformLookup : IPerformLookup
     {
         private readonly IRepository oracleRepository;
-        IEnumerable<SLA_Report_Details> slaReportDetails;
+        IEnumerable<Raw_SLA_Report_Details> slaReportDetails;
         IEnumerable<Raw_Configuration_Data> rawConfigData;
 
         Config_Information configInformation;
 
-        public PerformLookup(IRepository oracleRepository, IEnumerable<SLA_Report_Details> slaReportDetails, Config_Information configInformation, IEnumerable<Raw_Configuration_Data> rawConfigData)
+        public PerformLookup(IRepository oracleRepository, IEnumerable<Raw_SLA_Report_Details> slaReportDetails, Config_Information configInformation, IEnumerable<Raw_Configuration_Data> rawConfigData)
         {
             this.oracleRepository = oracleRepository;
             this.slaReportDetails = slaReportDetails;
@@ -23,7 +23,7 @@
             this.rawConfigData = rawConfigData;
         }
 
-        public IEnumerable<SLA_Report_Details> GetOrderDataFromSLATable(DateTime dateFrom, DateTime dateTo)
+        public IEnumerable<Raw_SLA_Report_Details> GetOrderDataFromSLATable(DateTime dateFrom, DateTime dateTo)
         {
             slaReportDetails = oracleRepository.GetAllOrderDetailsForSpecifiedTimes(dateFrom, dateTo);
 

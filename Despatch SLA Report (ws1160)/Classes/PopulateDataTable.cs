@@ -16,7 +16,7 @@
             this.dataTableFactory = dataTableFactory;
         }
 
-        public DataTable ReturnAllSLAOrderInfo_ToDataTable(IEnumerable<SLA_Report_Details> slaReportDetails)
+        public DataTable ReturnAllSLAOrderInfo_ToDataTable(IEnumerable<Raw_SLA_Report_Details> slaReportDetails)
         {
             DataTable allSlaOrderData = dataTableFactory.CreateNew_SLAReport_ToDataTable();
 
@@ -25,11 +25,11 @@
                 allSlaOrderData.Rows.Add(detail.WEB_ORDER_NUMBER,
                                          detail.SHIP_METHOD,
                                          detail.ORDER_DATE,
-                                         detail.RELEASED_DATE,
+                                         detail.DATE_IMPORTED,
                                          detail.SHIP_DATE,
-                                         detail.SHIP_BY_DATE,
-                                         detail.SLA_MET,
-                                         detail.LAST_UPDATE);
+                                         detail.TIME_TO_IMPORT,
+                                         detail.TIME_TO_RELEASE,
+                                         detail.DATE_IMPORTED);
             }
 
             var result = allSlaOrderData;

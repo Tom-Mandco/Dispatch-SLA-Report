@@ -6,6 +6,6 @@
 
     public interface IPopulateDataTables
     {
-        DataTable ReturnAllSLAOrderInfo_ToDataTable(IEnumerable<SLA_Report_Details> slaReportDetails);
+        DataTable ReturnAllSLAOrderInfo_ToDataTable(IEnumerable<Raw_SLA_Report_Details> slaReportDetails);
     }
 }

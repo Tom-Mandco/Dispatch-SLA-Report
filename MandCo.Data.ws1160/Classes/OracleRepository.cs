@@ -17,11 +17,11 @@ using System;
         #endregion
 
         #region Return Model Data
-        public IEnumerable<SLA_Report_Details> GetAllOrderDetailsForSpecifiedTimes(DateTime dateFrom, DateTime dateTo)
+        public IEnumerable<Raw_SLA_Report_Details> GetAllOrderDetailsForSpecifiedTimes(DateTime dateFrom, DateTime dateTo)
         {
             using (new SharedConnection(dbConnection))
             {
-                var result = dbConnection.Query<SLA_Report_Details>(SqlLoader.GetSql("GetAllSLAReportDetails"));
+                var result = dbConnection.Query<Raw_SLA_Report_Details>(SqlLoader.GetSql("GetAllSLAReportDetails"));
                 return result.Any() ? result : null;
             }
         }

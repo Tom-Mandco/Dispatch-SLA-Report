@@ -6,7 +6,7 @@
 
     public interface IRepository
     {
-        IEnumerable<SLA_Report_Details> GetAllOrderDetailsForSpecifiedTimes(DateTime dateFrom, DateTime dateTo);
+        IEnumerable<Raw_SLA_Report_Details> GetAllOrderDetailsForSpecifiedTimes(DateTime dateFrom, DateTime dateTo);
         IEnumerable<Raw_Configuration_Data> GetRawConfigVariables();
     }
 }

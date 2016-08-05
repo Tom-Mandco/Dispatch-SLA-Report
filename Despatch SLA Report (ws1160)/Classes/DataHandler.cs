@@ -13,9 +13,9 @@
         private readonly IPopulateDataTables dataTablePopulator;
         private readonly IPerformLookup performLookup;
 
-        private IEnumerable<SLA_Report_Details> slaReportDetails;
+        private IEnumerable<Raw_SLA_Report_Details> slaReportDetails;
 
-        public DataHandler(ILog logger, IPerformLookup performLookup, IPopulateDataTables dataTablePopulator, IEnumerable<SLA_Report_Details> slaReportDetails)
+        public DataHandler(ILog logger, IPerformLookup performLookup, IPopulateDataTables dataTablePopulator, IEnumerable<Raw_SLA_Report_Details> slaReportDetails)
         {
             this.logger = logger;
             this.dataTablePopulator = dataTablePopulator;
@@ -43,7 +43,7 @@
 
 
         #region Utilities
-        private IEnumerable<SLA_Report_Details> RetrieveSLAReportDetails(DateTime fromDate, DateTime toDate)
+        private IEnumerable<Raw_SLA_Report_Details> RetrieveSLAReportDetails(DateTime fromDate, DateTime toDate)
         {
             var result = performLookup.GetOrderDataFromSLATable(fromDate, toDate);
             return result;
