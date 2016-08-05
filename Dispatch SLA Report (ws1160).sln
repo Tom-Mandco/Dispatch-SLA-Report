@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MandCo.Applications.ws1160", "Despatch SLA Report (ws1160)\MandCo.Applications.ws1160.csproj", "{4D2538C0-8305-4E29-A968-03B3B3FA4131}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MandCo.Applications.DispatchSLAReport", "MandCo.Applications.DispatchSLAReport\MandCo.Applications.DispatchSLAReport.csproj", "{4D2538C0-8305-4E29-A968-03B3B3FA4131}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MandCo.Data", "F:\dev\MCO\Lib\MCO.Data\MandCo.Data.csproj", "{B2E29057-6D25-425F-AE37-C54A5B9EA271}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MandCo.Data.ws1160", "MandCo.Data.ws1160\MandCo.Data.ws1160.csproj", "{4CE21520-34DC-433D-965B-D103B9E2D5A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MandCo.Data.DispatchSLAReport", "MandCo.Data.DispatchSLAReport\MandCo.Data.DispatchSLAReport.csproj", "{4CE21520-34DC-433D-965B-D103B9E2D5A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MandCo.Service.ws1160", "MandCo.Service.ws1160\MandCo.Service.ws1160.csproj", "{BD237694-6368-426D-AD30-4781D38CD634}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MandCo.Service.DispatchSLAReport", "MandCo.Service.DispatchSLAReport\MandCo.Service.DispatchSLAReport.csproj", "{BD237694-6368-426D-AD30-4781D38CD634}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
