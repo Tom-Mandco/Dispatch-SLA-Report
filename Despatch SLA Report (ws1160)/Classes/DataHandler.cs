@@ -12,14 +12,16 @@
         private readonly ILog logger;
         private readonly IPopulateDataTables dataTablePopulator;
         private readonly IPerformLookup performLookup;
+        private readonly IHandleCalculations caclulationHandler;
 
         private IEnumerable<Raw_SLA_Report_Details> slaReportDetails;
 
-        public DataHandler(ILog logger, IPerformLookup performLookup, IPopulateDataTables dataTablePopulator, IEnumerable<Raw_SLA_Report_Details> slaReportDetails)
+        public DataHandler(ILog logger, IPerformLookup performLookup, IPopulateDataTables dataTablePopulator, IHandleCalculations calculationHandler, IEnumerable<Raw_SLA_Report_Details> slaReportDetails)
         {
             this.logger = logger;
             this.dataTablePopulator = dataTablePopulator;
             this.performLookup = performLookup;
+            this.caclulationHandler = calculationHandler;
             this.slaReportDetails = slaReportDetails;
         }
 

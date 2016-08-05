@@ -101,14 +101,6 @@
             this.lblExpressOrdersHdr = new System.Windows.Forms.Label();
             this.lblTotalOrdersMetSLAHdr = new System.Windows.Forms.Label();
             this.lblTotalOrdersHdr = new System.Windows.Forms.Label();
-            this.colDetailBreakdown_OrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDetailBreakdown_ShipMethod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDetailBreakdown_DateOrdered = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDetailBreakdown_DateImported = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDetailBreakdown_DateReleased = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDetailBreakdown_TimeToImport = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDetailBreakdown_TimeToRelease = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDetailBreakdown_DateDispatched = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbLast24Hrs.SuspendLayout();
             this.gbCustomSLAStats.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -500,15 +492,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDetailBreakdown.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDetailBreakdown.ColumnHeadersHeight = 25;
-            this.dgvDetailBreakdown.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colDetailBreakdown_OrderNumber,
-            this.colDetailBreakdown_ShipMethod,
-            this.colDetailBreakdown_DateOrdered,
-            this.colDetailBreakdown_DateImported,
-            this.colDetailBreakdown_DateReleased,
-            this.colDetailBreakdown_TimeToImport,
-            this.colDetailBreakdown_TimeToRelease,
-            this.colDetailBreakdown_DateDispatched});
             this.dgvDetailBreakdown.Location = new System.Drawing.Point(6, 102);
             this.dgvDetailBreakdown.Name = "dgvDetailBreakdown";
             this.dgvDetailBreakdown.RowHeadersVisible = false;
@@ -861,60 +844,6 @@
             this.lblTotalOrdersHdr.TabIndex = 0;
             this.lblTotalOrdersHdr.Text = "Total Orders";
             // 
-            // colDetailBreakdown_OrderNumber
-            // 
-            this.colDetailBreakdown_OrderNumber.HeaderText = "Order Number";
-            this.colDetailBreakdown_OrderNumber.Name = "colDetailBreakdown_OrderNumber";
-            this.colDetailBreakdown_OrderNumber.ReadOnly = true;
-            this.colDetailBreakdown_OrderNumber.Width = 145;
-            // 
-            // colDetailBreakdown_ShipMethod
-            // 
-            this.colDetailBreakdown_ShipMethod.HeaderText = "Ship Method";
-            this.colDetailBreakdown_ShipMethod.Name = "colDetailBreakdown_ShipMethod";
-            this.colDetailBreakdown_ShipMethod.ReadOnly = true;
-            this.colDetailBreakdown_ShipMethod.Width = 105;
-            // 
-            // colDetailBreakdown_DateOrdered
-            // 
-            this.colDetailBreakdown_DateOrdered.HeaderText = "Date Ordered";
-            this.colDetailBreakdown_DateOrdered.Name = "colDetailBreakdown_DateOrdered";
-            this.colDetailBreakdown_DateOrdered.ReadOnly = true;
-            this.colDetailBreakdown_DateOrdered.Width = 131;
-            // 
-            // colDetailBreakdown_DateImported
-            // 
-            this.colDetailBreakdown_DateImported.HeaderText = "Date Imported";
-            this.colDetailBreakdown_DateImported.Name = "colDetailBreakdown_DateImported";
-            this.colDetailBreakdown_DateImported.ReadOnly = true;
-            this.colDetailBreakdown_DateImported.Width = 131;
-            // 
-            // colDetailBreakdown_DateReleased
-            // 
-            this.colDetailBreakdown_DateReleased.HeaderText = "Date Released";
-            this.colDetailBreakdown_DateReleased.Name = "colDetailBreakdown_DateReleased";
-            this.colDetailBreakdown_DateReleased.Width = 131;
-            // 
-            // colDetailBreakdown_TimeToImport
-            // 
-            this.colDetailBreakdown_TimeToImport.HeaderText = "Time To Import";
-            this.colDetailBreakdown_TimeToImport.Name = "colDetailBreakdown_TimeToImport";
-            this.colDetailBreakdown_TimeToImport.Width = 119;
-            // 
-            // colDetailBreakdown_TimeToRelease
-            // 
-            this.colDetailBreakdown_TimeToRelease.HeaderText = "Time To Release";
-            this.colDetailBreakdown_TimeToRelease.Name = "colDetailBreakdown_TimeToRelease";
-            this.colDetailBreakdown_TimeToRelease.ReadOnly = true;
-            this.colDetailBreakdown_TimeToRelease.Width = 119;
-            // 
-            // colDetailBreakdown_DateDispatched
-            // 
-            this.colDetailBreakdown_DateDispatched.HeaderText = "Date Dispatched";
-            this.colDetailBreakdown_DateDispatched.Name = "colDetailBreakdown_DateDispatched";
-            this.colDetailBreakdown_DateDispatched.ReadOnly = true;
-            this.colDetailBreakdown_DateDispatched.Width = 131;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1026,14 +955,6 @@
         private System.Windows.Forms.Label lblExpressOrdersHdr;
         private System.Windows.Forms.Label lblTotalOrdersMetSLAHdr;
         private System.Windows.Forms.Label lblTotalOrdersHdr;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDetailBreakdown_OrderNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDetailBreakdown_ShipMethod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDetailBreakdown_DateOrdered;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDetailBreakdown_DateImported;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDetailBreakdown_DateReleased;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDetailBreakdown_TimeToImport;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDetailBreakdown_TimeToRelease;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDetailBreakdown_DateDispatched;
     }
 }
 

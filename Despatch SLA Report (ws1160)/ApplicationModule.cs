@@ -39,12 +39,13 @@
             Bind(typeof(IRepository)).To(typeof(OracleRepository)).InSingletonScope().WithConstructorArgument("connectionString", connectionString);
             Bind(typeof(IPerformLookup)).To(typeof(PerformLookup));
             Bind(typeof(IDataTableFactory)).To(typeof(DataTableFactory));
+            Bind(typeof(IHandleCalculations)).To(typeof(CalculationHandler));
 
 
             Bind<Raw_Configuration_Data>().ToSelf();
+            Bind<Raw_SLA_Report_Details>().ToSelf();
             Bind<Config_Information>().ToSelf();
             Bind<DisplayData>().ToSelf();
-            Bind<Raw_SLA_Report_Details>().ToSelf();
         }
     }
 }

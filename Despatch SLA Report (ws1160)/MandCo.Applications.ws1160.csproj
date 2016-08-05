@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationModule.cs" />
+    <Compile Include="Classes\CalculationHandler.cs" />
     <Compile Include="Classes\App.cs" />
     <Compile Include="Classes\DataHandler.cs" />
     <Compile Include="Classes\Log.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="CompositionRoot.cs" />
     <Compile Include="Interfaces\IApp.cs" />
     <Compile Include="Interfaces\IDataHandler.cs" />
+    <Compile Include="Interfaces\IHandleCalculations.cs" />
     <Compile Include="Interfaces\ILog.cs" />
     <Compile Include="Interfaces\IPopulateDataTables.cs" />
     <Compile Include="MainForm.cs">

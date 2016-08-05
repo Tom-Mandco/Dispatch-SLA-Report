@@ -3,7 +3,7 @@
     using Interfaces;
     using MandCo.Data.ws1160.Models;
     using System;
-using System.Data;
+    using System.Data;
 
     class App : IApp
     {
@@ -28,7 +28,9 @@ using System.Data;
                 DataView detailBreakDownDV = new DataView(detailBreakDownDT);
                 //detailBreakDownDV.RowFilter = string.Format("Date => #{0}# AND ",DateTime.);
 
-                mainForm.dgvDetailBreakdown.DataSource = detailBreakDownDV;
+                mainForm.dgvDetailBreakdown.DataSource = detailBreakDownDT;
+                mainForm.dgvDetailBreakdown.AutoResizeColumns();
+                mainForm.dgvDetailBreakdown.Refresh();
             }
             catch (Exception ex)
             {
