@@ -79,7 +79,7 @@
             this.lblReportTo = new System.Windows.Forms.Label();
             this.lblReportFrom = new System.Windows.Forms.Label();
             this.dtpReportFrom = new System.Windows.Forms.DateTimePicker();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnOrderTotalsWithinSpecifiedTimeFrame = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblStoreOrdersMetSLADtl = new System.Windows.Forms.Label();
             this.lblStoreOrdersDtl = new System.Windows.Forms.Label();
@@ -112,7 +112,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbMidCriteriaMetKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTopCriteriaMetKey)).BeginInit();
             this.gbCustomDateRange.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbLast24Hrs
@@ -248,7 +248,6 @@
             // 
             // gbCustomSLAStats
             // 
-            this.gbCustomSLAStats.Controls.Add(this.panel2);
             this.gbCustomSLAStats.Controls.Add(this.lblCustTotalSLAHdr);
             this.gbCustomSLAStats.Controls.Add(this.lblCustStoreSLAHdr);
             this.gbCustomSLAStats.Controls.Add(this.lblCustExpressSLAHdr);
@@ -271,9 +270,9 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.lblConfigDetails);
-            this.panel2.Location = new System.Drawing.Point(158, 0);
+            this.panel2.Location = new System.Drawing.Point(804, 47);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(352, 298);
+            this.panel2.Size = new System.Drawing.Size(378, 188);
             this.panel2.TabIndex = 25;
             // 
             // lblConfigDetails
@@ -404,13 +403,14 @@
             // 
             // pnExtendedDetail
             // 
+            this.pnExtendedDetail.Controls.Add(this.pnOrderTotalsWithinSpecifiedTimeFrame);
             this.pnExtendedDetail.Controls.Add(this.panel1);
             this.pnExtendedDetail.Controls.Add(this.dgvDetailBreakdown);
             this.pnExtendedDetail.Controls.Add(this.label11);
             this.pnExtendedDetail.Controls.Add(this.pnSLACriteriaMetKey);
             this.pnExtendedDetail.Location = new System.Drawing.Point(9, 241);
             this.pnExtendedDetail.Name = "pnExtendedDetail";
-            this.pnExtendedDetail.Size = new System.Drawing.Size(1108, 382);
+            this.pnExtendedDetail.Size = new System.Drawing.Size(1173, 382);
             this.pnExtendedDetail.TabIndex = 2;
             // 
             // panel1
@@ -420,7 +420,7 @@
             this.panel1.Controls.Add(this.rbExtendedDetail_International);
             this.panel1.Controls.Add(this.rbExtendedDetail_Express);
             this.panel1.Controls.Add(this.rbExtendedDetail_Standard);
-            this.panel1.Location = new System.Drawing.Point(600, 6);
+            this.panel1.Location = new System.Drawing.Point(705, 6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(181, 70);
             this.panel1.TabIndex = 8;
@@ -428,7 +428,7 @@
             // rbExtendedDetailFilter_Store
             // 
             this.rbExtendedDetailFilter_Store.AutoSize = true;
-            this.rbExtendedDetailFilter_Store.Location = new System.Drawing.Point(3, 24);
+            this.rbExtendedDetailFilter_Store.Location = new System.Drawing.Point(5, 26);
             this.rbExtendedDetailFilter_Store.Name = "rbExtendedDetailFilter_Store";
             this.rbExtendedDetailFilter_Store.Size = new System.Drawing.Size(50, 17);
             this.rbExtendedDetailFilter_Store.TabIndex = 3;
@@ -439,7 +439,7 @@
             // 
             this.rbExtendedDetailFilter_All.AutoSize = true;
             this.rbExtendedDetailFilter_All.Checked = true;
-            this.rbExtendedDetailFilter_All.Location = new System.Drawing.Point(3, 4);
+            this.rbExtendedDetailFilter_All.Location = new System.Drawing.Point(5, 4);
             this.rbExtendedDetailFilter_All.Name = "rbExtendedDetailFilter_All";
             this.rbExtendedDetailFilter_All.Size = new System.Drawing.Size(36, 17);
             this.rbExtendedDetailFilter_All.TabIndex = 2;
@@ -450,7 +450,7 @@
             // rbExtendedDetail_International
             // 
             this.rbExtendedDetail_International.AutoSize = true;
-            this.rbExtendedDetail_International.Location = new System.Drawing.Point(90, 44);
+            this.rbExtendedDetail_International.Location = new System.Drawing.Point(92, 48);
             this.rbExtendedDetail_International.Name = "rbExtendedDetail_International";
             this.rbExtendedDetail_International.Size = new System.Drawing.Size(83, 17);
             this.rbExtendedDetail_International.TabIndex = 6;
@@ -460,7 +460,7 @@
             // rbExtendedDetail_Express
             // 
             this.rbExtendedDetail_Express.AutoSize = true;
-            this.rbExtendedDetail_Express.Location = new System.Drawing.Point(3, 44);
+            this.rbExtendedDetail_Express.Location = new System.Drawing.Point(5, 48);
             this.rbExtendedDetail_Express.Name = "rbExtendedDetail_Express";
             this.rbExtendedDetail_Express.Size = new System.Drawing.Size(62, 17);
             this.rbExtendedDetail_Express.TabIndex = 4;
@@ -470,7 +470,7 @@
             // rbExtendedDetail_Standard
             // 
             this.rbExtendedDetail_Standard.AutoSize = true;
-            this.rbExtendedDetail_Standard.Location = new System.Drawing.Point(90, 24);
+            this.rbExtendedDetail_Standard.Location = new System.Drawing.Point(92, 26);
             this.rbExtendedDetail_Standard.Name = "rbExtendedDetail_Standard";
             this.rbExtendedDetail_Standard.Size = new System.Drawing.Size(68, 17);
             this.rbExtendedDetail_Standard.TabIndex = 5;
@@ -496,14 +496,14 @@
             this.dgvDetailBreakdown.Name = "dgvDetailBreakdown";
             this.dgvDetailBreakdown.RowHeadersVisible = false;
             this.dgvDetailBreakdown.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetailBreakdown.Size = new System.Drawing.Size(1099, 277);
+            this.dgvDetailBreakdown.Size = new System.Drawing.Size(880, 277);
             this.dgvDetailBreakdown.TabIndex = 7;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(169, 79);
+            this.label11.Location = new System.Drawing.Point(209, 79);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(475, 20);
             this.label11.TabIndex = 1;
@@ -525,7 +525,7 @@
             // lblCriteriaNotMetKey
             // 
             this.lblCriteriaNotMetKey.AutoSize = true;
-            this.lblCriteriaNotMetKey.Location = new System.Drawing.Point(41, 45);
+            this.lblCriteriaNotMetKey.Location = new System.Drawing.Point(41, 44);
             this.lblCriteriaNotMetKey.Name = "lblCriteriaNotMetKey";
             this.lblCriteriaNotMetKey.Size = new System.Drawing.Size(156, 13);
             this.lblCriteriaNotMetKey.TabIndex = 5;
@@ -534,7 +534,7 @@
             // lblMidCriteriaMetKey
             // 
             this.lblMidCriteriaMetKey.AutoSize = true;
-            this.lblMidCriteriaMetKey.Location = new System.Drawing.Point(41, 25);
+            this.lblMidCriteriaMetKey.Location = new System.Drawing.Point(41, 24);
             this.lblMidCriteriaMetKey.Name = "lblMidCriteriaMetKey";
             this.lblMidCriteriaMetKey.Size = new System.Drawing.Size(210, 13);
             this.lblMidCriteriaMetKey.TabIndex = 4;
@@ -552,7 +552,7 @@
             // pbCriteriaNotMetKey
             // 
             this.pbCriteriaNotMetKey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pbCriteriaNotMetKey.Location = new System.Drawing.Point(5, 45);
+            this.pbCriteriaNotMetKey.Location = new System.Drawing.Point(5, 44);
             this.pbCriteriaNotMetKey.Name = "pbCriteriaNotMetKey";
             this.pbCriteriaNotMetKey.Size = new System.Drawing.Size(30, 13);
             this.pbCriteriaNotMetKey.TabIndex = 2;
@@ -561,7 +561,7 @@
             // pbMidCriteriaMetKey
             // 
             this.pbMidCriteriaMetKey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(128)))));
-            this.pbMidCriteriaMetKey.Location = new System.Drawing.Point(5, 25);
+            this.pbMidCriteriaMetKey.Location = new System.Drawing.Point(5, 24);
             this.pbMidCriteriaMetKey.Name = "pbMidCriteriaMetKey";
             this.pbMidCriteriaMetKey.Size = new System.Drawing.Size(30, 13);
             this.pbMidCriteriaMetKey.TabIndex = 1;
@@ -626,39 +626,39 @@
             this.dtpReportFrom.Size = new System.Drawing.Size(203, 20);
             this.dtpReportFrom.TabIndex = 25;
             // 
-            // panel3
+            // pnOrderTotalsWithinSpecifiedTimeFrame
             // 
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.lblStoreOrdersMetSLADtl);
-            this.panel3.Controls.Add(this.lblStoreOrdersDtl);
-            this.panel3.Controls.Add(this.lblStoreOrdersMetSLAHdr);
-            this.panel3.Controls.Add(this.lblStoreOrdersHdr);
-            this.panel3.Controls.Add(this.lblStandardOrdersMetSLADtl);
-            this.panel3.Controls.Add(this.lblStandardOrdersDtl);
-            this.panel3.Controls.Add(this.lblStandardOrdersMetSLAHdr);
-            this.panel3.Controls.Add(this.lblStandardOrdersHdr);
-            this.panel3.Controls.Add(this.lblInternationalOrdersMetSLADtl);
-            this.panel3.Controls.Add(this.lblInternationalOrdersDtl);
-            this.panel3.Controls.Add(this.lblInternationalOrdersMetSLAHdr);
-            this.panel3.Controls.Add(this.lblInternationalOrdersHdr);
-            this.panel3.Controls.Add(this.lblExpressMetSLADtl);
-            this.panel3.Controls.Add(this.lblExpressOrdersDtl);
-            this.panel3.Controls.Add(this.lblTotalOrdersMetSLADtl);
-            this.panel3.Controls.Add(this.lblTotalOrdersDtl);
-            this.panel3.Controls.Add(this.lblExpressMetSLAHdr);
-            this.panel3.Controls.Add(this.lblExpressOrdersHdr);
-            this.panel3.Controls.Add(this.lblTotalOrdersMetSLAHdr);
-            this.panel3.Controls.Add(this.lblTotalOrdersHdr);
-            this.panel3.Location = new System.Drawing.Point(810, 42);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(307, 260);
-            this.panel3.TabIndex = 0;
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.label1);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersMetSLADtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersDtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersMetSLAHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStandardOrdersMetSLADtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStandardOrdersDtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStandardOrdersMetSLAHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStandardOrdersHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblInternationalOrdersMetSLADtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblInternationalOrdersDtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblInternationalOrdersMetSLAHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblInternationalOrdersHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblExpressMetSLADtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblExpressOrdersDtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblTotalOrdersMetSLADtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblTotalOrdersDtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblExpressMetSLAHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblExpressOrdersHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblTotalOrdersMetSLAHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblTotalOrdersHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Location = new System.Drawing.Point(892, 102);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Name = "pnOrderTotalsWithinSpecifiedTimeFrame";
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Size = new System.Drawing.Size(279, 277);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 5);
+            this.label1.Location = new System.Drawing.Point(1, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(275, 16);
             this.label1.TabIndex = 20;
@@ -666,7 +666,7 @@
             // 
             // lblStoreOrdersMetSLADtl
             // 
-            this.lblStoreOrdersMetSLADtl.Location = new System.Drawing.Point(249, 230);
+            this.lblStoreOrdersMetSLADtl.Location = new System.Drawing.Point(226, 246);
             this.lblStoreOrdersMetSLADtl.Name = "lblStoreOrdersMetSLADtl";
             this.lblStoreOrdersMetSLADtl.Size = new System.Drawing.Size(50, 13);
             this.lblStoreOrdersMetSLADtl.TabIndex = 19;
@@ -675,7 +675,7 @@
             // 
             // lblStoreOrdersDtl
             // 
-            this.lblStoreOrdersDtl.Location = new System.Drawing.Point(249, 214);
+            this.lblStoreOrdersDtl.Location = new System.Drawing.Point(226, 230);
             this.lblStoreOrdersDtl.Name = "lblStoreOrdersDtl";
             this.lblStoreOrdersDtl.Size = new System.Drawing.Size(50, 13);
             this.lblStoreOrdersDtl.TabIndex = 18;
@@ -685,7 +685,7 @@
             // lblStoreOrdersMetSLAHdr
             // 
             this.lblStoreOrdersMetSLAHdr.AutoSize = true;
-            this.lblStoreOrdersMetSLAHdr.Location = new System.Drawing.Point(14, 232);
+            this.lblStoreOrdersMetSLAHdr.Location = new System.Drawing.Point(1, 248);
             this.lblStoreOrdersMetSLAHdr.Name = "lblStoreOrdersMetSLAHdr";
             this.lblStoreOrdersMetSLAHdr.Size = new System.Drawing.Size(106, 13);
             this.lblStoreOrdersMetSLAHdr.TabIndex = 17;
@@ -694,7 +694,7 @@
             // lblStoreOrdersHdr
             // 
             this.lblStoreOrdersHdr.AutoSize = true;
-            this.lblStoreOrdersHdr.Location = new System.Drawing.Point(14, 214);
+            this.lblStoreOrdersHdr.Location = new System.Drawing.Point(1, 230);
             this.lblStoreOrdersHdr.Name = "lblStoreOrdersHdr";
             this.lblStoreOrdersHdr.Size = new System.Drawing.Size(93, 13);
             this.lblStoreOrdersHdr.TabIndex = 16;
@@ -702,7 +702,7 @@
             // 
             // lblStandardOrdersMetSLADtl
             // 
-            this.lblStandardOrdersMetSLADtl.Location = new System.Drawing.Point(249, 186);
+            this.lblStandardOrdersMetSLADtl.Location = new System.Drawing.Point(226, 198);
             this.lblStandardOrdersMetSLADtl.Name = "lblStandardOrdersMetSLADtl";
             this.lblStandardOrdersMetSLADtl.Size = new System.Drawing.Size(50, 13);
             this.lblStandardOrdersMetSLADtl.TabIndex = 15;
@@ -711,7 +711,7 @@
             // 
             // lblStandardOrdersDtl
             // 
-            this.lblStandardOrdersDtl.Location = new System.Drawing.Point(249, 170);
+            this.lblStandardOrdersDtl.Location = new System.Drawing.Point(226, 182);
             this.lblStandardOrdersDtl.Name = "lblStandardOrdersDtl";
             this.lblStandardOrdersDtl.Size = new System.Drawing.Size(50, 13);
             this.lblStandardOrdersDtl.TabIndex = 14;
@@ -721,7 +721,7 @@
             // lblStandardOrdersMetSLAHdr
             // 
             this.lblStandardOrdersMetSLAHdr.AutoSize = true;
-            this.lblStandardOrdersMetSLAHdr.Location = new System.Drawing.Point(14, 188);
+            this.lblStandardOrdersMetSLAHdr.Location = new System.Drawing.Point(1, 200);
             this.lblStandardOrdersMetSLAHdr.Name = "lblStandardOrdersMetSLAHdr";
             this.lblStandardOrdersMetSLAHdr.Size = new System.Drawing.Size(124, 13);
             this.lblStandardOrdersMetSLAHdr.TabIndex = 13;
@@ -730,7 +730,7 @@
             // lblStandardOrdersHdr
             // 
             this.lblStandardOrdersHdr.AutoSize = true;
-            this.lblStandardOrdersHdr.Location = new System.Drawing.Point(14, 170);
+            this.lblStandardOrdersHdr.Location = new System.Drawing.Point(1, 182);
             this.lblStandardOrdersHdr.Name = "lblStandardOrdersHdr";
             this.lblStandardOrdersHdr.Size = new System.Drawing.Size(111, 13);
             this.lblStandardOrdersHdr.TabIndex = 12;
@@ -738,7 +738,7 @@
             // 
             // lblInternationalOrdersMetSLADtl
             // 
-            this.lblInternationalOrdersMetSLADtl.Location = new System.Drawing.Point(249, 144);
+            this.lblInternationalOrdersMetSLADtl.Location = new System.Drawing.Point(226, 152);
             this.lblInternationalOrdersMetSLADtl.Name = "lblInternationalOrdersMetSLADtl";
             this.lblInternationalOrdersMetSLADtl.Size = new System.Drawing.Size(50, 13);
             this.lblInternationalOrdersMetSLADtl.TabIndex = 11;
@@ -747,7 +747,7 @@
             // 
             // lblInternationalOrdersDtl
             // 
-            this.lblInternationalOrdersDtl.Location = new System.Drawing.Point(249, 128);
+            this.lblInternationalOrdersDtl.Location = new System.Drawing.Point(226, 136);
             this.lblInternationalOrdersDtl.Name = "lblInternationalOrdersDtl";
             this.lblInternationalOrdersDtl.Size = new System.Drawing.Size(50, 13);
             this.lblInternationalOrdersDtl.TabIndex = 10;
@@ -757,7 +757,7 @@
             // lblInternationalOrdersMetSLAHdr
             // 
             this.lblInternationalOrdersMetSLAHdr.AutoSize = true;
-            this.lblInternationalOrdersMetSLAHdr.Location = new System.Drawing.Point(14, 146);
+            this.lblInternationalOrdersMetSLAHdr.Location = new System.Drawing.Point(1, 154);
             this.lblInternationalOrdersMetSLAHdr.Name = "lblInternationalOrdersMetSLAHdr";
             this.lblInternationalOrdersMetSLAHdr.Size = new System.Drawing.Size(139, 13);
             this.lblInternationalOrdersMetSLAHdr.TabIndex = 9;
@@ -766,7 +766,7 @@
             // lblInternationalOrdersHdr
             // 
             this.lblInternationalOrdersHdr.AutoSize = true;
-            this.lblInternationalOrdersHdr.Location = new System.Drawing.Point(14, 128);
+            this.lblInternationalOrdersHdr.Location = new System.Drawing.Point(1, 136);
             this.lblInternationalOrdersHdr.Name = "lblInternationalOrdersHdr";
             this.lblInternationalOrdersHdr.Size = new System.Drawing.Size(126, 13);
             this.lblInternationalOrdersHdr.TabIndex = 8;
@@ -774,7 +774,7 @@
             // 
             // lblExpressMetSLADtl
             // 
-            this.lblExpressMetSLADtl.Location = new System.Drawing.Point(249, 96);
+            this.lblExpressMetSLADtl.Location = new System.Drawing.Point(226, 100);
             this.lblExpressMetSLADtl.Name = "lblExpressMetSLADtl";
             this.lblExpressMetSLADtl.Size = new System.Drawing.Size(50, 13);
             this.lblExpressMetSLADtl.TabIndex = 7;
@@ -783,7 +783,7 @@
             // 
             // lblExpressOrdersDtl
             // 
-            this.lblExpressOrdersDtl.Location = new System.Drawing.Point(249, 80);
+            this.lblExpressOrdersDtl.Location = new System.Drawing.Point(226, 84);
             this.lblExpressOrdersDtl.Name = "lblExpressOrdersDtl";
             this.lblExpressOrdersDtl.Size = new System.Drawing.Size(50, 13);
             this.lblExpressOrdersDtl.TabIndex = 6;
@@ -792,7 +792,7 @@
             // 
             // lblTotalOrdersMetSLADtl
             // 
-            this.lblTotalOrdersMetSLADtl.Location = new System.Drawing.Point(249, 48);
+            this.lblTotalOrdersMetSLADtl.Location = new System.Drawing.Point(226, 48);
             this.lblTotalOrdersMetSLADtl.Name = "lblTotalOrdersMetSLADtl";
             this.lblTotalOrdersMetSLADtl.Size = new System.Drawing.Size(50, 13);
             this.lblTotalOrdersMetSLADtl.TabIndex = 5;
@@ -801,7 +801,7 @@
             // 
             // lblTotalOrdersDtl
             // 
-            this.lblTotalOrdersDtl.Location = new System.Drawing.Point(249, 32);
+            this.lblTotalOrdersDtl.Location = new System.Drawing.Point(226, 32);
             this.lblTotalOrdersDtl.Name = "lblTotalOrdersDtl";
             this.lblTotalOrdersDtl.Size = new System.Drawing.Size(50, 13);
             this.lblTotalOrdersDtl.TabIndex = 4;
@@ -811,7 +811,7 @@
             // lblExpressMetSLAHdr
             // 
             this.lblExpressMetSLAHdr.AutoSize = true;
-            this.lblExpressMetSLAHdr.Location = new System.Drawing.Point(14, 98);
+            this.lblExpressMetSLAHdr.Location = new System.Drawing.Point(1, 102);
             this.lblExpressMetSLAHdr.Name = "lblExpressMetSLAHdr";
             this.lblExpressMetSLAHdr.Size = new System.Drawing.Size(118, 13);
             this.lblExpressMetSLAHdr.TabIndex = 3;
@@ -820,7 +820,7 @@
             // lblExpressOrdersHdr
             // 
             this.lblExpressOrdersHdr.AutoSize = true;
-            this.lblExpressOrdersHdr.Location = new System.Drawing.Point(14, 80);
+            this.lblExpressOrdersHdr.Location = new System.Drawing.Point(1, 84);
             this.lblExpressOrdersHdr.Name = "lblExpressOrdersHdr";
             this.lblExpressOrdersHdr.Size = new System.Drawing.Size(105, 13);
             this.lblExpressOrdersHdr.TabIndex = 2;
@@ -829,7 +829,7 @@
             // lblTotalOrdersMetSLAHdr
             // 
             this.lblTotalOrdersMetSLAHdr.AutoSize = true;
-            this.lblTotalOrdersMetSLAHdr.Location = new System.Drawing.Point(14, 50);
+            this.lblTotalOrdersMetSLAHdr.Location = new System.Drawing.Point(1, 50);
             this.lblTotalOrdersMetSLAHdr.Name = "lblTotalOrdersMetSLAHdr";
             this.lblTotalOrdersMetSLAHdr.Size = new System.Drawing.Size(105, 13);
             this.lblTotalOrdersMetSLAHdr.TabIndex = 1;
@@ -838,7 +838,7 @@
             // lblTotalOrdersHdr
             // 
             this.lblTotalOrdersHdr.AutoSize = true;
-            this.lblTotalOrdersHdr.Location = new System.Drawing.Point(14, 32);
+            this.lblTotalOrdersHdr.Location = new System.Drawing.Point(1, 32);
             this.lblTotalOrdersHdr.Name = "lblTotalOrdersHdr";
             this.lblTotalOrdersHdr.Size = new System.Drawing.Size(65, 13);
             this.lblTotalOrdersHdr.TabIndex = 0;
@@ -848,12 +848,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1180, 634);
-            this.Controls.Add(this.panel3);
+            this.ClientSize = new System.Drawing.Size(1186, 627);
             this.Controls.Add(this.gbCustomDateRange);
             this.Controls.Add(this.pnExtendedDetail);
             this.Controls.Add(this.gbCustomSLAStats);
             this.Controls.Add(this.gbLast24Hrs);
+            this.Controls.Add(this.panel2);
             this.Name = "MainForm";
             this.Text = "Dispatch SLA Report (ws1160)";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -875,8 +875,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbTopCriteriaMetKey)).EndInit();
             this.gbCustomDateRange.ResumeLayout(false);
             this.gbCustomDateRange.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.ResumeLayout(false);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -886,30 +886,30 @@
         private System.Windows.Forms.GroupBox gbLast24Hrs;
         private System.Windows.Forms.Button btnLast24HrsPrintReport;
         private System.Windows.Forms.Button btnLast24HrsViewReport;
-        private System.Windows.Forms.Label lbl24HrsStoreSLADtl;
+        public System.Windows.Forms.Label lbl24HrsStoreSLADtl;
         private System.Windows.Forms.Label lbl24HrsStoreSLAHdr;
-        private System.Windows.Forms.Label lbl24HrsStandardSLADtl;
+        public System.Windows.Forms.Label lbl24HrsStandardSLADtl;
         private System.Windows.Forms.Label lbl24HrsStandardSLAHdr;
-        private System.Windows.Forms.Label lbl24HrsInternationalSLADtl;
+        public System.Windows.Forms.Label lbl24HrsInternationalSLADtl;
         private System.Windows.Forms.Label lbl24HrsInternationalSLAHdr;
-        private System.Windows.Forms.Label lbl24HrsExpressSLADtl;
+        public System.Windows.Forms.Label lbl24HrsExpressSLADtl;
         private System.Windows.Forms.Label lbl24HrsExpressSLAHdr;
-        private System.Windows.Forms.Label lbl24HrsTotalSLADtl;
+        public System.Windows.Forms.Label lbl24HrsTotalSLADtl;
         private System.Windows.Forms.Label lbl24HrsTotalSLAHdr;
         private System.Windows.Forms.GroupBox gbCustomSLAStats;
         private System.Windows.Forms.Button btnReportCustomDateRange;
         private System.Windows.Forms.Button btnCustPrintReport;
         private System.Windows.Forms.Button btnCustViewReport;
         private System.Windows.Forms.Label lblCustTotalSLAHdr;
-        private System.Windows.Forms.Label lblCustStoreSLADtl;
-        private System.Windows.Forms.Label lblCustTotalSLADtl;
+        public System.Windows.Forms.Label lblCustStoreSLADtl;
+        public System.Windows.Forms.Label lblCustTotalSLADtl;
         private System.Windows.Forms.Label lblCustStoreSLAHdr;
         private System.Windows.Forms.Label lblCustExpressSLAHdr;
-        private System.Windows.Forms.Label lblStandardTotalSLADtl;
-        private System.Windows.Forms.Label lblCustExpressSLADtl;
+        public System.Windows.Forms.Label lblStandardTotalSLADtl;
+        public System.Windows.Forms.Label lblCustExpressSLADtl;
         private System.Windows.Forms.Label lblCustStandardSLAHdr;
         private System.Windows.Forms.Label lblCustInternationalSLAHdr;
-        private System.Windows.Forms.Label lblCustInternationalSLADtl;
+        public System.Windows.Forms.Label lblCustInternationalSLADtl;
         private System.Windows.Forms.Panel pnExtendedDetail;
         public System.Windows.Forms.DataGridView dgvDetailBreakdown;
         private System.Windows.Forms.RadioButton rbExtendedDetail_International;
@@ -933,24 +933,24 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.Label lblConfigDetails;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnOrderTotalsWithinSpecifiedTimeFrame;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblStoreOrdersMetSLADtl;
-        private System.Windows.Forms.Label lblStoreOrdersDtl;
+        public System.Windows.Forms.Label lblStoreOrdersMetSLADtl;
+        public System.Windows.Forms.Label lblStoreOrdersDtl;
         private System.Windows.Forms.Label lblStoreOrdersMetSLAHdr;
         private System.Windows.Forms.Label lblStoreOrdersHdr;
-        private System.Windows.Forms.Label lblStandardOrdersMetSLADtl;
-        private System.Windows.Forms.Label lblStandardOrdersDtl;
+        public System.Windows.Forms.Label lblStandardOrdersMetSLADtl;
+        public System.Windows.Forms.Label lblStandardOrdersDtl;
         private System.Windows.Forms.Label lblStandardOrdersMetSLAHdr;
         private System.Windows.Forms.Label lblStandardOrdersHdr;
-        private System.Windows.Forms.Label lblInternationalOrdersMetSLADtl;
-        private System.Windows.Forms.Label lblInternationalOrdersDtl;
+        public System.Windows.Forms.Label lblInternationalOrdersMetSLADtl;
+        public System.Windows.Forms.Label lblInternationalOrdersDtl;
         private System.Windows.Forms.Label lblInternationalOrdersMetSLAHdr;
         private System.Windows.Forms.Label lblInternationalOrdersHdr;
-        private System.Windows.Forms.Label lblExpressMetSLADtl;
-        private System.Windows.Forms.Label lblExpressOrdersDtl;
-        private System.Windows.Forms.Label lblTotalOrdersMetSLADtl;
-        private System.Windows.Forms.Label lblTotalOrdersDtl;
+        public System.Windows.Forms.Label lblExpressMetSLADtl;
+        public System.Windows.Forms.Label lblExpressOrdersDtl;
+        public System.Windows.Forms.Label lblTotalOrdersMetSLADtl;
+        public System.Windows.Forms.Label lblTotalOrdersDtl;
         private System.Windows.Forms.Label lblExpressMetSLAHdr;
         private System.Windows.Forms.Label lblExpressOrdersHdr;
         private System.Windows.Forms.Label lblTotalOrdersMetSLAHdr;

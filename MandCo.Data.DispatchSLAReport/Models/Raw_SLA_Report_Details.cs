@@ -8,6 +8,7 @@
         public string SHIP_METHOD { get; set; }
         public string TIME_TO_RELEASE { get; set; }
         public string TIME_TO_IMPORT { get; set; }
+        public string SLA_MET { get; set; }
 
         public DateTime ORDER_DATE { get; set; }
         public DateTime RELEASED_DATE { get; set; }

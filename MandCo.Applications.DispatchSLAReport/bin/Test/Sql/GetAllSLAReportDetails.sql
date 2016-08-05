@@ -9,10 +9,10 @@ select unique ws.web_order_number,
        (nvl(trunc(poca.last_update - ws.order_date), 0) || ' days ' ||
        nvl(trunc(mod((poca.last_update - ws.order_date)*24, 24 )), 0) || ' hours ' || 
        nvl(trunc(mod((poca.last_update - ws.order_date)*24*60, 60 )), 0) || ' mins') Time_To_Import,
-       poca.last_update Date_Imported     
+       poca.last_update Date_Imported,
+       ws.sla_met
 From   WEB_WS1160_SLA_REPORT ws, POS_CHANNEL_ORDER_AUDIT poca, pos_channel_order_items pci
 Where  ws.web_order_number = poca.order_number
-and    ws.sla_met = 'N'
 and    ws.web_order_number in ('2961427', '2961452')
 and    pci.source_channel = poca.source_channel 
 and    pci.order_number = poca.order_number

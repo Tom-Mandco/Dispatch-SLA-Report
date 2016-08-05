@@ -27,7 +27,7 @@
 
                 DataView detailBreakDownDV = new DataView(detailBreakDownDT);
                 //detailBreakDownDV.RowFilter = string.Format("Date => #{0}# AND ",DateTime.);
-
+                
                 mainForm.dgvDetailBreakdown.DataSource = detailBreakDownDT;
                 mainForm.dgvDetailBreakdown.AutoResizeColumns();
                 mainForm.dgvDetailBreakdown.Refresh();
@@ -77,6 +77,11 @@
                          configInformation.Store_SLA_Percentage_Low);
 
             mainForm.lblConfigDetails.Text = lblText;
+        }
+
+        public void BindDisplayDataToForm(MainForm mainForm)
+        {
+            DisplayData displayData = 
         }
     }
 }

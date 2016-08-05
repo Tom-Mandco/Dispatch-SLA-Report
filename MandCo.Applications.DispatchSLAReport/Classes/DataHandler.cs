@@ -43,6 +43,12 @@
             return result;
         }
 
+        public DisplayData GetSLAData_ToDisplayData()
+        {
+            DisplayData result = new DisplayData();
+            //DisplayData result = caclulationHandler.CalculateSLADeadlines_ToDisplayData()
+            return result;
+        }
 
         #region Utilities
         private IEnumerable<Raw_SLA_Report_Details> RetrieveSLAReportDetails(DateTime fromDate, DateTime toDate)
