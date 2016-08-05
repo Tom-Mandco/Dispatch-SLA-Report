@@ -1,11 +1,11 @@
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\MandCo.Service.ws1160.dll
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\MandCo.Service.ws1160.pdb
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\MandCo.Data.ws1160.dll
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\MandCo.Data.dll
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\System.Data.SQLite.dll
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\Oracle.ManagedDataAccess.dll
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\MandCo.Data.ws1160.pdb
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\System.Data.SQLite.xml
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\obj\Release\MandCo.Service.DispatchSLAReport.csprojResolveAssemblyReference.cache
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\obj\Release\MandCo.Service.ws1160.dll
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\obj\Release\MandCo.Service.ws1160.pdb
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\MandCo.Service.DispatchSLAReport.dll
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\MandCo.Service.DispatchSLAReport.pdb
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\MandCo.Data.DispatchSLAReport.dll
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\MandCo.Data.DispatchSLAReport.pdb
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\obj\Release\MandCo.Service.DispatchSLAReport.dll
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\obj\Release\MandCo.Service.DispatchSLAReport.pdb

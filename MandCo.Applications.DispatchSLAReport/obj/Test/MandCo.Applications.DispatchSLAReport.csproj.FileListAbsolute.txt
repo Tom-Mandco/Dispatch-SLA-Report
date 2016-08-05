@@ -1,18 +1,9 @@
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\Despatch SLA Report (ws1160).exe.config
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\obj\Test\Despatch SLA Report (ws1160).exe
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\obj\Test\Despatch SLA Report (ws1160).pdb
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\NLog.config
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\Despatch SLA Report (ws1160).exe
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\Despatch SLA Report (ws1160).pdb
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\MandCo.Data.dll
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\MandCo.Data.ws1160.dll
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\MandCo.Service.ws1160.dll
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\Ninject.dll
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\NLog.dll
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\System.Data.SQLite.dll
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\Oracle.ManagedDataAccess.dll
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\MandCo.Data.ws1160.pdb
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\MandCo.Service.ws1160.pdb
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\Ninject.xml
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\NLog.xml
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\System.Data.SQLite.xml
@@ -21,3 +12,11 @@ F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\obj\Test\Ma
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\obj\Test\MandCo.Applications.DispatchSLAReport.Properties.Resources.resources
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\obj\Test\MandCo.Applications.DispatchSLAReport.csproj.GenerateResource.Cache
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\MandCo.Applications.DispatchSLAReport.exe.config
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\MandCo.Applications.DispatchSLAReport.exe
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\MandCo.Applications.DispatchSLAReport.pdb
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\MandCo.Data.DispatchSLAReport.dll
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\MandCo.Service.DispatchSLAReport.dll
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\MandCo.Data.DispatchSLAReport.pdb
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\MandCo.Service.DispatchSLAReport.pdb
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\obj\Test\MandCo.Applications.DispatchSLAReport.exe
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\obj\Test\MandCo.Applications.DispatchSLAReport.pdb
