@@ -49,6 +49,11 @@
             return result;
         }
 
+        public void UpdateConfigInformation(Config_Information updatedConfigInfo)
+        {
+
+        }
+
         #region Utilities
         private IEnumerable<Raw_SLA_Report_Details> RetrieveSLAReportDetails(DateTime fromDate, DateTime toDate)
         {

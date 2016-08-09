@@ -1,9 +1,11 @@
 ﻿namespace MandCo.Applications.DispatchSLAReport.Classes
 {
     using Interfaces;
-    using MandCo.Data.DispatchSLAReport.Models;
-    using System;
-    using System.Data;
+using MandCo.Data.DispatchSLAReport.Models;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Windows.Forms;
 
     class App : IApp
     {
@@ -19,7 +21,7 @@
             this.detailBreakDownDT = detailBreakDownDT;
         }
 
-        public void BindSLADataTableToDGVDataSource(MainForm mainForm, bool useCustomDateTimes)
+        public void BindSLADataTableToDGVDataSource(MainForm mainForm)
         {
             try
             {
@@ -43,45 +45,15 @@
         {
             Config_Information configInformation = dataHandler.GetConfigInformation();
 
-            string lblText = "";
-            lblText += string.Format("Admin Accounts: {1}{0}",
-                                     Environment.NewLine,
-                                     configInformation.Admin_Accounts);
+            mainForm.lblConfigDetails.Text = Environment.UserName;
 
-            lblText += string.Format("Express SLA Time: {1}{0}Express Cutoff Time: {2}{0}Express SLA Percentage (High): {3}{0}Express SLA Percentage (Low): {4}{0}",
-                                     Environment.NewLine,
-                                     configInformation.Express_SLA_Time.ToShortTimeString(),
-                                     configInformation.Express_Cutoff_Time.ToLongTimeString(),
-                                     configInformation.Express_SLA_Percentage_High,
-                                     configInformation.Express_SLA_Percentage_Low);
 
-            lblText += string.Format("International SLA Time: {1}{0}International Cutoff Time: {2}{0}International SLA Percentage (High): {3}{0}International SLA Percentage (Low): {4}{0}",
-                         Environment.NewLine,
-                         configInformation.International_SLA_Time,
-                         configInformation.International_Cutoff_Time,
-                         configInformation.International_SLA_Percentage_High,
-                         configInformation.International_SLA_Percentage_Low);
-
-            lblText += string.Format("Standard SLA Time: {1}{0}Standard Cutoff Time: {2}{0}Standard SLA Percentage (High): {3}{0}Standard SLA Percentage (Low): {4}{0}",
-                         Environment.NewLine,
-                         configInformation.Standard_SLA_Time,
-                         configInformation.Standard_Cutoff_Time,
-                         configInformation.Standard_SLA_Percentage_High,
-                         configInformation.Standard_SLA_Percentage_Low);
-
-            lblText += string.Format("Store SLA Time: {1}{0}Store Cutoff Time: {2}{0}Store SLA Percentage (High): {3}{0}Store SLA Percentage (Low): {4}{0}",
-                         Environment.NewLine,
-                         configInformation.Store_SLA_Time,
-                         configInformation.Store_Cutoff_Time,
-                         configInformation.Store_SLA_Percentage_High,
-                         configInformation.Store_SLA_Percentage_Low);
-
-            mainForm.lblConfigDetails.Text = lblText;
         }
 
         public void BindCustomDisplayDataToForm(MainForm mainForm)
         {
             DisplayData displayData = dataHandler.GetSLAData_ToDisplayData(mainForm.dtpReportFrom.Value, mainForm.dtpReportTo.Value);
+            Config_Information configInfo = dataHandler.GetConfigInformation();
 
             #region Set Top Labels 
             mainForm.lblCustTotalSLADtlPct.Text = displayData.TotalOrdersSLAPct.ToString();
@@ -93,6 +65,17 @@
             mainForm.gbCustomSLAStats.Text = string.Format("{0} - {1}",
                                                             mainForm.dtpReportFrom.Value,
                                                             mainForm.dtpReportTo.Value);
+            
+            List<Label> labels = new List<Label>();
+            labels.Add(mainForm.lblCustStandardSLADtlPct);
+            labels.Add(mainForm.lblCustStoreSLADtlPct);
+            labels.Add(mainForm.lblCustInternationalSLADtlPct);
+            AssignColourCodedPct_ToLabels(labels, configInfo.Standard_SLA_Percentage_High, configInfo.Standard_SLA_Percentage_Low);
+
+            labels.Clear();
+            labels.Add(mainForm.lblCustExpressSLADtlPct);
+            labels.Add(mainForm.lblCustTotalSLADtlPct);
+            AssignColourCodedPct_ToLabels(labels, configInfo.Express_SLA_Percentage_High, configInfo.Express_SLA_Percentage_Low);
             #endregion
 
             #region Set Side Labels
@@ -111,11 +94,80 @@
             mainForm.lblStoreOrdersDtl.Text = displayData.StoreOrders.ToString();
             mainForm.lblStoreOrdersMetSLADtl.Text = displayData.StoreOrdersSLA.ToString();
             #endregion
+
+            #region Set Config Labels
+            mainForm.lblTopCriteriaMetKey.Text = string.Format("> {0}% met SLA ({1}% for Express)",
+                                                    configInfo.Standard_SLA_Percentage_High,
+                                                    configInfo.Express_SLA_Percentage_High);
+            mainForm.lblMidCriteriaMetKey.Text = string.Format("  {0}% to {1}% met SLA ({2}% to {3}% for Express)",
+                                                                configInfo.Standard_SLA_Percentage_Low,
+                                                                configInfo.Standard_SLA_Percentage_High,
+                                                                configInfo.Express_SLA_Percentage_Low,
+                                                                configInfo.Express_SLA_Percentage_High);
+            mainForm.lblCriteriaNotMetKey.Text = string.Format("< {0}% met SLA ({1}% for Express)",
+                                                                configInfo.Standard_SLA_Percentage_Low,
+                                                                configInfo.Express_SLA_Percentage_Low);
+            #endregion 
+
+            #region Display Admin Panel
+            if (configInfo.Admin_Accounts.Contains(Environment.UserName))
+                mainForm.pnAdminPanel.Visible = true;
+            else
+                mainForm.pnAdminPanel.Visible = false;
+            #endregion
         }
 
-        public void Bind24HrDisplayDataToForm()
+        public void Bind24HrDisplayDataToForm(MainForm mainForm)
         {
+            DisplayData displayData = dataHandler.GetSLAData_ToDisplayData(DateTime.Now.AddDays(-1), DateTime.Now);
+            Config_Information configInfo = dataHandler.GetConfigInformation();
+            List<Label> labels = new List<Label>();
 
+            #region Set top labels
+            mainForm.lbl24HrsTotalSLADtlPct.Text = displayData.TotalOrdersSLAPct.ToString();
+            mainForm.lbl24HrsExpressSLADtlPct.Text = displayData.ExpressOrdersSLAPct.ToString();
+            mainForm.lbl24HrsInternationalSLADtlPct.Text = displayData.InternationalOrdersSLAPct.ToString();
+            mainForm.lbl24HrsStandardSLADtlPct.Text = displayData.StandardOrdersSLAPct.ToString();
+            mainForm.lbl24HrsStoreSLADtlPct.Text = displayData.StoreOrdersSLAPct.ToString();
+
+            mainForm.gbLast24Hrs.Text = "Statistics from cut off point on : " + DateTime.Now.AddDays(-1).ToLongDateString();
+
+            labels.Add(mainForm.lbl24HrsStandardSLADtlPct);
+            labels.Add(mainForm.lbl24HrsStoreSLADtlPct);
+            labels.Add(mainForm.lbl24HrsInternationalSLADtlPct);
+            AssignColourCodedPct_ToLabels(labels, configInfo.Standard_SLA_Percentage_High, configInfo.Standard_SLA_Percentage_Low);
+
+            labels.Clear();
+            labels.Add(mainForm.lbl24HrsExpressSLADtlPct);
+            labels.Add(mainForm.lbl24HrsTotalSLADtlPct);
+            AssignColourCodedPct_ToLabels(labels, configInfo.Express_SLA_Percentage_High, configInfo.Express_SLA_Percentage_Low);
+            #endregion
+        }
+
+        public Config_Information GetConfigInformation()
+        {
+            return dataHandler.GetConfigInformation();
+        }
+
+        public void UpdateConfigInformation(Config_Information updatedConfigInfo)
+        {
+            dataHandler.UpdateConfigInformation(updatedConfigInfo);
+        }
+
+        private void AssignColourCodedPct_ToLabels(List<Label> labels, int pctHigh, int pctLow)
+        {
+            float labelValue = 0;
+
+            foreach (var label in labels)
+            {
+                float.TryParse(label.Text, out labelValue);
+                if (labelValue >= pctHigh)
+                    label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
+                else if (labelValue >= pctLow)
+                    label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(128)))));
+                else
+                    label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            }
         }
     }
 }

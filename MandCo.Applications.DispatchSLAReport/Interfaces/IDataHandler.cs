@@ -10,5 +10,6 @@
         DisplayData GetSLAData_ToDisplayData(DateTime fromDate, DateTime toDate);
 
         Config_Information GetConfigInformation();
+        void UpdateConfigInformation(Config_Information updatedConfigInfo);
     }
 }

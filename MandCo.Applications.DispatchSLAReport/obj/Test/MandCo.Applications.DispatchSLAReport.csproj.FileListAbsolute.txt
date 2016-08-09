@@ -20,3 +20,4 @@ F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\Ma
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\bin\Test\MandCo.Service.DispatchSLAReport.pdb
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\obj\Test\MandCo.Applications.DispatchSLAReport.exe
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\obj\Test\MandCo.Applications.DispatchSLAReport.pdb
+F:\dev\Git\Dispatch-SLA-Report\MandCo.Applications.DispatchSLAReport\obj\Test\MandCo.Applications.DispatchSLAReport.ConfigurationSettingsForm.resources

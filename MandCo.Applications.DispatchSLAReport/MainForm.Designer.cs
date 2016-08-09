@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbLast24Hrs = new System.Windows.Forms.GroupBox();
             this.lbl24HrsStoreSLADtlPct = new System.Windows.Forms.Label();
             this.lbl24HrsStandardSLADtlPct = new System.Windows.Forms.Label();
@@ -55,7 +55,8 @@
             this.lblCustStandardSLADtlPct = new System.Windows.Forms.Label();
             this.lblCustExpressSLADtlPct = new System.Windows.Forms.Label();
             this.lblCustInternationalSLADtlPct = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnAdminPanel = new System.Windows.Forms.Panel();
+            this.btnOpenConfigSettings = new System.Windows.Forms.Button();
             this.lblConfigDetails = new System.Windows.Forms.Label();
             this.btnReportCustomDateRange = new System.Windows.Forms.Button();
             this.pnExtendedDetail = new System.Windows.Forms.Panel();
@@ -97,13 +98,14 @@
             this.pbMidCriteriaMetKey = new System.Windows.Forms.PictureBox();
             this.pbTopCriteriaMetKey = new System.Windows.Forms.PictureBox();
             this.gbCustomDateRange = new System.Windows.Forms.GroupBox();
+            this.cbCustomCutoff = new System.Windows.Forms.CheckBox();
             this.dtpReportTo = new System.Windows.Forms.DateTimePicker();
             this.lblReportTo = new System.Windows.Forms.Label();
             this.lblReportFrom = new System.Windows.Forms.Label();
             this.dtpReportFrom = new System.Windows.Forms.DateTimePicker();
             this.gbLast24Hrs.SuspendLayout();
             this.gbCustomSLAStats.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnAdminPanel.SuspendLayout();
             this.pnExtendedDetail.SuspendLayout();
             this.pnOrderTotalsWithinSpecifiedTimeFrame.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -175,6 +177,7 @@
             // 
             // lbl24HrsTotalSLADtlPct
             // 
+            this.lbl24HrsTotalSLADtlPct.BackColor = System.Drawing.Color.RoyalBlue;
             this.lbl24HrsTotalSLADtlPct.Location = new System.Drawing.Point(21, 31);
             this.lbl24HrsTotalSLADtlPct.Name = "lbl24HrsTotalSLADtlPct";
             this.lbl24HrsTotalSLADtlPct.Size = new System.Drawing.Size(40, 13);
@@ -204,7 +207,7 @@
             // lbl24HrsStoreSLAHdr
             // 
             this.lbl24HrsStoreSLAHdr.AutoSize = true;
-            this.lbl24HrsStoreSLAHdr.Location = new System.Drawing.Point(57, 123);
+            this.lbl24HrsStoreSLAHdr.Location = new System.Drawing.Point(59, 123);
             this.lbl24HrsStoreSLAHdr.Name = "lbl24HrsStoreSLAHdr";
             this.lbl24HrsStoreSLAHdr.Size = new System.Drawing.Size(169, 13);
             this.lbl24HrsStoreSLAHdr.TabIndex = 8;
@@ -213,7 +216,7 @@
             // lbl24HrsStandardSLAHdr
             // 
             this.lbl24HrsStandardSLAHdr.AutoSize = true;
-            this.lbl24HrsStandardSLAHdr.Location = new System.Drawing.Point(57, 100);
+            this.lbl24HrsStandardSLAHdr.Location = new System.Drawing.Point(59, 100);
             this.lbl24HrsStandardSLAHdr.Name = "lbl24HrsStandardSLAHdr";
             this.lbl24HrsStandardSLAHdr.Size = new System.Drawing.Size(187, 13);
             this.lbl24HrsStandardSLAHdr.TabIndex = 6;
@@ -222,7 +225,7 @@
             // lbl24HrsInternationalSLAHdr
             // 
             this.lbl24HrsInternationalSLAHdr.AutoSize = true;
-            this.lbl24HrsInternationalSLAHdr.Location = new System.Drawing.Point(57, 77);
+            this.lbl24HrsInternationalSLAHdr.Location = new System.Drawing.Point(59, 77);
             this.lbl24HrsInternationalSLAHdr.Name = "lbl24HrsInternationalSLAHdr";
             this.lbl24HrsInternationalSLAHdr.Size = new System.Drawing.Size(203, 13);
             this.lbl24HrsInternationalSLAHdr.TabIndex = 4;
@@ -231,7 +234,7 @@
             // lbl24HrsExpressSLAHdr
             // 
             this.lbl24HrsExpressSLAHdr.AutoSize = true;
-            this.lbl24HrsExpressSLAHdr.Location = new System.Drawing.Point(57, 54);
+            this.lbl24HrsExpressSLAHdr.Location = new System.Drawing.Point(59, 54);
             this.lbl24HrsExpressSLAHdr.Name = "lbl24HrsExpressSLAHdr";
             this.lbl24HrsExpressSLAHdr.Size = new System.Drawing.Size(182, 13);
             this.lbl24HrsExpressSLAHdr.TabIndex = 2;
@@ -240,7 +243,7 @@
             // lbl24HrsTotalSLAHdr
             // 
             this.lbl24HrsTotalSLAHdr.AutoSize = true;
-            this.lbl24HrsTotalSLAHdr.Location = new System.Drawing.Point(57, 31);
+            this.lbl24HrsTotalSLAHdr.Location = new System.Drawing.Point(59, 31);
             this.lbl24HrsTotalSLAHdr.Name = "lbl24HrsTotalSLAHdr";
             this.lbl24HrsTotalSLAHdr.Size = new System.Drawing.Size(166, 13);
             this.lbl24HrsTotalSLAHdr.TabIndex = 0;
@@ -270,7 +273,7 @@
             // lblCustTotalSLAHdr
             // 
             this.lblCustTotalSLAHdr.AutoSize = true;
-            this.lblCustTotalSLAHdr.Location = new System.Drawing.Point(57, 31);
+            this.lblCustTotalSLAHdr.Location = new System.Drawing.Point(58, 31);
             this.lblCustTotalSLAHdr.Name = "lblCustTotalSLAHdr";
             this.lblCustTotalSLAHdr.Size = new System.Drawing.Size(166, 13);
             this.lblCustTotalSLAHdr.TabIndex = 12;
@@ -279,7 +282,7 @@
             // lblCustStoreSLAHdr
             // 
             this.lblCustStoreSLAHdr.AutoSize = true;
-            this.lblCustStoreSLAHdr.Location = new System.Drawing.Point(57, 123);
+            this.lblCustStoreSLAHdr.Location = new System.Drawing.Point(58, 123);
             this.lblCustStoreSLAHdr.Name = "lblCustStoreSLAHdr";
             this.lblCustStoreSLAHdr.Size = new System.Drawing.Size(169, 13);
             this.lblCustStoreSLAHdr.TabIndex = 20;
@@ -288,7 +291,7 @@
             // lblCustExpressSLAHdr
             // 
             this.lblCustExpressSLAHdr.AutoSize = true;
-            this.lblCustExpressSLAHdr.Location = new System.Drawing.Point(57, 54);
+            this.lblCustExpressSLAHdr.Location = new System.Drawing.Point(58, 54);
             this.lblCustExpressSLAHdr.Name = "lblCustExpressSLAHdr";
             this.lblCustExpressSLAHdr.Size = new System.Drawing.Size(182, 13);
             this.lblCustExpressSLAHdr.TabIndex = 14;
@@ -297,7 +300,7 @@
             // lblCustStandardSLAHdr
             // 
             this.lblCustStandardSLAHdr.AutoSize = true;
-            this.lblCustStandardSLAHdr.Location = new System.Drawing.Point(57, 100);
+            this.lblCustStandardSLAHdr.Location = new System.Drawing.Point(58, 100);
             this.lblCustStandardSLAHdr.Name = "lblCustStandardSLAHdr";
             this.lblCustStandardSLAHdr.Size = new System.Drawing.Size(187, 13);
             this.lblCustStandardSLAHdr.TabIndex = 18;
@@ -306,7 +309,7 @@
             // lblCustInternationalSLAHdr
             // 
             this.lblCustInternationalSLAHdr.AutoSize = true;
-            this.lblCustInternationalSLAHdr.Location = new System.Drawing.Point(57, 77);
+            this.lblCustInternationalSLAHdr.Location = new System.Drawing.Point(58, 77);
             this.lblCustInternationalSLAHdr.Name = "lblCustInternationalSLAHdr";
             this.lblCustInternationalSLAHdr.Size = new System.Drawing.Size(203, 13);
             this.lblCustInternationalSLAHdr.TabIndex = 16;
@@ -375,13 +378,24 @@
             this.lblCustInternationalSLADtlPct.Text = "66.66";
             this.lblCustInternationalSLADtlPct.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // panel2
+            // pnAdminPanel
             // 
-            this.panel2.Controls.Add(this.lblConfigDetails);
-            this.panel2.Location = new System.Drawing.Point(804, 47);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(378, 188);
-            this.panel2.TabIndex = 25;
+            this.pnAdminPanel.Controls.Add(this.btnOpenConfigSettings);
+            this.pnAdminPanel.Controls.Add(this.lblConfigDetails);
+            this.pnAdminPanel.Location = new System.Drawing.Point(804, 47);
+            this.pnAdminPanel.Name = "pnAdminPanel";
+            this.pnAdminPanel.Size = new System.Drawing.Size(378, 188);
+            this.pnAdminPanel.TabIndex = 25;
+            // 
+            // btnOpenConfigSettings
+            // 
+            this.btnOpenConfigSettings.Location = new System.Drawing.Point(4, 155);
+            this.btnOpenConfigSettings.Name = "btnOpenConfigSettings";
+            this.btnOpenConfigSettings.Size = new System.Drawing.Size(370, 23);
+            this.btnOpenConfigSettings.TabIndex = 1;
+            this.btnOpenConfigSettings.Text = "Meddle with ye olde conflagration";
+            this.btnOpenConfigSettings.UseVisualStyleBackColor = true;
+            this.btnOpenConfigSettings.Click += new System.EventHandler(this.btnOpenConfigSettings_Click);
             // 
             // lblConfigDetails
             // 
@@ -400,6 +414,7 @@
             this.btnReportCustomDateRange.TabIndex = 24;
             this.btnReportCustomDateRange.Text = "Report Custom Date Range";
             this.btnReportCustomDateRange.UseVisualStyleBackColor = true;
+            this.btnReportCustomDateRange.Click += new System.EventHandler(this.btnReportCustomDateRange_Click);
             // 
             // pnExtendedDetail
             // 
@@ -701,14 +716,14 @@
             this.dgvDetailBreakdown.AllowUserToDeleteRows = false;
             this.dgvDetailBreakdown.AllowUserToResizeColumns = false;
             this.dgvDetailBreakdown.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetailBreakdown.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetailBreakdown.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDetailBreakdown.ColumnHeadersHeight = 25;
             this.dgvDetailBreakdown.Location = new System.Drawing.Point(6, 102);
             this.dgvDetailBreakdown.Name = "dgvDetailBreakdown";
@@ -721,11 +736,12 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(209, 79);
+            this.label11.Location = new System.Drawing.Point(105, 79);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(475, 20);
+            this.label11.Size = new System.Drawing.Size(683, 20);
             this.label11.TabIndex = 1;
-            this.label11.Text = "Orders which have not met their SLA within the last 7 days";
+            this.label11.Text = "Orders which failed SLA for time period:  08/08/1665 00:00:00 - 09/08/1948 05:46:" +
+    "21";
             // 
             // pnSLACriteriaMetKey
             // 
@@ -796,6 +812,7 @@
             // 
             // gbCustomDateRange
             // 
+            this.gbCustomDateRange.Controls.Add(this.cbCustomCutoff);
             this.gbCustomDateRange.Controls.Add(this.dtpReportTo);
             this.gbCustomDateRange.Controls.Add(this.lblReportTo);
             this.gbCustomDateRange.Controls.Add(this.lblReportFrom);
@@ -807,6 +824,17 @@
             this.gbCustomDateRange.TabIndex = 24;
             this.gbCustomDateRange.TabStop = false;
             this.gbCustomDateRange.Text = "Custom Date Range";
+            // 
+            // cbCustomCutoff
+            // 
+            this.cbCustomCutoff.AutoSize = true;
+            this.cbCustomCutoff.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbCustomCutoff.Location = new System.Drawing.Point(118, 32);
+            this.cbCustomCutoff.Name = "cbCustomCutoff";
+            this.cbCustomCutoff.Size = new System.Drawing.Size(91, 17);
+            this.cbCustomCutoff.TabIndex = 29;
+            this.cbCustomCutoff.Text = "Custom cutoff";
+            this.cbCustomCutoff.UseVisualStyleBackColor = true;
             // 
             // dtpReportTo
             // 
@@ -829,7 +857,7 @@
             // lblReportFrom
             // 
             this.lblReportFrom.AutoSize = true;
-            this.lblReportFrom.Location = new System.Drawing.Point(4, 33);
+            this.lblReportFrom.Location = new System.Drawing.Point(4, 32);
             this.lblReportFrom.Name = "lblReportFrom";
             this.lblReportFrom.Size = new System.Drawing.Size(68, 13);
             this.lblReportFrom.TabIndex = 26;
@@ -839,7 +867,7 @@
             // 
             this.dtpReportFrom.CustomFormat = "dd MMM yyyy  HH:mm:ss";
             this.dtpReportFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpReportFrom.Location = new System.Drawing.Point(6, 55);
+            this.dtpReportFrom.Location = new System.Drawing.Point(6, 54);
             this.dtpReportFrom.Name = "dtpReportFrom";
             this.dtpReportFrom.Size = new System.Drawing.Size(203, 20);
             this.dtpReportFrom.TabIndex = 25;
@@ -853,7 +881,7 @@
             this.Controls.Add(this.pnExtendedDetail);
             this.Controls.Add(this.gbCustomSLAStats);
             this.Controls.Add(this.gbLast24Hrs);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnAdminPanel);
             this.Name = "MainForm";
             this.Text = "Dispatch SLA Report (ws1160)";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -861,8 +889,8 @@
             this.gbLast24Hrs.PerformLayout();
             this.gbCustomSLAStats.ResumeLayout(false);
             this.gbCustomSLAStats.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnAdminPanel.ResumeLayout(false);
+            this.pnAdminPanel.PerformLayout();
             this.pnExtendedDetail.ResumeLayout(false);
             this.pnExtendedDetail.PerformLayout();
             this.pnOrderTotalsWithinSpecifiedTimeFrame.ResumeLayout(false);
@@ -883,7 +911,6 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox gbLast24Hrs;
         private System.Windows.Forms.Button btnLast24HrsPrintReport;
         private System.Windows.Forms.Button btnLast24HrsViewReport;
         public System.Windows.Forms.Label lbl24HrsStoreSLADtlPct;
@@ -929,7 +956,6 @@
         public System.Windows.Forms.Label lblMidCriteriaMetKey;
         public System.Windows.Forms.Label lblTopCriteriaMetKey;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.Label lblConfigDetails;
         private System.Windows.Forms.Panel pnOrderTotalsWithinSpecifiedTimeFrame;
         private System.Windows.Forms.Label label1;
@@ -955,6 +981,10 @@
         private System.Windows.Forms.Label lblTotalOrdersHdr;
         public System.Windows.Forms.GroupBox gbCustomSLAStats;
         private System.Windows.Forms.GroupBox gbCustomDateRange;
+        public System.Windows.Forms.GroupBox gbLast24Hrs;
+        private System.Windows.Forms.CheckBox cbCustomCutoff;
+        private System.Windows.Forms.Button btnOpenConfigSettings;
+        public System.Windows.Forms.Panel pnAdminPanel;
     }
 }
 
