@@ -14,21 +14,18 @@
         private readonly IPerformLookup performLookup;
         private readonly IHandleCalculations caclulationHandler;
 
-        private IEnumerable<Raw_SLA_Report_Details> slaReportDetails;
-
-        public DataHandler(ILog logger, IPerformLookup performLookup, IPopulateDataTables dataTablePopulator, IHandleCalculations calculationHandler, IEnumerable<Raw_SLA_Report_Details> slaReportDetails)
+        public DataHandler(ILog logger, IPerformLookup performLookup, IPopulateDataTables dataTablePopulator, IHandleCalculations calculationHandler)
         {
             this.logger = logger;
             this.dataTablePopulator = dataTablePopulator;
             this.performLookup = performLookup;
             this.caclulationHandler = calculationHandler;
-            this.slaReportDetails = slaReportDetails;
         }
-
 
         public DataTable BindSLAData_ToDataTable(DateTime fromDate, DateTime toDate)
         {
-            slaReportDetails = RetrieveSLAReportDetails(fromDate, toDate);
+            IEnumerable<Raw_SLA_Report_Details> slaReportDetails = RetrieveSLAReportDetails(fromDate, toDate);
+            
             DataTable result = dataTablePopulator.ReturnAllSLAOrderInfo_ToDataTable(slaReportDetails);
 
             return result;
@@ -43,10 +40,12 @@
             return result;
         }
 
-        public DisplayData GetSLAData_ToDisplayData()
+        public DisplayData GetSLAData_ToDisplayData(DateTime fromDate, DateTime toDate)
         {
-            DisplayData result = new DisplayData();
-            //DisplayData result = caclulationHandler.CalculateSLADeadlines_ToDisplayData()
+            IEnumerable<Raw_SLA_Report_Details> slaReportDetails = RetrieveSLAReportDetails(fromDate, toDate);
+
+            DisplayData result = caclulationHandler.CalculateSLADeadlines_ToDisplayData(slaReportDetails);
+
             return result;
         }
 

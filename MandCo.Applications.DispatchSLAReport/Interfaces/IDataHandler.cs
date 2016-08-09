@@ -7,6 +7,7 @@
     public interface IDataHandler
     {
         DataTable BindSLAData_ToDataTable(DateTime fromDate, DateTime toDate);
+        DisplayData GetSLAData_ToDisplayData(DateTime fromDate, DateTime toDate);
 
         Config_Information GetConfigInformation();
     }

@@ -79,9 +79,43 @@
             mainForm.lblConfigDetails.Text = lblText;
         }
 
-        public void BindDisplayDataToForm(MainForm mainForm)
+        public void BindCustomDisplayDataToForm(MainForm mainForm)
         {
-            DisplayData displayData = 
+            DisplayData displayData = dataHandler.GetSLAData_ToDisplayData(mainForm.dtpReportFrom.Value, mainForm.dtpReportTo.Value);
+
+            #region Set Top Labels 
+            mainForm.lblCustTotalSLADtlPct.Text = displayData.TotalOrdersSLAPct.ToString();
+            mainForm.lblCustExpressSLADtlPct.Text = displayData.ExpressOrdersSLAPct.ToString();
+            mainForm.lblCustInternationalSLADtlPct.Text = displayData.InternationalOrdersSLAPct.ToString();
+            mainForm.lblCustStandardSLADtlPct.Text = displayData.StandardOrdersSLAPct.ToString();
+            mainForm.lblCustStoreSLADtlPct.Text = displayData.StoreOrdersSLAPct.ToString();
+
+            mainForm.gbCustomSLAStats.Text = string.Format("{0} - {1}",
+                                                            mainForm.dtpReportFrom.Value,
+                                                            mainForm.dtpReportTo.Value);
+            #endregion
+
+            #region Set Side Labels
+            mainForm.lblTotalOrdersDtl.Text = displayData.TotalOrders.ToString();
+            mainForm.lblTotalOrdersMetSLADtl.Text = displayData.TotalOrdersSLA.ToString();
+
+            mainForm.lblExpressOrdersDtl.Text = displayData.ExpressOrders.ToString();
+            mainForm.lblExpressMetSLADtl.Text = displayData.ExpressOrdersSLA.ToString();
+
+            mainForm.lblInternationalOrdersDtl.Text = displayData.InternationalOrders.ToString();
+            mainForm.lblInternationalOrdersMetSLADtl.Text = displayData.InternationalOrdersSLA.ToString();
+
+            mainForm.lblStandardOrdersDtl.Text = displayData.StandardOrders.ToString();
+            mainForm.lblStandardOrdersMetSLADtl.Text = displayData.StandardOrdersSLA.ToString();
+
+            mainForm.lblStoreOrdersDtl.Text = displayData.StoreOrders.ToString();
+            mainForm.lblStoreOrdersMetSLADtl.Text = displayData.StoreOrdersSLA.ToString();
+            #endregion
+        }
+
+        public void Bind24HrDisplayDataToForm()
+        {
+
         }
     }
 }

@@ -5,6 +5,6 @@
 
     public interface IHandleCalculations
     {
-        DisplayData CalculateSLADeadlines_ToDisplayData(IEnumerable<Raw_SLA_Report_Details> SLAReportDetails, Config_Information configInfo);
+        DisplayData CalculateSLADeadlines_ToDisplayData(IEnumerable<Raw_SLA_Report_Details> SLAReportDetails);
     }
 }

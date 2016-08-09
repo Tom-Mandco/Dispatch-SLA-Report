@@ -2,7 +2,6 @@
 {
     public class DisplayData
     {
-        //Last 24 Hours Data
         public int TotalOrders {get; set;}
         public int TotalOrdersSLA { get; set; }
         public float TotalOrdersSLAPct { get; set; }
