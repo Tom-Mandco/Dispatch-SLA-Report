@@ -39,8 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DataAdapter.cs" />
     <Compile Include="Classes\DataTableFactory.cs" />
     <Compile Include="Classes\PerformLookup.cs" />
+    <Compile Include="Interfaces\IAdaptData.cs" />
     <Compile Include="Interfaces\IDataTableFactory.cs" />
     <Compile Include="Interfaces\IPerformLookup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

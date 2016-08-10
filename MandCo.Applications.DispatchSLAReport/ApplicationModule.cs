@@ -1,12 +1,12 @@
 ﻿namespace MandCo.Applications.DispatchSLAReport
 {
     using Classes;
-    using MandCo.Data.DispatchSLAReport.Classes;
-    using MandCo.Service.DispatchSLAReport.Classes;
     using Interfaces;
+    using MandCo.Data.DispatchSLAReport.Classes;
     using MandCo.Data.DispatchSLAReport.Interfaces;
-    using MandCo.Service.DispatchSLAReport.Interfaces;
     using MandCo.Data.DispatchSLAReport.Models;
+    using MandCo.Service.DispatchSLAReport.Classes;
+    using MandCo.Service.DispatchSLAReport.Interfaces;
     using Ninject.Modules;
     using NLog;
     using System;
@@ -40,10 +40,11 @@
             Bind(typeof(IPerformLookup)).To(typeof(PerformLookup));
             Bind(typeof(IDataTableFactory)).To(typeof(DataTableFactory));
             Bind(typeof(IHandleCalculations)).To(typeof(CalculationHandler));
-
+            Bind(typeof(IAdaptData)).To(typeof(DataAdapter));
 
             Bind<Raw_Configuration_Data>().ToSelf();
-            Bind<Raw_SLA_Report_Details>().ToSelf();
+            Bind<Cleansed_SLA_Report_Details>().ToSelf();
+            Bind<Raw_SLA_Report_Data>().ToSelf();
             Bind<Config_Information>().ToSelf();
             Bind<DisplayData>().ToSelf();
         }

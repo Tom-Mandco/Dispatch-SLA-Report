@@ -24,7 +24,7 @@
 
         public DataTable BindSLAData_ToDataTable(DateTime fromDate, DateTime toDate)
         {
-            IEnumerable<Raw_SLA_Report_Details> slaReportDetails = RetrieveSLAReportDetails(fromDate, toDate);
+            IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = RetrieveSLAReportDetails(fromDate, toDate);
             
             DataTable result = dataTablePopulator.ReturnAllSLAOrderInfo_ToDataTable(slaReportDetails);
 
@@ -42,7 +42,7 @@
 
         public DisplayData GetSLAData_ToDisplayData(DateTime fromDate, DateTime toDate)
         {
-            IEnumerable<Raw_SLA_Report_Details> slaReportDetails = RetrieveSLAReportDetails(fromDate, toDate);
+            IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = RetrieveSLAReportDetails(fromDate, toDate);
 
             DisplayData result = caclulationHandler.CalculateSLADeadlines_ToDisplayData(slaReportDetails);
 
@@ -55,7 +55,7 @@
         }
 
         #region Utilities
-        private IEnumerable<Raw_SLA_Report_Details> RetrieveSLAReportDetails(DateTime fromDate, DateTime toDate)
+        private IEnumerable<Cleansed_SLA_Report_Details> RetrieveSLAReportDetails(DateTime fromDate, DateTime toDate)
         {
             var result = performLookup.GetOrderDataFromSLATable(fromDate, toDate);
             return result;

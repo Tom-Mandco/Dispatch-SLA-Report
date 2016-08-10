@@ -61,7 +61,7 @@
             this.btnReportCustomDateRange = new System.Windows.Forms.Button();
             this.pnExtendedDetail = new System.Windows.Forms.Panel();
             this.pnOrderTotalsWithinSpecifiedTimeFrame = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblOrderTotalsHeader = new System.Windows.Forms.Label();
             this.lblStoreOrdersMetSLADtl = new System.Windows.Forms.Label();
             this.lblStoreOrdersDtl = new System.Windows.Forms.Label();
             this.lblStoreOrdersMetSLAHdr = new System.Windows.Forms.Label();
@@ -89,7 +89,7 @@
             this.rbExtendedDetail_Express = new System.Windows.Forms.RadioButton();
             this.rbExtendedDetail_Standard = new System.Windows.Forms.RadioButton();
             this.dgvDetailBreakdown = new System.Windows.Forms.DataGridView();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblDGVHeader = new System.Windows.Forms.Label();
             this.pnSLACriteriaMetKey = new System.Windows.Forms.Panel();
             this.lblCriteriaNotMetKey = new System.Windows.Forms.Label();
             this.lblMidCriteriaMetKey = new System.Windows.Forms.Label();
@@ -332,6 +332,7 @@
             this.btnCustViewReport.TabIndex = 22;
             this.btnCustViewReport.Text = "View Report";
             this.btnCustViewReport.UseVisualStyleBackColor = true;
+            this.btnCustViewReport.Click += new System.EventHandler(this.btnCustViewReport_Click);
             // 
             // lblCustStoreSLADtlPct
             // 
@@ -402,9 +403,9 @@
             this.lblConfigDetails.AutoSize = true;
             this.lblConfigDetails.Location = new System.Drawing.Point(10, 10);
             this.lblConfigDetails.Name = "lblConfigDetails";
-            this.lblConfigDetails.Size = new System.Drawing.Size(33, 39);
+            this.lblConfigDetails.Size = new System.Drawing.Size(25, 13);
             this.lblConfigDetails.TabIndex = 0;
-            this.lblConfigDetails.Text = "Multi\r\nLine\r\nLabel";
+            this.lblConfigDetails.Text = "ooo\r\n";
             // 
             // btnReportCustomDateRange
             // 
@@ -421,7 +422,7 @@
             this.pnExtendedDetail.Controls.Add(this.pnOrderTotalsWithinSpecifiedTimeFrame);
             this.pnExtendedDetail.Controls.Add(this.panel1);
             this.pnExtendedDetail.Controls.Add(this.dgvDetailBreakdown);
-            this.pnExtendedDetail.Controls.Add(this.label11);
+            this.pnExtendedDetail.Controls.Add(this.lblDGVHeader);
             this.pnExtendedDetail.Controls.Add(this.pnSLACriteriaMetKey);
             this.pnExtendedDetail.Location = new System.Drawing.Point(9, 241);
             this.pnExtendedDetail.Name = "pnExtendedDetail";
@@ -430,7 +431,7 @@
             // 
             // pnOrderTotalsWithinSpecifiedTimeFrame
             // 
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.label1);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblOrderTotalsHeader);
             this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersMetSLADtl);
             this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersDtl);
             this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersMetSLAHdr);
@@ -456,15 +457,15 @@
             this.pnOrderTotalsWithinSpecifiedTimeFrame.Size = new System.Drawing.Size(279, 277);
             this.pnOrderTotalsWithinSpecifiedTimeFrame.TabIndex = 0;
             // 
-            // label1
+            // lblOrderTotalsHeader
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(275, 16);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Order Totals within the previous x days";
+            this.lblOrderTotalsHeader.AutoSize = true;
+            this.lblOrderTotalsHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrderTotalsHeader.Location = new System.Drawing.Point(1, 5);
+            this.lblOrderTotalsHeader.Name = "lblOrderTotalsHeader";
+            this.lblOrderTotalsHeader.Size = new System.Drawing.Size(275, 16);
+            this.lblOrderTotalsHeader.TabIndex = 20;
+            this.lblOrderTotalsHeader.Text = "Order Totals within the previous x days";
             // 
             // lblStoreOrdersMetSLADtl
             // 
@@ -732,15 +733,15 @@
             this.dgvDetailBreakdown.Size = new System.Drawing.Size(880, 277);
             this.dgvDetailBreakdown.TabIndex = 7;
             // 
-            // label11
+            // lblDGVHeader
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(105, 79);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(683, 20);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Orders which failed SLA for time period:  08/08/1665 00:00:00 - 09/08/1948 05:46:" +
+            this.lblDGVHeader.AutoSize = true;
+            this.lblDGVHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDGVHeader.Location = new System.Drawing.Point(105, 79);
+            this.lblDGVHeader.Name = "lblDGVHeader";
+            this.lblDGVHeader.Size = new System.Drawing.Size(683, 20);
+            this.lblDGVHeader.TabIndex = 1;
+            this.lblDGVHeader.Text = "Orders which failed SLA for time period:  08/08/1665 00:00:00 - 09/08/1948 05:46:" +
     "21";
             // 
             // pnSLACriteriaMetKey
@@ -943,7 +944,6 @@
         private System.Windows.Forms.RadioButton rbExtendedDetail_Express;
         private System.Windows.Forms.RadioButton rbExtendedDetailFilter_Store;
         private System.Windows.Forms.RadioButton rbExtendedDetailFilter_All;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel pnSLACriteriaMetKey;
         public System.Windows.Forms.DateTimePicker dtpReportFrom;
         public System.Windows.Forms.DateTimePicker dtpReportTo;
@@ -958,7 +958,6 @@
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Label lblConfigDetails;
         private System.Windows.Forms.Panel pnOrderTotalsWithinSpecifiedTimeFrame;
-        private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label lblStoreOrdersMetSLADtl;
         public System.Windows.Forms.Label lblStoreOrdersDtl;
         private System.Windows.Forms.Label lblStoreOrdersMetSLAHdr;
@@ -985,6 +984,8 @@
         private System.Windows.Forms.CheckBox cbCustomCutoff;
         private System.Windows.Forms.Button btnOpenConfigSettings;
         public System.Windows.Forms.Panel pnAdminPanel;
+        public System.Windows.Forms.Label lblDGVHeader;
+        public System.Windows.Forms.Label lblOrderTotalsHeader;
     }
 }
 

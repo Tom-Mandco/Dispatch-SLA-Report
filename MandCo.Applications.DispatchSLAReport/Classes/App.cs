@@ -21,18 +21,12 @@ using System.Windows.Forms;
             this.detailBreakDownDT = detailBreakDownDT;
         }
 
-        public void BindSLADataTableToDGVDataSource(MainForm mainForm)
+        public void SetDataSourceToCustomTimeFrame(MainForm mainForm)
         {
             try
             {
                 detailBreakDownDT = dataHandler.BindSLAData_ToDataTable(mainForm.dtpReportFrom.Value, mainForm.dtpReportTo.Value);
-
-                DataView detailBreakDownDV = new DataView(detailBreakDownDT);
-                //detailBreakDownDV.RowFilter = string.Format("Date => #{0}# AND ",DateTime.);
-                
-                mainForm.dgvDetailBreakdown.DataSource = detailBreakDownDT;
-                mainForm.dgvDetailBreakdown.AutoResizeColumns();
-                mainForm.dgvDetailBreakdown.Refresh();
+                BindDataToDGV(mainForm, detailBreakDownDT);
             }
             catch (Exception ex)
             {
@@ -41,19 +35,35 @@ using System.Windows.Forms;
             }
         }
 
+        private void BindDataToDGV(MainForm mainForm, DataTable dataTable)
+        {
+            mainForm.dgvDetailBreakdown.DataSource = dataTable;
+            mainForm.dgvDetailBreakdown.AutoResizeColumns();
+            mainForm.dgvDetailBreakdown.Refresh();
+        }
+
         public void BindConfigDataToForm(MainForm mainForm)
         {
             Config_Information configInformation = dataHandler.GetConfigInformation();
 
             mainForm.lblConfigDetails.Text = Environment.UserName;
+        }
 
+        public void SetDataSourceToLast24Hours(MainForm mainForm)
+        {
+            mainForm.lblDGVHeader.Text = string.Format("Orders which failed SLA for time period: {0: dd MMM yy HH:mm:ss} - {1: dd MMM yy HH:mm:ss}",
+                                            DateTime.Now.AddDays(-1),
+                                            DateTime.Now);
 
+            detailBreakDownDT = dataHandler.BindSLAData_ToDataTable(DateTime.Now.AddDays(-1), DateTime.Now);
+            BindDataToDGV(mainForm, detailBreakDownDT);
         }
 
         public void BindCustomDisplayDataToForm(MainForm mainForm)
         {
             DisplayData displayData = dataHandler.GetSLAData_ToDisplayData(mainForm.dtpReportFrom.Value, mainForm.dtpReportTo.Value);
             Config_Information configInfo = dataHandler.GetConfigInformation();
+            TimeSpan totalOrderTimePeriod = (mainForm.dtpReportTo.Value - mainForm.dtpReportFrom.Value);
 
             #region Set Top Labels 
             mainForm.lblCustTotalSLADtlPct.Text = displayData.TotalOrdersSLAPct.ToString();
@@ -76,9 +86,15 @@ using System.Windows.Forms;
             labels.Add(mainForm.lblCustExpressSLADtlPct);
             labels.Add(mainForm.lblCustTotalSLADtlPct);
             AssignColourCodedPct_ToLabels(labels, configInfo.Express_SLA_Percentage_High, configInfo.Express_SLA_Percentage_Low);
+
+            mainForm.lblDGVHeader.Text = string.Format("Orders which failed SLA for time period: {0: dd MMM yy HH:mm:ss} - {1: dd MMM yy HH:mm:ss}",
+                                                        mainForm.dtpReportFrom.Value,
+                                                        mainForm.dtpReportTo.Value);
             #endregion
 
             #region Set Side Labels
+            mainForm.lblOrderTotalsHeader.Text = string.Format("Order Totals within the previous {0} days", totalOrderTimePeriod.Days);
+
             mainForm.lblTotalOrdersDtl.Text = displayData.TotalOrders.ToString();
             mainForm.lblTotalOrdersMetSLADtl.Text = displayData.TotalOrdersSLA.ToString();
 
@@ -107,6 +123,7 @@ using System.Windows.Forms;
             mainForm.lblCriteriaNotMetKey.Text = string.Format("< {0}% met SLA ({1}% for Express)",
                                                                 configInfo.Standard_SLA_Percentage_Low,
                                                                 configInfo.Express_SLA_Percentage_Low);
+
             #endregion 
 
             #region Display Admin Panel

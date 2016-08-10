@@ -7,12 +7,12 @@
 
     public class CalculationHandler : IHandleCalculations
     {
-        public DisplayData CalculateSLADeadlines_ToDisplayData(IEnumerable<Raw_SLA_Report_Details> SLAReportDetails)
+        public DisplayData CalculateSLADeadlines_ToDisplayData(IEnumerable<Cleansed_SLA_Report_Details> SLAReportDetails)
         {
             #region Declarations
             DisplayData result = new DisplayData();
             Dictionary<string, int> orderTotals = AggregateTotals_ToDictionary(SLAReportDetails);
-            Dictionary<string, float> totalPercentages = CalculatePercentages_ToDictionary(orderTotals);
+            Dictionary<string, decimal> totalPercentages = CalculatePercentages_ToDictionary(orderTotals);
             #endregion
 
             #region Assign results to data model
@@ -43,27 +43,28 @@
         }
 
         #region Utilities
-        private float CalculateSuccessPct_ToFloat(int orders, int ordersFailed)
+        private decimal CalculateSuccessPct_ToDecimal(int orders, int ordersFailed)
         {
-            float result = 0;
-            result = (orders > 0 ? (((orders - ordersFailed) / orders) * 100) : 0);
+            decimal result = 0;
+            result = (orders > 0 ? ((((decimal)orders - (decimal)ordersFailed) / (decimal)orders) * 100) : 0);
+            Math.Round(result, 2);
             return result;
         }
 
-        private Dictionary<string, float> CalculatePercentages_ToDictionary(Dictionary<string, int> orderTotals)
+        private Dictionary<string, decimal> CalculatePercentages_ToDictionary(Dictionary<string, int> orderTotals)
         {
             #region Declarations
-            Dictionary<string, float> totalPercentages = new Dictionary<string, float>();
-            float expressOrdersPct = 0, internationalOrdersPct = 0, standardOrdersPct = 0, storeOrdersPct = 0, totalOrdersPct = 0;
+            Dictionary<string, decimal> totalPercentages = new Dictionary<string, decimal>();
+            decimal expressOrdersPct = 0, internationalOrdersPct = 0, standardOrdersPct = 0, storeOrdersPct = 0, totalOrdersPct = 0;
             #endregion
 
             #region Calculate total orders & percentages
 
-            expressOrdersPct = CalculateSuccessPct_ToFloat(orderTotals["Express"], orderTotals["Express Failed"]);
-            internationalOrdersPct = CalculateSuccessPct_ToFloat(orderTotals["International"], orderTotals["International Failed"]);
-            standardOrdersPct = CalculateSuccessPct_ToFloat(orderTotals["Standard"], orderTotals["Standard Failed"]);
-            storeOrdersPct = CalculateSuccessPct_ToFloat(orderTotals["Store"], orderTotals["Store Failed"]);
-            totalOrdersPct = CalculateSuccessPct_ToFloat(orderTotals["Total"], orderTotals["Total Failed"]);
+            expressOrdersPct = CalculateSuccessPct_ToDecimal(orderTotals["Express"], orderTotals["Express Failed"]);
+            internationalOrdersPct = CalculateSuccessPct_ToDecimal(orderTotals["International"], orderTotals["International Failed"]);
+            standardOrdersPct = CalculateSuccessPct_ToDecimal(orderTotals["Standard"], orderTotals["Standard Failed"]);
+            storeOrdersPct = CalculateSuccessPct_ToDecimal(orderTotals["Store"], orderTotals["Store Failed"]);
+            totalOrdersPct = CalculateSuccessPct_ToDecimal(orderTotals["Total"], orderTotals["Total Failed"]);
 
             #endregion
 
@@ -78,7 +79,7 @@
             return totalPercentages;
         }
 
-        private Dictionary<string, int> AggregateTotals_ToDictionary(IEnumerable<Raw_SLA_Report_Details> SLAReportDetails)
+        private Dictionary<string, int> AggregateTotals_ToDictionary(IEnumerable<Cleansed_SLA_Report_Details> SLAReportDetails)
         {
             #region Declarations
             int totalOrders = 0, totalOrdersFailed = 0;
@@ -92,30 +93,34 @@
             #region Aggregate totals
             foreach (var detail in SLAReportDetails)
             {
-                switch (detail.SHIP_METHOD)
+                if (detail.Delivery_Option == "Express")
                 {
-                    case "Express":
-                        expressOrders++;
-                        if (detail.SLA_MET == "N")
-                            expressOrdersFailed++;
-                        break;
-                    case "International":
-                        internationalOrders++;
-                        if (detail.SLA_MET == "N")
-                            internationalOrdersFailed++;
-                        break;
-                    case "Standard":
-                        standardOrders++;
-                        if (detail.SLA_MET == "N")
-                            standardOrdersFailed++;
-                        break;
-                    case "Store":
-                        storeOrders++;
-                        if (detail.SLA_MET == "N")
-                            storeOrdersFailed++;
-                        break;
-                    default:
-                        break;
+                    expressOrders++;
+                    if (!detail.SLA_Met)
+                        expressOrdersFailed++;
+                }
+                else
+                {
+                    switch (detail.Ship_Method)
+                    {
+                        case "International":
+                            internationalOrders++;
+                            if (!detail.SLA_Met)
+                                internationalOrdersFailed++;
+                            break;
+                        case "Standard":
+                            standardOrders++;
+                            if (!detail.SLA_Met)
+                                standardOrdersFailed++;
+                            break;
+                        case "Store":
+                            storeOrders++;
+                            if (!detail.SLA_Met)
+                                storeOrdersFailed++;
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
 

@@ -7,7 +7,7 @@
 
     public interface IPerformLookup
     {
-        IEnumerable<Raw_SLA_Report_Details> GetOrderDataFromSLATable(DateTime dateFrom, DateTime dateTo);
+        IEnumerable<Cleansed_SLA_Report_Details> GetOrderDataFromSLATable(DateTime dateFrom, DateTime dateTo);
         Config_Information GetConfigurationInformation();
     }
 }

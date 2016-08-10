@@ -7,7 +7,8 @@
         void BindConfigDataToForm(MainForm mainForm);
         void Bind24HrDisplayDataToForm(MainForm mainForm);
         void BindCustomDisplayDataToForm(MainForm mainForm);
-        void BindSLADataTableToDGVDataSource(MainForm mainForm);
+        void SetDataSourceToCustomTimeFrame(MainForm mainForm);
+        void SetDataSourceToLast24Hours(MainForm mainForm);
 
         Config_Information GetConfigInformation();
         void UpdateConfigInformation(Config_Information updatedConfigInfo);

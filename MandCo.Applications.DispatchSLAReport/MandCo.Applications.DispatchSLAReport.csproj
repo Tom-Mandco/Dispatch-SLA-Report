@@ -77,6 +77,8 @@
     <Compile Include="Classes\CalculationHandler.cs" />
     <Compile Include="Classes\App.cs" />
     <Compile Include="Classes\DataHandler.cs" />
+    <Compile Include="Classes\ExcelHandler.cs" />
+    <Compile Include="Classes\ExcelWriter.cs" />
     <Compile Include="Classes\Log.cs" />
     <Compile Include="Classes\PopulateDataTable.cs" />
     <Compile Include="CompositionRoot.cs" />
@@ -88,6 +90,8 @@
     </Compile>
     <Compile Include="Interfaces\IApp.cs" />
     <Compile Include="Interfaces\IDataHandler.cs" />
+    <Compile Include="Interfaces\IExcelHandler.cs" />
+    <Compile Include="Interfaces\IExcelWriter.cs" />
     <Compile Include="Interfaces\IHandleCalculations.cs" />
     <Compile Include="Interfaces\ILog.cs" />
     <Compile Include="Interfaces\IPopulateDataTables.cs" />
@@ -97,11 +101,8 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="DispatchSLAReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ConfigurationSettingsForm.resx">
-      <DependentUpon>ConfigurationSettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
