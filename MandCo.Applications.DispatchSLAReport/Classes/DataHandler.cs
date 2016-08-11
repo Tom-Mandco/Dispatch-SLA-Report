@@ -6,6 +6,7 @@
     using System;
     using System.Collections.Generic;
     using System.Data;
+    using System.Windows.Forms;
 
     class DataHandler : IDataHandler
     {
@@ -13,20 +14,45 @@
         private readonly IPopulateDataTables dataTablePopulator;
         private readonly IPerformLookup performLookup;
         private readonly IHandleCalculations caclulationHandler;
+        private readonly IDataFilter dataFilter;
+        private readonly IFilterDataGridViews dataGridViewFilter;
 
-        public DataHandler(ILog logger, IPerformLookup performLookup, IPopulateDataTables dataTablePopulator, IHandleCalculations calculationHandler)
+        public DataHandler(ILog logger, IPerformLookup performLookup, IPopulateDataTables dataTablePopulator,
+                            IHandleCalculations calculationHandler, IDataFilter dataFilter, IFilterDataGridViews dataGridViewFilter)
         {
             this.logger = logger;
             this.dataTablePopulator = dataTablePopulator;
             this.performLookup = performLookup;
             this.caclulationHandler = calculationHandler;
+            this.dataFilter = dataFilter;
+            this.dataGridViewFilter = dataGridViewFilter;
         }
 
-        public DataTable BindSLAData_ToDataTable(DateTime fromDate, DateTime toDate)
+        public IEnumerable<Cleansed_SLA_Report_Details> FilterDateRangeFromSLADetails(IEnumerable<Cleansed_SLA_Report_Details> fullSLADetails, DateTime dateFrom, DateTime dateTo)
         {
-            IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = RetrieveSLAReportDetails(fromDate, toDate);
-            
+            return dataFilter.FilterDateRangeFromSLADetails(fullSLADetails, dateFrom, dateTo);
+        }
+
+        public IEnumerable<Cleansed_SLA_Report_Details> FilterCutOffTimes(IEnumerable<Cleansed_SLA_Report_Details> fullSLADetails, Config_Information configInfo, DateTime lastDate)
+        {
+            return dataFilter.FilterCutOffTimes(fullSLADetails, configInfo, lastDate);
+        }
+
+        public IEnumerable<Cleansed_SLA_Report_Details> GetSLAReportDetails(DateTime fromDate, DateTime toDate)
+        {
+            return performLookup.GetOrderDataFromSLATable(fromDate, toDate);
+        }
+
+        public DataTable BindSLAData_ToDataTable(IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails)
+        {
             DataTable result = dataTablePopulator.ReturnAllSLAOrderInfo_ToDataTable(slaReportDetails);
+
+            return result;
+        }
+
+        public DisplayData BindSLAData_ToDisplayData(IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails)
+        {
+            DisplayData result = caclulationHandler.CalculateSLADeadlines_ToDisplayData(slaReportDetails);
 
             return result;
         }
@@ -40,27 +66,15 @@
             return result;
         }
 
-        public DisplayData GetSLAData_ToDisplayData(DateTime fromDate, DateTime toDate)
-        {
-            IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = RetrieveSLAReportDetails(fromDate, toDate);
-
-            DisplayData result = caclulationHandler.CalculateSLADeadlines_ToDisplayData(slaReportDetails);
-
-            return result;
-        }
-
         public void UpdateConfigInformation(Config_Information updatedConfigInfo)
         {
-
+            
         }
 
-        #region Utilities
-        private IEnumerable<Cleansed_SLA_Report_Details> RetrieveSLAReportDetails(DateTime fromDate, DateTime toDate)
+        public void FilterDataGrid_ByDestination(DataGridView dgv, string orderType)
         {
-            var result = performLookup.GetOrderDataFromSLATable(fromDate, toDate);
-            return result;
+            dataGridViewFilter.FilterDataGrid_ByDestination(dgv, orderType);
         }
-        #endregion
 
     }
 }

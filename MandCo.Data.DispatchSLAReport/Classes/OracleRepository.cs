@@ -35,5 +35,13 @@
             }
         }
         #endregion
+
+        public void UpdateConfigInformation(Config_Information updatedConfigInfo)
+        {
+            using (new SharedConnection(dbConnection))
+            {
+                dbConnection.Update<Config_Information>(SqlLoader.GetSql("UpdateConfigurationVariables"), updatedConfigInfo);
+            }
+        }
     }
 }

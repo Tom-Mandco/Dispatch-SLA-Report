@@ -41,6 +41,10 @@
             Bind(typeof(IDataTableFactory)).To(typeof(DataTableFactory));
             Bind(typeof(IHandleCalculations)).To(typeof(CalculationHandler));
             Bind(typeof(IAdaptData)).To(typeof(DataAdapter));
+            Bind(typeof(IDataFilter)).To(typeof(DataFilter));
+            Bind(typeof(IFilterDataGridViews)).To(typeof(DataGridViewFilter));
+            Bind(typeof(IExcelHandler)).To(typeof(ExcelHandler));
+            Bind(typeof(IExcelWriter)).To(typeof(ExcelWriter));
 
             Bind<Raw_Configuration_Data>().ToSelf();
             Bind<Cleansed_SLA_Report_Details>().ToSelf();

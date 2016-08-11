@@ -15,7 +15,7 @@
         public bool SLA_MET { get; set; }
 
         public DateTime ORDER_DATE { get; set; }
-        public DateTime RELEASED_DATE { get; set; }
+        public DateTime RELEASE_DATE { get; set; }
         public DateTime SHIP_DATE { get; set; }
         public DateTime DATE_IMPORTED { get; set; }
     }

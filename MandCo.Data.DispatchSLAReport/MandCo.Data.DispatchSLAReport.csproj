@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -82,6 +83,11 @@
       <Project>{b2e29057-6d25-425f-ae37-c54a5b9ea271}</Project>
       <Name>MandCo.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sql\UpdateConfigurationVariables.sql" />
+    <Content Include="Sql\GetAllOrders.sql" />
+    <Content Include="Sql\GetConfigurationVariables.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

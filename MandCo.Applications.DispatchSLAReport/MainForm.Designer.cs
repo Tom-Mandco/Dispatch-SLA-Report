@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbLast24Hrs = new System.Windows.Forms.GroupBox();
             this.lbl24HrsStoreSLADtlPct = new System.Windows.Forms.Label();
             this.lbl24HrsStandardSLADtlPct = new System.Windows.Forms.Label();
@@ -55,13 +55,25 @@
             this.lblCustStandardSLADtlPct = new System.Windows.Forms.Label();
             this.lblCustExpressSLADtlPct = new System.Windows.Forms.Label();
             this.lblCustInternationalSLADtlPct = new System.Windows.Forms.Label();
-            this.pnAdminPanel = new System.Windows.Forms.Panel();
             this.btnOpenConfigSettings = new System.Windows.Forms.Button();
-            this.lblConfigDetails = new System.Windows.Forms.Label();
             this.btnReportCustomDateRange = new System.Windows.Forms.Button();
             this.pnExtendedDetail = new System.Windows.Forms.Panel();
+            this.cbUseCutoffTimes = new System.Windows.Forms.CheckBox();
+            this.pnDestinationFilter = new System.Windows.Forms.Panel();
+            this.rbExtendedDetail_Store = new System.Windows.Forms.RadioButton();
+            this.rbExtendedDetailFilter_All = new System.Windows.Forms.RadioButton();
+            this.rbExtendedDetail_International = new System.Windows.Forms.RadioButton();
+            this.rbExtendedDetail_Standard = new System.Windows.Forms.RadioButton();
+            this.dgvDetailBreakdown = new System.Windows.Forms.DataGridView();
+            this.lblDGVHeader = new System.Windows.Forms.Label();
+            this.pnSLACriteriaMetKey = new System.Windows.Forms.Panel();
+            this.lblCriteriaNotMetKey = new System.Windows.Forms.Label();
+            this.lblMidCriteriaMetKey = new System.Windows.Forms.Label();
+            this.lblTopCriteriaMetKey = new System.Windows.Forms.Label();
+            this.pbCriteriaNotMetKey = new System.Windows.Forms.PictureBox();
+            this.pbMidCriteriaMetKey = new System.Windows.Forms.PictureBox();
+            this.pbTopCriteriaMetKey = new System.Windows.Forms.PictureBox();
             this.pnOrderTotalsWithinSpecifiedTimeFrame = new System.Windows.Forms.Panel();
-            this.lblOrderTotalsHeader = new System.Windows.Forms.Label();
             this.lblStoreOrdersMetSLADtl = new System.Windows.Forms.Label();
             this.lblStoreOrdersDtl = new System.Windows.Forms.Label();
             this.lblStoreOrdersMetSLAHdr = new System.Windows.Forms.Label();
@@ -82,39 +94,30 @@
             this.lblExpressOrdersHdr = new System.Windows.Forms.Label();
             this.lblTotalOrdersMetSLAHdr = new System.Windows.Forms.Label();
             this.lblTotalOrdersHdr = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.rbExtendedDetailFilter_Store = new System.Windows.Forms.RadioButton();
-            this.rbExtendedDetailFilter_All = new System.Windows.Forms.RadioButton();
-            this.rbExtendedDetail_International = new System.Windows.Forms.RadioButton();
-            this.rbExtendedDetail_Express = new System.Windows.Forms.RadioButton();
-            this.rbExtendedDetail_Standard = new System.Windows.Forms.RadioButton();
-            this.dgvDetailBreakdown = new System.Windows.Forms.DataGridView();
-            this.lblDGVHeader = new System.Windows.Forms.Label();
-            this.pnSLACriteriaMetKey = new System.Windows.Forms.Panel();
-            this.lblCriteriaNotMetKey = new System.Windows.Forms.Label();
-            this.lblMidCriteriaMetKey = new System.Windows.Forms.Label();
-            this.lblTopCriteriaMetKey = new System.Windows.Forms.Label();
-            this.pbCriteriaNotMetKey = new System.Windows.Forms.PictureBox();
-            this.pbMidCriteriaMetKey = new System.Windows.Forms.PictureBox();
-            this.pbTopCriteriaMetKey = new System.Windows.Forms.PictureBox();
             this.gbCustomDateRange = new System.Windows.Forms.GroupBox();
-            this.cbCustomCutoff = new System.Windows.Forms.CheckBox();
             this.dtpReportTo = new System.Windows.Forms.DateTimePicker();
             this.lblReportTo = new System.Windows.Forms.Label();
             this.lblReportFrom = new System.Windows.Forms.Label();
             this.dtpReportFrom = new System.Windows.Forms.DateTimePicker();
+            this.btnExportCurrentScreenToExcel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnDGVFilter_ByShipMethod = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.rbDGVFilter_ByShipMethod_Express = new System.Windows.Forms.RadioButton();
+            this.rbDGVFilter_ByShipMethod_All = new System.Windows.Forms.RadioButton();
+            this.rbDGVFilter_ByShipMethod_Standard = new System.Windows.Forms.RadioButton();
             this.gbLast24Hrs.SuspendLayout();
             this.gbCustomSLAStats.SuspendLayout();
-            this.pnAdminPanel.SuspendLayout();
             this.pnExtendedDetail.SuspendLayout();
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnDestinationFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailBreakdown)).BeginInit();
             this.pnSLACriteriaMetKey.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCriteriaNotMetKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMidCriteriaMetKey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTopCriteriaMetKey)).BeginInit();
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.SuspendLayout();
             this.gbCustomDateRange.SuspendLayout();
+            this.pnDGVFilter_ByShipMethod.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbLast24Hrs
@@ -191,8 +194,9 @@
             this.btnLast24HrsPrintReport.Name = "btnLast24HrsPrintReport";
             this.btnLast24HrsPrintReport.Size = new System.Drawing.Size(131, 23);
             this.btnLast24HrsPrintReport.TabIndex = 11;
-            this.btnLast24HrsPrintReport.Text = "Print Report";
+            this.btnLast24HrsPrintReport.Text = "Export to Excel";
             this.btnLast24HrsPrintReport.UseVisualStyleBackColor = true;
+            this.btnLast24HrsPrintReport.Click += new System.EventHandler(this.btnLast24HrsPrintReport_Click);
             // 
             // btnLast24HrsViewReport
             // 
@@ -321,8 +325,9 @@
             this.btnCustPrintReport.Name = "btnCustPrintReport";
             this.btnCustPrintReport.Size = new System.Drawing.Size(131, 23);
             this.btnCustPrintReport.TabIndex = 23;
-            this.btnCustPrintReport.Text = "Print Report";
+            this.btnCustPrintReport.Text = "Export to Excel";
             this.btnCustPrintReport.UseVisualStyleBackColor = true;
+            this.btnCustPrintReport.Click += new System.EventHandler(this.btnCustPrintReport_Click);
             // 
             // btnCustViewReport
             // 
@@ -379,33 +384,15 @@
             this.lblCustInternationalSLADtlPct.Text = "66.66";
             this.lblCustInternationalSLADtlPct.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // pnAdminPanel
-            // 
-            this.pnAdminPanel.Controls.Add(this.btnOpenConfigSettings);
-            this.pnAdminPanel.Controls.Add(this.lblConfigDetails);
-            this.pnAdminPanel.Location = new System.Drawing.Point(804, 47);
-            this.pnAdminPanel.Name = "pnAdminPanel";
-            this.pnAdminPanel.Size = new System.Drawing.Size(378, 188);
-            this.pnAdminPanel.TabIndex = 25;
-            // 
             // btnOpenConfigSettings
             // 
-            this.btnOpenConfigSettings.Location = new System.Drawing.Point(4, 155);
+            this.btnOpenConfigSettings.Location = new System.Drawing.Point(804, 12);
             this.btnOpenConfigSettings.Name = "btnOpenConfigSettings";
-            this.btnOpenConfigSettings.Size = new System.Drawing.Size(370, 23);
+            this.btnOpenConfigSettings.Size = new System.Drawing.Size(285, 23);
             this.btnOpenConfigSettings.TabIndex = 1;
             this.btnOpenConfigSettings.Text = "Meddle with ye olde conflagration";
             this.btnOpenConfigSettings.UseVisualStyleBackColor = true;
             this.btnOpenConfigSettings.Click += new System.EventHandler(this.btnOpenConfigSettings_Click);
-            // 
-            // lblConfigDetails
-            // 
-            this.lblConfigDetails.AutoSize = true;
-            this.lblConfigDetails.Location = new System.Drawing.Point(10, 10);
-            this.lblConfigDetails.Name = "lblConfigDetails";
-            this.lblConfigDetails.Size = new System.Drawing.Size(25, 13);
-            this.lblConfigDetails.TabIndex = 0;
-            this.lblConfigDetails.Text = "ooo\r\n";
             // 
             // btnReportCustomDateRange
             // 
@@ -419,325 +406,115 @@
             // 
             // pnExtendedDetail
             // 
-            this.pnExtendedDetail.Controls.Add(this.pnOrderTotalsWithinSpecifiedTimeFrame);
-            this.pnExtendedDetail.Controls.Add(this.panel1);
+            this.pnExtendedDetail.Controls.Add(this.pnDGVFilter_ByShipMethod);
+            this.pnExtendedDetail.Controls.Add(this.btnExportCurrentScreenToExcel);
+            this.pnExtendedDetail.Controls.Add(this.cbUseCutoffTimes);
+            this.pnExtendedDetail.Controls.Add(this.pnDestinationFilter);
             this.pnExtendedDetail.Controls.Add(this.dgvDetailBreakdown);
             this.pnExtendedDetail.Controls.Add(this.lblDGVHeader);
             this.pnExtendedDetail.Controls.Add(this.pnSLACriteriaMetKey);
             this.pnExtendedDetail.Location = new System.Drawing.Point(9, 241);
             this.pnExtendedDetail.Name = "pnExtendedDetail";
-            this.pnExtendedDetail.Size = new System.Drawing.Size(1173, 382);
+            this.pnExtendedDetail.Size = new System.Drawing.Size(1081, 382);
             this.pnExtendedDetail.TabIndex = 2;
             // 
-            // pnOrderTotalsWithinSpecifiedTimeFrame
+            // cbUseCutoffTimes
             // 
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblOrderTotalsHeader);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersMetSLADtl);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersDtl);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersMetSLAHdr);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersHdr);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStandardOrdersMetSLADtl);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStandardOrdersDtl);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStandardOrdersMetSLAHdr);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStandardOrdersHdr);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblInternationalOrdersMetSLADtl);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblInternationalOrdersDtl);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblInternationalOrdersMetSLAHdr);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblInternationalOrdersHdr);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblExpressMetSLADtl);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblExpressOrdersDtl);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblTotalOrdersMetSLADtl);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblTotalOrdersDtl);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblExpressMetSLAHdr);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblExpressOrdersHdr);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblTotalOrdersMetSLAHdr);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblTotalOrdersHdr);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Location = new System.Drawing.Point(892, 102);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Name = "pnOrderTotalsWithinSpecifiedTimeFrame";
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Size = new System.Drawing.Size(279, 277);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.TabIndex = 0;
+            this.cbUseCutoffTimes.AutoSize = true;
+            this.cbUseCutoffTimes.Location = new System.Drawing.Point(6, 79);
+            this.cbUseCutoffTimes.Name = "cbUseCutoffTimes";
+            this.cbUseCutoffTimes.Size = new System.Drawing.Size(119, 17);
+            this.cbUseCutoffTimes.TabIndex = 29;
+            this.cbUseCutoffTimes.Text = "Filter by cutoff times";
+            this.cbUseCutoffTimes.UseVisualStyleBackColor = true;
+            this.cbUseCutoffTimes.CheckedChanged += new System.EventHandler(this.cbUseCutoffTimes_CheckedChanged);
             // 
-            // lblOrderTotalsHeader
+            // pnDestinationFilter
             // 
-            this.lblOrderTotalsHeader.AutoSize = true;
-            this.lblOrderTotalsHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrderTotalsHeader.Location = new System.Drawing.Point(1, 5);
-            this.lblOrderTotalsHeader.Name = "lblOrderTotalsHeader";
-            this.lblOrderTotalsHeader.Size = new System.Drawing.Size(275, 16);
-            this.lblOrderTotalsHeader.TabIndex = 20;
-            this.lblOrderTotalsHeader.Text = "Order Totals within the previous x days";
+            this.pnDestinationFilter.Controls.Add(this.label1);
+            this.pnDestinationFilter.Controls.Add(this.rbExtendedDetail_Store);
+            this.pnDestinationFilter.Controls.Add(this.rbExtendedDetailFilter_All);
+            this.pnDestinationFilter.Controls.Add(this.rbExtendedDetail_International);
+            this.pnDestinationFilter.Controls.Add(this.rbExtendedDetail_Standard);
+            this.pnDestinationFilter.Location = new System.Drawing.Point(485, 6);
+            this.pnDestinationFilter.Name = "pnDestinationFilter";
+            this.pnDestinationFilter.Size = new System.Drawing.Size(148, 65);
+            this.pnDestinationFilter.TabIndex = 8;
             // 
-            // lblStoreOrdersMetSLADtl
+            // rbExtendedDetail_Store
             // 
-            this.lblStoreOrdersMetSLADtl.Location = new System.Drawing.Point(226, 246);
-            this.lblStoreOrdersMetSLADtl.Name = "lblStoreOrdersMetSLADtl";
-            this.lblStoreOrdersMetSLADtl.Size = new System.Drawing.Size(50, 13);
-            this.lblStoreOrdersMetSLADtl.TabIndex = 19;
-            this.lblStoreOrdersMetSLADtl.Text = "66477711";
-            this.lblStoreOrdersMetSLADtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblStoreOrdersDtl
-            // 
-            this.lblStoreOrdersDtl.Location = new System.Drawing.Point(226, 230);
-            this.lblStoreOrdersDtl.Name = "lblStoreOrdersDtl";
-            this.lblStoreOrdersDtl.Size = new System.Drawing.Size(50, 13);
-            this.lblStoreOrdersDtl.TabIndex = 18;
-            this.lblStoreOrdersDtl.Text = "1";
-            this.lblStoreOrdersDtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblStoreOrdersMetSLAHdr
-            // 
-            this.lblStoreOrdersMetSLAHdr.AutoSize = true;
-            this.lblStoreOrdersMetSLAHdr.Location = new System.Drawing.Point(1, 248);
-            this.lblStoreOrdersMetSLAHdr.Name = "lblStoreOrdersMetSLAHdr";
-            this.lblStoreOrdersMetSLAHdr.Size = new System.Drawing.Size(106, 13);
-            this.lblStoreOrdersMetSLAHdr.TabIndex = 17;
-            this.lblStoreOrdersMetSLAHdr.Text = "Store which met SLA";
-            // 
-            // lblStoreOrdersHdr
-            // 
-            this.lblStoreOrdersHdr.AutoSize = true;
-            this.lblStoreOrdersHdr.Location = new System.Drawing.Point(1, 230);
-            this.lblStoreOrdersHdr.Name = "lblStoreOrdersHdr";
-            this.lblStoreOrdersHdr.Size = new System.Drawing.Size(93, 13);
-            this.lblStoreOrdersHdr.TabIndex = 16;
-            this.lblStoreOrdersHdr.Text = "Total Store Orders";
-            // 
-            // lblStandardOrdersMetSLADtl
-            // 
-            this.lblStandardOrdersMetSLADtl.Location = new System.Drawing.Point(226, 198);
-            this.lblStandardOrdersMetSLADtl.Name = "lblStandardOrdersMetSLADtl";
-            this.lblStandardOrdersMetSLADtl.Size = new System.Drawing.Size(50, 13);
-            this.lblStandardOrdersMetSLADtl.TabIndex = 15;
-            this.lblStandardOrdersMetSLADtl.Text = "9997";
-            this.lblStandardOrdersMetSLADtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblStandardOrdersDtl
-            // 
-            this.lblStandardOrdersDtl.Location = new System.Drawing.Point(226, 182);
-            this.lblStandardOrdersDtl.Name = "lblStandardOrdersDtl";
-            this.lblStandardOrdersDtl.Size = new System.Drawing.Size(50, 13);
-            this.lblStandardOrdersDtl.TabIndex = 14;
-            this.lblStandardOrdersDtl.Text = "64814";
-            this.lblStandardOrdersDtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblStandardOrdersMetSLAHdr
-            // 
-            this.lblStandardOrdersMetSLAHdr.AutoSize = true;
-            this.lblStandardOrdersMetSLAHdr.Location = new System.Drawing.Point(1, 200);
-            this.lblStandardOrdersMetSLAHdr.Name = "lblStandardOrdersMetSLAHdr";
-            this.lblStandardOrdersMetSLAHdr.Size = new System.Drawing.Size(124, 13);
-            this.lblStandardOrdersMetSLAHdr.TabIndex = 13;
-            this.lblStandardOrdersMetSLAHdr.Text = "Standard which met SLA";
-            // 
-            // lblStandardOrdersHdr
-            // 
-            this.lblStandardOrdersHdr.AutoSize = true;
-            this.lblStandardOrdersHdr.Location = new System.Drawing.Point(1, 182);
-            this.lblStandardOrdersHdr.Name = "lblStandardOrdersHdr";
-            this.lblStandardOrdersHdr.Size = new System.Drawing.Size(111, 13);
-            this.lblStandardOrdersHdr.TabIndex = 12;
-            this.lblStandardOrdersHdr.Text = "Total Standard Orders";
-            // 
-            // lblInternationalOrdersMetSLADtl
-            // 
-            this.lblInternationalOrdersMetSLADtl.Location = new System.Drawing.Point(226, 152);
-            this.lblInternationalOrdersMetSLADtl.Name = "lblInternationalOrdersMetSLADtl";
-            this.lblInternationalOrdersMetSLADtl.Size = new System.Drawing.Size(50, 13);
-            this.lblInternationalOrdersMetSLADtl.TabIndex = 11;
-            this.lblInternationalOrdersMetSLADtl.Text = "258";
-            this.lblInternationalOrdersMetSLADtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblInternationalOrdersDtl
-            // 
-            this.lblInternationalOrdersDtl.Location = new System.Drawing.Point(226, 136);
-            this.lblInternationalOrdersDtl.Name = "lblInternationalOrdersDtl";
-            this.lblInternationalOrdersDtl.Size = new System.Drawing.Size(50, 13);
-            this.lblInternationalOrdersDtl.TabIndex = 10;
-            this.lblInternationalOrdersDtl.Text = "468";
-            this.lblInternationalOrdersDtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblInternationalOrdersMetSLAHdr
-            // 
-            this.lblInternationalOrdersMetSLAHdr.AutoSize = true;
-            this.lblInternationalOrdersMetSLAHdr.Location = new System.Drawing.Point(1, 154);
-            this.lblInternationalOrdersMetSLAHdr.Name = "lblInternationalOrdersMetSLAHdr";
-            this.lblInternationalOrdersMetSLAHdr.Size = new System.Drawing.Size(139, 13);
-            this.lblInternationalOrdersMetSLAHdr.TabIndex = 9;
-            this.lblInternationalOrdersMetSLAHdr.Text = "International which met SLA";
-            // 
-            // lblInternationalOrdersHdr
-            // 
-            this.lblInternationalOrdersHdr.AutoSize = true;
-            this.lblInternationalOrdersHdr.Location = new System.Drawing.Point(1, 136);
-            this.lblInternationalOrdersHdr.Name = "lblInternationalOrdersHdr";
-            this.lblInternationalOrdersHdr.Size = new System.Drawing.Size(126, 13);
-            this.lblInternationalOrdersHdr.TabIndex = 8;
-            this.lblInternationalOrdersHdr.Text = "Total International Orders";
-            // 
-            // lblExpressMetSLADtl
-            // 
-            this.lblExpressMetSLADtl.Location = new System.Drawing.Point(226, 100);
-            this.lblExpressMetSLADtl.Name = "lblExpressMetSLADtl";
-            this.lblExpressMetSLADtl.Size = new System.Drawing.Size(50, 13);
-            this.lblExpressMetSLADtl.TabIndex = 7;
-            this.lblExpressMetSLADtl.Text = "777";
-            this.lblExpressMetSLADtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblExpressOrdersDtl
-            // 
-            this.lblExpressOrdersDtl.Location = new System.Drawing.Point(226, 84);
-            this.lblExpressOrdersDtl.Name = "lblExpressOrdersDtl";
-            this.lblExpressOrdersDtl.Size = new System.Drawing.Size(50, 13);
-            this.lblExpressOrdersDtl.TabIndex = 6;
-            this.lblExpressOrdersDtl.Text = "777";
-            this.lblExpressOrdersDtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblTotalOrdersMetSLADtl
-            // 
-            this.lblTotalOrdersMetSLADtl.Location = new System.Drawing.Point(226, 48);
-            this.lblTotalOrdersMetSLADtl.Name = "lblTotalOrdersMetSLADtl";
-            this.lblTotalOrdersMetSLADtl.Size = new System.Drawing.Size(50, 13);
-            this.lblTotalOrdersMetSLADtl.TabIndex = 5;
-            this.lblTotalOrdersMetSLADtl.Text = "444";
-            this.lblTotalOrdersMetSLADtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblTotalOrdersDtl
-            // 
-            this.lblTotalOrdersDtl.Location = new System.Drawing.Point(226, 32);
-            this.lblTotalOrdersDtl.Name = "lblTotalOrdersDtl";
-            this.lblTotalOrdersDtl.Size = new System.Drawing.Size(50, 13);
-            this.lblTotalOrdersDtl.TabIndex = 4;
-            this.lblTotalOrdersDtl.Text = "444";
-            this.lblTotalOrdersDtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblExpressMetSLAHdr
-            // 
-            this.lblExpressMetSLAHdr.AutoSize = true;
-            this.lblExpressMetSLAHdr.Location = new System.Drawing.Point(1, 102);
-            this.lblExpressMetSLAHdr.Name = "lblExpressMetSLAHdr";
-            this.lblExpressMetSLAHdr.Size = new System.Drawing.Size(118, 13);
-            this.lblExpressMetSLAHdr.TabIndex = 3;
-            this.lblExpressMetSLAHdr.Text = "Express which met SLA";
-            // 
-            // lblExpressOrdersHdr
-            // 
-            this.lblExpressOrdersHdr.AutoSize = true;
-            this.lblExpressOrdersHdr.Location = new System.Drawing.Point(1, 84);
-            this.lblExpressOrdersHdr.Name = "lblExpressOrdersHdr";
-            this.lblExpressOrdersHdr.Size = new System.Drawing.Size(105, 13);
-            this.lblExpressOrdersHdr.TabIndex = 2;
-            this.lblExpressOrdersHdr.Text = "Total Express Orders";
-            // 
-            // lblTotalOrdersMetSLAHdr
-            // 
-            this.lblTotalOrdersMetSLAHdr.AutoSize = true;
-            this.lblTotalOrdersMetSLAHdr.Location = new System.Drawing.Point(1, 50);
-            this.lblTotalOrdersMetSLAHdr.Name = "lblTotalOrdersMetSLAHdr";
-            this.lblTotalOrdersMetSLAHdr.Size = new System.Drawing.Size(105, 13);
-            this.lblTotalOrdersMetSLAHdr.TabIndex = 1;
-            this.lblTotalOrdersMetSLAHdr.Text = "Total which met SLA";
-            // 
-            // lblTotalOrdersHdr
-            // 
-            this.lblTotalOrdersHdr.AutoSize = true;
-            this.lblTotalOrdersHdr.Location = new System.Drawing.Point(1, 32);
-            this.lblTotalOrdersHdr.Name = "lblTotalOrdersHdr";
-            this.lblTotalOrdersHdr.Size = new System.Drawing.Size(65, 13);
-            this.lblTotalOrdersHdr.TabIndex = 0;
-            this.lblTotalOrdersHdr.Text = "Total Orders";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.rbExtendedDetailFilter_Store);
-            this.panel1.Controls.Add(this.rbExtendedDetailFilter_All);
-            this.panel1.Controls.Add(this.rbExtendedDetail_International);
-            this.panel1.Controls.Add(this.rbExtendedDetail_Express);
-            this.panel1.Controls.Add(this.rbExtendedDetail_Standard);
-            this.panel1.Location = new System.Drawing.Point(705, 6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(181, 70);
-            this.panel1.TabIndex = 8;
-            // 
-            // rbExtendedDetailFilter_Store
-            // 
-            this.rbExtendedDetailFilter_Store.AutoSize = true;
-            this.rbExtendedDetailFilter_Store.Location = new System.Drawing.Point(5, 26);
-            this.rbExtendedDetailFilter_Store.Name = "rbExtendedDetailFilter_Store";
-            this.rbExtendedDetailFilter_Store.Size = new System.Drawing.Size(50, 17);
-            this.rbExtendedDetailFilter_Store.TabIndex = 3;
-            this.rbExtendedDetailFilter_Store.Text = "Store";
-            this.rbExtendedDetailFilter_Store.UseVisualStyleBackColor = true;
+            this.rbExtendedDetail_Store.AutoSize = true;
+            this.rbExtendedDetail_Store.Location = new System.Drawing.Point(3, 44);
+            this.rbExtendedDetail_Store.Name = "rbExtendedDetail_Store";
+            this.rbExtendedDetail_Store.Size = new System.Drawing.Size(50, 17);
+            this.rbExtendedDetail_Store.TabIndex = 3;
+            this.rbExtendedDetail_Store.Text = "Store";
+            this.rbExtendedDetail_Store.UseVisualStyleBackColor = true;
+            this.rbExtendedDetail_Store.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_ShipDestination);
             // 
             // rbExtendedDetailFilter_All
             // 
             this.rbExtendedDetailFilter_All.AutoSize = true;
             this.rbExtendedDetailFilter_All.Checked = true;
-            this.rbExtendedDetailFilter_All.Location = new System.Drawing.Point(5, 4);
+            this.rbExtendedDetailFilter_All.Location = new System.Drawing.Point(3, 25);
             this.rbExtendedDetailFilter_All.Name = "rbExtendedDetailFilter_All";
             this.rbExtendedDetailFilter_All.Size = new System.Drawing.Size(36, 17);
             this.rbExtendedDetailFilter_All.TabIndex = 2;
             this.rbExtendedDetailFilter_All.TabStop = true;
             this.rbExtendedDetailFilter_All.Text = "All";
             this.rbExtendedDetailFilter_All.UseVisualStyleBackColor = true;
+            this.rbExtendedDetailFilter_All.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_ShipDestination);
             // 
             // rbExtendedDetail_International
             // 
             this.rbExtendedDetail_International.AutoSize = true;
-            this.rbExtendedDetail_International.Location = new System.Drawing.Point(92, 48);
+            this.rbExtendedDetail_International.Location = new System.Drawing.Point(59, 44);
             this.rbExtendedDetail_International.Name = "rbExtendedDetail_International";
             this.rbExtendedDetail_International.Size = new System.Drawing.Size(83, 17);
             this.rbExtendedDetail_International.TabIndex = 6;
             this.rbExtendedDetail_International.Text = "International";
             this.rbExtendedDetail_International.UseVisualStyleBackColor = true;
-            // 
-            // rbExtendedDetail_Express
-            // 
-            this.rbExtendedDetail_Express.AutoSize = true;
-            this.rbExtendedDetail_Express.Location = new System.Drawing.Point(5, 48);
-            this.rbExtendedDetail_Express.Name = "rbExtendedDetail_Express";
-            this.rbExtendedDetail_Express.Size = new System.Drawing.Size(62, 17);
-            this.rbExtendedDetail_Express.TabIndex = 4;
-            this.rbExtendedDetail_Express.Text = "Express";
-            this.rbExtendedDetail_Express.UseVisualStyleBackColor = true;
+            this.rbExtendedDetail_International.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_ShipDestination);
             // 
             // rbExtendedDetail_Standard
             // 
             this.rbExtendedDetail_Standard.AutoSize = true;
-            this.rbExtendedDetail_Standard.Location = new System.Drawing.Point(92, 26);
+            this.rbExtendedDetail_Standard.Location = new System.Drawing.Point(59, 25);
             this.rbExtendedDetail_Standard.Name = "rbExtendedDetail_Standard";
             this.rbExtendedDetail_Standard.Size = new System.Drawing.Size(68, 17);
             this.rbExtendedDetail_Standard.TabIndex = 5;
             this.rbExtendedDetail_Standard.Text = "Standard";
             this.rbExtendedDetail_Standard.UseVisualStyleBackColor = true;
+            this.rbExtendedDetail_Standard.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_ShipDestination);
             // 
             // dgvDetailBreakdown
             // 
             this.dgvDetailBreakdown.AllowUserToAddRows = false;
             this.dgvDetailBreakdown.AllowUserToDeleteRows = false;
+            this.dgvDetailBreakdown.AllowUserToOrderColumns = true;
             this.dgvDetailBreakdown.AllowUserToResizeColumns = false;
             this.dgvDetailBreakdown.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetailBreakdown.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetailBreakdown.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDetailBreakdown.ColumnHeadersHeight = 25;
             this.dgvDetailBreakdown.Location = new System.Drawing.Point(6, 102);
             this.dgvDetailBreakdown.Name = "dgvDetailBreakdown";
             this.dgvDetailBreakdown.RowHeadersVisible = false;
             this.dgvDetailBreakdown.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetailBreakdown.Size = new System.Drawing.Size(880, 277);
+            this.dgvDetailBreakdown.Size = new System.Drawing.Size(1075, 277);
             this.dgvDetailBreakdown.TabIndex = 7;
             // 
             // lblDGVHeader
             // 
             this.lblDGVHeader.AutoSize = true;
             this.lblDGVHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDGVHeader.Location = new System.Drawing.Point(105, 79);
+            this.lblDGVHeader.Location = new System.Drawing.Point(206, 79);
             this.lblDGVHeader.Name = "lblDGVHeader";
             this.lblDGVHeader.Size = new System.Drawing.Size(683, 20);
             this.lblDGVHeader.TabIndex = 1;
@@ -754,7 +531,7 @@
             this.pnSLACriteriaMetKey.Controls.Add(this.pbTopCriteriaMetKey);
             this.pnSLACriteriaMetKey.Location = new System.Drawing.Point(6, 6);
             this.pnSLACriteriaMetKey.Name = "pnSLACriteriaMetKey";
-            this.pnSLACriteriaMetKey.Size = new System.Drawing.Size(334, 65);
+            this.pnSLACriteriaMetKey.Size = new System.Drawing.Size(319, 65);
             this.pnSLACriteriaMetKey.TabIndex = 0;
             // 
             // lblCriteriaNotMetKey
@@ -811,9 +588,215 @@
             this.pbTopCriteriaMetKey.TabIndex = 0;
             this.pbTopCriteriaMetKey.TabStop = false;
             // 
+            // pnOrderTotalsWithinSpecifiedTimeFrame
+            // 
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersMetSLADtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersDtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersMetSLAHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStoreOrdersHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStandardOrdersMetSLADtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStandardOrdersDtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStandardOrdersMetSLAHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblStandardOrdersHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblInternationalOrdersMetSLADtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblInternationalOrdersDtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblInternationalOrdersMetSLAHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblInternationalOrdersHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblExpressMetSLADtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblExpressOrdersDtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblTotalOrdersMetSLADtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblTotalOrdersDtl);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblExpressMetSLAHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblExpressOrdersHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblTotalOrdersMetSLAHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblTotalOrdersHdr);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Location = new System.Drawing.Point(804, 42);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Name = "pnOrderTotalsWithinSpecifiedTimeFrame";
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Size = new System.Drawing.Size(286, 247);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.TabIndex = 0;
+            // 
+            // lblStoreOrdersMetSLADtl
+            // 
+            this.lblStoreOrdersMetSLADtl.Location = new System.Drawing.Point(235, 223);
+            this.lblStoreOrdersMetSLADtl.Name = "lblStoreOrdersMetSLADtl";
+            this.lblStoreOrdersMetSLADtl.Size = new System.Drawing.Size(50, 13);
+            this.lblStoreOrdersMetSLADtl.TabIndex = 19;
+            this.lblStoreOrdersMetSLADtl.Text = "66477711";
+            this.lblStoreOrdersMetSLADtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblStoreOrdersDtl
+            // 
+            this.lblStoreOrdersDtl.Location = new System.Drawing.Point(235, 207);
+            this.lblStoreOrdersDtl.Name = "lblStoreOrdersDtl";
+            this.lblStoreOrdersDtl.Size = new System.Drawing.Size(50, 13);
+            this.lblStoreOrdersDtl.TabIndex = 18;
+            this.lblStoreOrdersDtl.Text = "1";
+            this.lblStoreOrdersDtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblStoreOrdersMetSLAHdr
+            // 
+            this.lblStoreOrdersMetSLAHdr.AutoSize = true;
+            this.lblStoreOrdersMetSLAHdr.Location = new System.Drawing.Point(1, 223);
+            this.lblStoreOrdersMetSLAHdr.Name = "lblStoreOrdersMetSLAHdr";
+            this.lblStoreOrdersMetSLAHdr.Size = new System.Drawing.Size(106, 13);
+            this.lblStoreOrdersMetSLAHdr.TabIndex = 17;
+            this.lblStoreOrdersMetSLAHdr.Text = "Store which met SLA";
+            // 
+            // lblStoreOrdersHdr
+            // 
+            this.lblStoreOrdersHdr.AutoSize = true;
+            this.lblStoreOrdersHdr.Location = new System.Drawing.Point(1, 205);
+            this.lblStoreOrdersHdr.Name = "lblStoreOrdersHdr";
+            this.lblStoreOrdersHdr.Size = new System.Drawing.Size(93, 13);
+            this.lblStoreOrdersHdr.TabIndex = 16;
+            this.lblStoreOrdersHdr.Text = "Store Total Orders";
+            // 
+            // lblStandardOrdersMetSLADtl
+            // 
+            this.lblStandardOrdersMetSLADtl.Location = new System.Drawing.Point(235, 175);
+            this.lblStandardOrdersMetSLADtl.Name = "lblStandardOrdersMetSLADtl";
+            this.lblStandardOrdersMetSLADtl.Size = new System.Drawing.Size(50, 13);
+            this.lblStandardOrdersMetSLADtl.TabIndex = 15;
+            this.lblStandardOrdersMetSLADtl.Text = "9997";
+            this.lblStandardOrdersMetSLADtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblStandardOrdersDtl
+            // 
+            this.lblStandardOrdersDtl.Location = new System.Drawing.Point(235, 159);
+            this.lblStandardOrdersDtl.Name = "lblStandardOrdersDtl";
+            this.lblStandardOrdersDtl.Size = new System.Drawing.Size(50, 13);
+            this.lblStandardOrdersDtl.TabIndex = 14;
+            this.lblStandardOrdersDtl.Text = "64814";
+            this.lblStandardOrdersDtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblStandardOrdersMetSLAHdr
+            // 
+            this.lblStandardOrdersMetSLAHdr.AutoSize = true;
+            this.lblStandardOrdersMetSLAHdr.Location = new System.Drawing.Point(1, 175);
+            this.lblStandardOrdersMetSLAHdr.Name = "lblStandardOrdersMetSLAHdr";
+            this.lblStandardOrdersMetSLAHdr.Size = new System.Drawing.Size(124, 13);
+            this.lblStandardOrdersMetSLAHdr.TabIndex = 13;
+            this.lblStandardOrdersMetSLAHdr.Text = "Standard which met SLA";
+            // 
+            // lblStandardOrdersHdr
+            // 
+            this.lblStandardOrdersHdr.AutoSize = true;
+            this.lblStandardOrdersHdr.Location = new System.Drawing.Point(1, 157);
+            this.lblStandardOrdersHdr.Name = "lblStandardOrdersHdr";
+            this.lblStandardOrdersHdr.Size = new System.Drawing.Size(111, 13);
+            this.lblStandardOrdersHdr.TabIndex = 12;
+            this.lblStandardOrdersHdr.Text = "Standard Total Orders";
+            // 
+            // lblInternationalOrdersMetSLADtl
+            // 
+            this.lblInternationalOrdersMetSLADtl.Location = new System.Drawing.Point(235, 129);
+            this.lblInternationalOrdersMetSLADtl.Name = "lblInternationalOrdersMetSLADtl";
+            this.lblInternationalOrdersMetSLADtl.Size = new System.Drawing.Size(50, 13);
+            this.lblInternationalOrdersMetSLADtl.TabIndex = 11;
+            this.lblInternationalOrdersMetSLADtl.Text = "258";
+            this.lblInternationalOrdersMetSLADtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblInternationalOrdersDtl
+            // 
+            this.lblInternationalOrdersDtl.Location = new System.Drawing.Point(235, 113);
+            this.lblInternationalOrdersDtl.Name = "lblInternationalOrdersDtl";
+            this.lblInternationalOrdersDtl.Size = new System.Drawing.Size(50, 13);
+            this.lblInternationalOrdersDtl.TabIndex = 10;
+            this.lblInternationalOrdersDtl.Text = "468";
+            this.lblInternationalOrdersDtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblInternationalOrdersMetSLAHdr
+            // 
+            this.lblInternationalOrdersMetSLAHdr.AutoSize = true;
+            this.lblInternationalOrdersMetSLAHdr.Location = new System.Drawing.Point(1, 129);
+            this.lblInternationalOrdersMetSLAHdr.Name = "lblInternationalOrdersMetSLAHdr";
+            this.lblInternationalOrdersMetSLAHdr.Size = new System.Drawing.Size(139, 13);
+            this.lblInternationalOrdersMetSLAHdr.TabIndex = 9;
+            this.lblInternationalOrdersMetSLAHdr.Text = "International which met SLA";
+            // 
+            // lblInternationalOrdersHdr
+            // 
+            this.lblInternationalOrdersHdr.AutoSize = true;
+            this.lblInternationalOrdersHdr.Location = new System.Drawing.Point(1, 111);
+            this.lblInternationalOrdersHdr.Name = "lblInternationalOrdersHdr";
+            this.lblInternationalOrdersHdr.Size = new System.Drawing.Size(126, 13);
+            this.lblInternationalOrdersHdr.TabIndex = 8;
+            this.lblInternationalOrdersHdr.Text = "International Total Orders";
+            // 
+            // lblExpressMetSLADtl
+            // 
+            this.lblExpressMetSLADtl.Location = new System.Drawing.Point(235, 77);
+            this.lblExpressMetSLADtl.Name = "lblExpressMetSLADtl";
+            this.lblExpressMetSLADtl.Size = new System.Drawing.Size(50, 13);
+            this.lblExpressMetSLADtl.TabIndex = 7;
+            this.lblExpressMetSLADtl.Text = "777";
+            this.lblExpressMetSLADtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblExpressOrdersDtl
+            // 
+            this.lblExpressOrdersDtl.Location = new System.Drawing.Point(235, 61);
+            this.lblExpressOrdersDtl.Name = "lblExpressOrdersDtl";
+            this.lblExpressOrdersDtl.Size = new System.Drawing.Size(50, 13);
+            this.lblExpressOrdersDtl.TabIndex = 6;
+            this.lblExpressOrdersDtl.Text = "777";
+            this.lblExpressOrdersDtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblTotalOrdersMetSLADtl
+            // 
+            this.lblTotalOrdersMetSLADtl.Location = new System.Drawing.Point(235, 25);
+            this.lblTotalOrdersMetSLADtl.Name = "lblTotalOrdersMetSLADtl";
+            this.lblTotalOrdersMetSLADtl.Size = new System.Drawing.Size(50, 13);
+            this.lblTotalOrdersMetSLADtl.TabIndex = 5;
+            this.lblTotalOrdersMetSLADtl.Text = "444";
+            this.lblTotalOrdersMetSLADtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblTotalOrdersDtl
+            // 
+            this.lblTotalOrdersDtl.Location = new System.Drawing.Point(235, 9);
+            this.lblTotalOrdersDtl.Name = "lblTotalOrdersDtl";
+            this.lblTotalOrdersDtl.Size = new System.Drawing.Size(50, 13);
+            this.lblTotalOrdersDtl.TabIndex = 4;
+            this.lblTotalOrdersDtl.Text = "444";
+            this.lblTotalOrdersDtl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblExpressMetSLAHdr
+            // 
+            this.lblExpressMetSLAHdr.AutoSize = true;
+            this.lblExpressMetSLAHdr.Location = new System.Drawing.Point(1, 77);
+            this.lblExpressMetSLAHdr.Name = "lblExpressMetSLAHdr";
+            this.lblExpressMetSLAHdr.Size = new System.Drawing.Size(118, 13);
+            this.lblExpressMetSLAHdr.TabIndex = 3;
+            this.lblExpressMetSLAHdr.Text = "Express which met SLA";
+            // 
+            // lblExpressOrdersHdr
+            // 
+            this.lblExpressOrdersHdr.AutoSize = true;
+            this.lblExpressOrdersHdr.Location = new System.Drawing.Point(1, 59);
+            this.lblExpressOrdersHdr.Name = "lblExpressOrdersHdr";
+            this.lblExpressOrdersHdr.Size = new System.Drawing.Size(105, 13);
+            this.lblExpressOrdersHdr.TabIndex = 2;
+            this.lblExpressOrdersHdr.Text = "Express Total Orders";
+            // 
+            // lblTotalOrdersMetSLAHdr
+            // 
+            this.lblTotalOrdersMetSLAHdr.AutoSize = true;
+            this.lblTotalOrdersMetSLAHdr.Location = new System.Drawing.Point(1, 25);
+            this.lblTotalOrdersMetSLAHdr.Name = "lblTotalOrdersMetSLAHdr";
+            this.lblTotalOrdersMetSLAHdr.Size = new System.Drawing.Size(105, 13);
+            this.lblTotalOrdersMetSLAHdr.TabIndex = 1;
+            this.lblTotalOrdersMetSLAHdr.Text = "Total which met SLA";
+            // 
+            // lblTotalOrdersHdr
+            // 
+            this.lblTotalOrdersHdr.AutoSize = true;
+            this.lblTotalOrdersHdr.Location = new System.Drawing.Point(1, 7);
+            this.lblTotalOrdersHdr.Name = "lblTotalOrdersHdr";
+            this.lblTotalOrdersHdr.Size = new System.Drawing.Size(65, 13);
+            this.lblTotalOrdersHdr.TabIndex = 0;
+            this.lblTotalOrdersHdr.Text = "Total Orders";
+            // 
             // gbCustomDateRange
             // 
-            this.gbCustomDateRange.Controls.Add(this.cbCustomCutoff);
             this.gbCustomDateRange.Controls.Add(this.dtpReportTo);
             this.gbCustomDateRange.Controls.Add(this.lblReportTo);
             this.gbCustomDateRange.Controls.Add(this.lblReportFrom);
@@ -825,17 +808,6 @@
             this.gbCustomDateRange.TabIndex = 24;
             this.gbCustomDateRange.TabStop = false;
             this.gbCustomDateRange.Text = "Custom Date Range";
-            // 
-            // cbCustomCutoff
-            // 
-            this.cbCustomCutoff.AutoSize = true;
-            this.cbCustomCutoff.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbCustomCutoff.Location = new System.Drawing.Point(118, 32);
-            this.cbCustomCutoff.Name = "cbCustomCutoff";
-            this.cbCustomCutoff.Size = new System.Drawing.Size(91, 17);
-            this.cbCustomCutoff.TabIndex = 29;
-            this.cbCustomCutoff.Text = "Custom cutoff";
-            this.cbCustomCutoff.UseVisualStyleBackColor = true;
             // 
             // dtpReportTo
             // 
@@ -873,16 +845,88 @@
             this.dtpReportFrom.Size = new System.Drawing.Size(203, 20);
             this.dtpReportFrom.TabIndex = 25;
             // 
+            // btnExportCurrentScreenToExcel
+            // 
+            this.btnExportCurrentScreenToExcel.Location = new System.Drawing.Point(951, 79);
+            this.btnExportCurrentScreenToExcel.Name = "btnExportCurrentScreenToExcel";
+            this.btnExportCurrentScreenToExcel.Size = new System.Drawing.Size(131, 23);
+            this.btnExportCurrentScreenToExcel.TabIndex = 30;
+            this.btnExportCurrentScreenToExcel.Text = "Export To Excel";
+            this.btnExportCurrentScreenToExcel.UseVisualStyleBackColor = true;
+            this.btnExportCurrentScreenToExcel.Click += new System.EventHandler(this.btnExportCurrentScreenToExcel_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Filter by Destination";
+            // 
+            // pnDGVFilter_ByShipMethod
+            // 
+            this.pnDGVFilter_ByShipMethod.Controls.Add(this.label2);
+            this.pnDGVFilter_ByShipMethod.Controls.Add(this.rbDGVFilter_ByShipMethod_Express);
+            this.pnDGVFilter_ByShipMethod.Controls.Add(this.rbDGVFilter_ByShipMethod_All);
+            this.pnDGVFilter_ByShipMethod.Controls.Add(this.rbDGVFilter_ByShipMethod_Standard);
+            this.pnDGVFilter_ByShipMethod.Location = new System.Drawing.Point(331, 6);
+            this.pnDGVFilter_ByShipMethod.Name = "pnDGVFilter_ByShipMethod";
+            this.pnDGVFilter_ByShipMethod.Size = new System.Drawing.Size(148, 65);
+            this.pnDGVFilter_ByShipMethod.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(21, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Filter by Ship Method";
+            // 
+            // rbDGVFilter_ByShipMethod_Express
+            // 
+            this.rbDGVFilter_ByShipMethod_Express.AutoSize = true;
+            this.rbDGVFilter_ByShipMethod_Express.Location = new System.Drawing.Point(3, 44);
+            this.rbDGVFilter_ByShipMethod_Express.Name = "rbDGVFilter_ByShipMethod_Express";
+            this.rbDGVFilter_ByShipMethod_Express.Size = new System.Drawing.Size(62, 17);
+            this.rbDGVFilter_ByShipMethod_Express.TabIndex = 3;
+            this.rbDGVFilter_ByShipMethod_Express.Text = "Express";
+            this.rbDGVFilter_ByShipMethod_Express.UseVisualStyleBackColor = true;
+            // 
+            // rbDGVFilter_ByShipMethod_All
+            // 
+            this.rbDGVFilter_ByShipMethod_All.AutoSize = true;
+            this.rbDGVFilter_ByShipMethod_All.Checked = true;
+            this.rbDGVFilter_ByShipMethod_All.Location = new System.Drawing.Point(3, 25);
+            this.rbDGVFilter_ByShipMethod_All.Name = "rbDGVFilter_ByShipMethod_All";
+            this.rbDGVFilter_ByShipMethod_All.Size = new System.Drawing.Size(36, 17);
+            this.rbDGVFilter_ByShipMethod_All.TabIndex = 2;
+            this.rbDGVFilter_ByShipMethod_All.TabStop = true;
+            this.rbDGVFilter_ByShipMethod_All.Text = "All";
+            this.rbDGVFilter_ByShipMethod_All.UseVisualStyleBackColor = true;
+            // 
+            // rbDGVFilter_ByShipMethod_Standard
+            // 
+            this.rbDGVFilter_ByShipMethod_Standard.AutoSize = true;
+            this.rbDGVFilter_ByShipMethod_Standard.Location = new System.Drawing.Point(75, 44);
+            this.rbDGVFilter_ByShipMethod_Standard.Name = "rbDGVFilter_ByShipMethod_Standard";
+            this.rbDGVFilter_ByShipMethod_Standard.Size = new System.Drawing.Size(68, 17);
+            this.rbDGVFilter_ByShipMethod_Standard.TabIndex = 6;
+            this.rbDGVFilter_ByShipMethod_Standard.Text = "Standard";
+            this.rbDGVFilter_ByShipMethod_Standard.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1186, 627);
+            this.ClientSize = new System.Drawing.Size(1103, 627);
+            this.Controls.Add(this.btnOpenConfigSettings);
+            this.Controls.Add(this.pnOrderTotalsWithinSpecifiedTimeFrame);
             this.Controls.Add(this.gbCustomDateRange);
             this.Controls.Add(this.pnExtendedDetail);
             this.Controls.Add(this.gbCustomSLAStats);
             this.Controls.Add(this.gbLast24Hrs);
-            this.Controls.Add(this.pnAdminPanel);
             this.Name = "MainForm";
             this.Text = "Dispatch SLA Report (ws1160)";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -890,22 +934,22 @@
             this.gbLast24Hrs.PerformLayout();
             this.gbCustomSLAStats.ResumeLayout(false);
             this.gbCustomSLAStats.PerformLayout();
-            this.pnAdminPanel.ResumeLayout(false);
-            this.pnAdminPanel.PerformLayout();
             this.pnExtendedDetail.ResumeLayout(false);
             this.pnExtendedDetail.PerformLayout();
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.ResumeLayout(false);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnDestinationFilter.ResumeLayout(false);
+            this.pnDestinationFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailBreakdown)).EndInit();
             this.pnSLACriteriaMetKey.ResumeLayout(false);
             this.pnSLACriteriaMetKey.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCriteriaNotMetKey)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMidCriteriaMetKey)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTopCriteriaMetKey)).EndInit();
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.ResumeLayout(false);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.PerformLayout();
             this.gbCustomDateRange.ResumeLayout(false);
             this.gbCustomDateRange.PerformLayout();
+            this.pnDGVFilter_ByShipMethod.ResumeLayout(false);
+            this.pnDGVFilter_ByShipMethod.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -941,8 +985,7 @@
         public System.Windows.Forms.DataGridView dgvDetailBreakdown;
         private System.Windows.Forms.RadioButton rbExtendedDetail_International;
         private System.Windows.Forms.RadioButton rbExtendedDetail_Standard;
-        private System.Windows.Forms.RadioButton rbExtendedDetail_Express;
-        private System.Windows.Forms.RadioButton rbExtendedDetailFilter_Store;
+        private System.Windows.Forms.RadioButton rbExtendedDetail_Store;
         private System.Windows.Forms.RadioButton rbExtendedDetailFilter_All;
         private System.Windows.Forms.Panel pnSLACriteriaMetKey;
         public System.Windows.Forms.DateTimePicker dtpReportFrom;
@@ -955,8 +998,7 @@
         public System.Windows.Forms.Label lblCriteriaNotMetKey;
         public System.Windows.Forms.Label lblMidCriteriaMetKey;
         public System.Windows.Forms.Label lblTopCriteriaMetKey;
-        private System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.Label lblConfigDetails;
+        private System.Windows.Forms.Panel pnDestinationFilter;
         private System.Windows.Forms.Panel pnOrderTotalsWithinSpecifiedTimeFrame;
         public System.Windows.Forms.Label lblStoreOrdersMetSLADtl;
         public System.Windows.Forms.Label lblStoreOrdersDtl;
@@ -981,11 +1023,16 @@
         public System.Windows.Forms.GroupBox gbCustomSLAStats;
         private System.Windows.Forms.GroupBox gbCustomDateRange;
         public System.Windows.Forms.GroupBox gbLast24Hrs;
-        private System.Windows.Forms.CheckBox cbCustomCutoff;
         private System.Windows.Forms.Button btnOpenConfigSettings;
-        public System.Windows.Forms.Panel pnAdminPanel;
         public System.Windows.Forms.Label lblDGVHeader;
-        public System.Windows.Forms.Label lblOrderTotalsHeader;
+        public System.Windows.Forms.CheckBox cbUseCutoffTimes;
+        private System.Windows.Forms.Button btnExportCurrentScreenToExcel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnDGVFilter_ByShipMethod;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton rbDGVFilter_ByShipMethod_Express;
+        private System.Windows.Forms.RadioButton rbDGVFilter_ByShipMethod_All;
+        private System.Windows.Forms.RadioButton rbDGVFilter_ByShipMethod_Standard;
     }
 }
 

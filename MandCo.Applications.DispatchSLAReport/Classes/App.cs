@@ -1,31 +1,68 @@
 ﻿namespace MandCo.Applications.DispatchSLAReport.Classes
 {
     using Interfaces;
-using MandCo.Data.DispatchSLAReport.Models;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Windows.Forms;
+    using MandCo.Data.DispatchSLAReport.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Windows.Forms;
+    using System.Linq;
+    using System.Data.Linq;
 
     class App : IApp
     {
         private readonly ILog logger;
         private readonly IDataHandler dataHandler;
+        private readonly IExcelHandler excelHandler;
 
         private DataTable detailBreakDownDT;
 
-        public App(ILog logger, IDataHandler dataHandler, DataTable detailBreakDownDT)
+        public App(ILog logger, IDataHandler dataHandler, IExcelHandler excelHandler, DataTable detailBreakDownDT)
         {
             this.logger = logger;
             this.dataHandler = dataHandler;
             this.detailBreakDownDT = detailBreakDownDT;
+            this.excelHandler = excelHandler;
         }
 
         public void SetDataSourceToCustomTimeFrame(MainForm mainForm)
         {
             try
             {
-                detailBreakDownDT = dataHandler.BindSLAData_ToDataTable(mainForm.dtpReportFrom.Value, mainForm.dtpReportTo.Value);
+                IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(mainForm.dtpReportFrom.Value, mainForm.dtpReportTo.Value);
+                BindCustomDisplayData_ToForm(mainForm, slaReportDetails);
+
+                if (mainForm.dtpReportTo.Value >= DateTime.Now.AddDays(-1))
+                {
+                   IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails24Hours = dataHandler.FilterDateRangeFromSLADetails(slaReportDetails, DateTime.Now.AddDays(-1), DateTime.Now);
+                   Bind24HrDisplayData_ToForm(mainForm, slaReportDetails24Hours);
+                }
+
+                #region Apply DataTable to DataGridView
+                detailBreakDownDT = dataHandler.BindSLAData_ToDataTable(slaReportDetails);
+                BindDataToDGV(mainForm, detailBreakDownDT);
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+                logger.Error(ex.StackTrace);
+            }
+        }
+
+        public void SetDataSourceToLast24Hours(MainForm mainForm)
+        {
+            try
+            {
+                IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(DateTime.Now.AddDays(-1), DateTime.Now);
+
+                mainForm.lblDGVHeader.Text = string.Format("{0: dd MMM yy HH:mm:ss} - {1: dd MMM yy HH:mm:ss}",
+                                                DateTime.Now.AddDays(-1),
+                                                DateTime.Now);
+
+                Bind24HrDisplayData_ToForm(mainForm, slaReportDetails);
+
+                detailBreakDownDT = dataHandler.BindSLAData_ToDataTable(slaReportDetails);
                 BindDataToDGV(mainForm, detailBreakDownDT);
             }
             catch (Exception ex)
@@ -35,37 +72,13 @@ using System.Windows.Forms;
             }
         }
 
-        private void BindDataToDGV(MainForm mainForm, DataTable dataTable)
+        private void BindCustomDisplayData_ToForm(MainForm mainForm, IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails)
         {
-            mainForm.dgvDetailBreakdown.DataSource = dataTable;
-            mainForm.dgvDetailBreakdown.AutoResizeColumns();
-            mainForm.dgvDetailBreakdown.Refresh();
-        }
-
-        public void BindConfigDataToForm(MainForm mainForm)
-        {
-            Config_Information configInformation = dataHandler.GetConfigInformation();
-
-            mainForm.lblConfigDetails.Text = Environment.UserName;
-        }
-
-        public void SetDataSourceToLast24Hours(MainForm mainForm)
-        {
-            mainForm.lblDGVHeader.Text = string.Format("Orders which failed SLA for time period: {0: dd MMM yy HH:mm:ss} - {1: dd MMM yy HH:mm:ss}",
-                                            DateTime.Now.AddDays(-1),
-                                            DateTime.Now);
-
-            detailBreakDownDT = dataHandler.BindSLAData_ToDataTable(DateTime.Now.AddDays(-1), DateTime.Now);
-            BindDataToDGV(mainForm, detailBreakDownDT);
-        }
-
-        public void BindCustomDisplayDataToForm(MainForm mainForm)
-        {
-            DisplayData displayData = dataHandler.GetSLAData_ToDisplayData(mainForm.dtpReportFrom.Value, mainForm.dtpReportTo.Value);
+            DisplayData displayData = dataHandler.BindSLAData_ToDisplayData(slaReportDetails);
             Config_Information configInfo = dataHandler.GetConfigInformation();
             TimeSpan totalOrderTimePeriod = (mainForm.dtpReportTo.Value - mainForm.dtpReportFrom.Value);
 
-            #region Set Top Labels 
+            #region Set Top Labels
             mainForm.lblCustTotalSLADtlPct.Text = displayData.TotalOrdersSLAPct.ToString();
             mainForm.lblCustExpressSLADtlPct.Text = displayData.ExpressOrdersSLAPct.ToString();
             mainForm.lblCustInternationalSLADtlPct.Text = displayData.InternationalOrdersSLAPct.ToString();
@@ -75,7 +88,7 @@ using System.Windows.Forms;
             mainForm.gbCustomSLAStats.Text = string.Format("{0} - {1}",
                                                             mainForm.dtpReportFrom.Value,
                                                             mainForm.dtpReportTo.Value);
-            
+
             List<Label> labels = new List<Label>();
             labels.Add(mainForm.lblCustStandardSLADtlPct);
             labels.Add(mainForm.lblCustStoreSLADtlPct);
@@ -87,14 +100,12 @@ using System.Windows.Forms;
             labels.Add(mainForm.lblCustTotalSLADtlPct);
             AssignColourCodedPct_ToLabels(labels, configInfo.Express_SLA_Percentage_High, configInfo.Express_SLA_Percentage_Low);
 
-            mainForm.lblDGVHeader.Text = string.Format("Orders which failed SLA for time period: {0: dd MMM yy HH:mm:ss} - {1: dd MMM yy HH:mm:ss}",
+            mainForm.lblDGVHeader.Text = string.Format("{0: dd MMM yy HH:mm:ss} - {1: dd MMM yy HH:mm:ss}",
                                                         mainForm.dtpReportFrom.Value,
                                                         mainForm.dtpReportTo.Value);
             #endregion
 
             #region Set Side Labels
-            mainForm.lblOrderTotalsHeader.Text = string.Format("Order Totals within the previous {0} days", totalOrderTimePeriod.Days);
-
             mainForm.lblTotalOrdersDtl.Text = displayData.TotalOrders.ToString();
             mainForm.lblTotalOrdersMetSLADtl.Text = displayData.TotalOrdersSLA.ToString();
 
@@ -124,20 +135,18 @@ using System.Windows.Forms;
                                                                 configInfo.Standard_SLA_Percentage_Low,
                                                                 configInfo.Express_SLA_Percentage_Low);
 
-            #endregion 
-
-            #region Display Admin Panel
-            if (configInfo.Admin_Accounts.Contains(Environment.UserName))
-                mainForm.pnAdminPanel.Visible = true;
-            else
-                mainForm.pnAdminPanel.Visible = false;
             #endregion
         }
 
-        public void Bind24HrDisplayDataToForm(MainForm mainForm)
+        private void Bind24HrDisplayData_ToForm(MainForm mainForm, IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails)
         {
-            DisplayData displayData = dataHandler.GetSLAData_ToDisplayData(DateTime.Now.AddDays(-1), DateTime.Now);
             Config_Information configInfo = dataHandler.GetConfigInformation();
+
+            #region Filter Cutoff Times
+            IEnumerable<Cleansed_SLA_Report_Details> filteredSLAReportDetails = dataHandler.FilterCutOffTimes(slaReportDetails, configInfo, DateTime.Now.AddDays(-1));
+            #endregion
+
+            DisplayData displayData = dataHandler.BindSLAData_ToDisplayData(slaReportDetails);
             List<Label> labels = new List<Label>();
 
             #region Set top labels
@@ -152,11 +161,11 @@ using System.Windows.Forms;
             labels.Add(mainForm.lbl24HrsStandardSLADtlPct);
             labels.Add(mainForm.lbl24HrsStoreSLADtlPct);
             labels.Add(mainForm.lbl24HrsInternationalSLADtlPct);
+            labels.Add(mainForm.lbl24HrsTotalSLADtlPct);
             AssignColourCodedPct_ToLabels(labels, configInfo.Standard_SLA_Percentage_High, configInfo.Standard_SLA_Percentage_Low);
 
             labels.Clear();
             labels.Add(mainForm.lbl24HrsExpressSLADtlPct);
-            labels.Add(mainForm.lbl24HrsTotalSLADtlPct);
             AssignColourCodedPct_ToLabels(labels, configInfo.Express_SLA_Percentage_High, configInfo.Express_SLA_Percentage_Low);
             #endregion
         }
@@ -185,6 +194,38 @@ using System.Windows.Forms;
                 else
                     label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             }
+        }
+
+        private void BindDataToDGV(MainForm mainForm, DataTable dataTable)
+        {
+            mainForm.dgvDetailBreakdown.DataSource = dataTable;
+            mainForm.dgvDetailBreakdown.AutoResizeColumns();
+            mainForm.dgvDetailBreakdown.Refresh();
+        }
+
+        public void FilterDGV(DataGridView dgv, string shipMethod)
+        {
+            dataHandler.FilterDataGrid_ByDestination(dgv, shipMethod);
+        }
+
+        public void ExportDGV_ToExcel(MainForm mainForm)
+        {
+            DataTable dt = (mainForm.dgvDetailBreakdown.DataSource as DataTable);
+            excelHandler.writeToExcel(dt);
+        }
+
+        public void ExportCleanReport_24Hrs_ToExcel()
+        {
+            IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(DateTime.Now.AddDays(-1), DateTime.Now);
+            DataTable dt = dataHandler.BindSLAData_ToDataTable(slaReportDetails);
+            excelHandler.writeToExcel(dt);
+        }
+
+        public void ExportCleanReport_CustomTimeFrame_ToExcel(MainForm mainForm)
+        {
+            IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(mainForm.dtpReportFrom.Value, mainForm.dtpReportTo.Value);
+            DataTable dt = dataHandler.BindSLAData_ToDataTable(slaReportDetails);
+            excelHandler.writeToExcel(dt);
         }
     }
 }

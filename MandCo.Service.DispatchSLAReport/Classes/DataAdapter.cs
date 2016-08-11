@@ -113,12 +113,12 @@
                 cleansedLine.Delivery_Option = (detail.DEL_OPTION == 1 ? "Express" : "Standard");
                 cleansedLine.Date_Imported = detail.DATE_IMPORTED;
                 cleansedLine.Order_Date = detail.ORDER_DATE;
-                cleansedLine.Released_Date = detail.RELEASED_DATE;
+                cleansedLine.Released_Date = detail.RELEASE_DATE;
                 cleansedLine.Ship_Date = detail.SHIP_DATE;
                 cleansedLine.SLA_Met = CalculateSLAMet(configInfo, cleansedLine);
 
                 dateImported = (detail.DATE_IMPORTED.Year == 1 ? DateTime.Now : detail.DATE_IMPORTED);
-                dateReleased = (detail.RELEASED_DATE.Year == 1 ? DateTime.Now : detail.RELEASED_DATE);
+                dateReleased = (detail.RELEASE_DATE.Year == 1 ? DateTime.Now : detail.RELEASE_DATE);
 
                 cleansedLine.Time_To_Import = GetTimeDifference_ToTimeSpan(detail.ORDER_DATE, dateImported);
                 cleansedLine.Time_To_Release = GetTimeDifference_ToTimeSpan(detail.DATE_IMPORTED, dateReleased);
@@ -163,8 +163,8 @@
 
             DateTime shipDate = (cleansedLine.Ship_Date.Year == 1 ? DateTime.Now : cleansedLine.Ship_Date);
 
-            TimeSpan alottedTime = CalculateAlottedTime(cleansedLine.Order_Date, cutOffDeadline, slaDeadline);
-            TimeSpan timeTaken = GetTimeDifference_ToTimeSpan(cleansedLine.Order_Date, shipDate);
+            TimeSpan alottedTime = CalculateAlottedTime(cleansedLine.Released_Date, cutOffDeadline, slaDeadline);
+            TimeSpan timeTaken = GetTimeDifference_ToTimeSpan(cleansedLine.Released_Date, shipDate);
 
             result = (alottedTime > timeTaken ? true : false);
 
@@ -179,7 +179,7 @@
             result = slaDeadline.TimeOfDay - dateOrdered.TimeOfDay;
 
             if (dateOrdered.TimeOfDay > cutOffDeadline.TimeOfDay)
-                result = new TimeSpan(1, result.Hours, result.Minutes, result.Seconds);
+                result = new TimeSpan(1,result.Hours,result.Minutes,result.Seconds);
 
             return result;
         }

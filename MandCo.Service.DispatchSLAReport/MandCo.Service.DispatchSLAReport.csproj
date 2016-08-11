@@ -41,9 +41,11 @@
   <ItemGroup>
     <Compile Include="Classes\DataAdapter.cs" />
     <Compile Include="Classes\DataTableFactory.cs" />
+    <Compile Include="Classes\PerformInsert.cs" />
     <Compile Include="Classes\PerformLookup.cs" />
     <Compile Include="Interfaces\IAdaptData.cs" />
     <Compile Include="Interfaces\IDataTableFactory.cs" />
+    <Compile Include="Interfaces\IPerformInsert.cs" />
     <Compile Include="Interfaces\IPerformLookup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -53,9 +55,7 @@
       <Name>MandCo.Data.DispatchSLAReport</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Sql\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
