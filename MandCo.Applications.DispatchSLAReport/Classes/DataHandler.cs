@@ -10,6 +10,7 @@
 
     class DataHandler : IDataHandler
     {
+        #region Initialization
         private readonly ILog logger;
         private readonly IPopulateDataTables dataTablePopulator;
         private readonly IPerformLookup performLookup;
@@ -27,7 +28,9 @@
             this.dataFilter = dataFilter;
             this.dataGridViewFilter = dataGridViewFilter;
         }
+        #endregion
 
+        #region Filter SLA Report Details
         public IEnumerable<Cleansed_SLA_Report_Details> FilterDateRangeFromSLADetails(IEnumerable<Cleansed_SLA_Report_Details> fullSLADetails, DateTime dateFrom, DateTime dateTo)
         {
             return dataFilter.FilterDateRangeFromSLADetails(fullSLADetails, dateFrom, dateTo);
@@ -37,12 +40,44 @@
         {
             return dataFilter.FilterCutOffTimes(fullSLADetails, configInfo, lastDate);
         }
+        #endregion
 
+        #region Filter DataGridView
+        public void FilterDataGrid_ByDestination(DataGridView dgv, string shipMethod)
+        {
+            dataGridViewFilter.FilterDataGrid_ByDestination(dgv, shipMethod);
+        }
+
+        public void FilterDataGrid_ByDeliveryOption(DataGridView dgv, string deliveryOption)
+        {
+            dataGridViewFilter.FilterDataGrid_ByDeliveryOption(dgv, deliveryOption);
+        }
+        #endregion
+
+        #region Retrieve Data
         public IEnumerable<Cleansed_SLA_Report_Details> GetSLAReportDetails(DateTime fromDate, DateTime toDate)
         {
             return performLookup.GetOrderDataFromSLATable(fromDate, toDate);
         }
 
+        public Config_Information GetConfigInformation()
+        {
+            Config_Information result = new Config_Information();
+
+            result = performLookup.GetConfigurationInformation();
+
+            return result;
+        }
+        #endregion
+
+        #region Updated Data
+        public void UpdateConfigInformation(Config_Information updatedConfigInfo)
+        {
+
+        }
+        #endregion
+
+        #region Bind SLA Data
         public DataTable BindSLAData_ToDataTable(IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails)
         {
             DataTable result = dataTablePopulator.ReturnAllSLAOrderInfo_ToDataTable(slaReportDetails);
@@ -56,25 +91,6 @@
 
             return result;
         }
-
-        public Config_Information GetConfigInformation()
-        {
-            Config_Information result = new Config_Information();
-
-            result = performLookup.GetConfigurationInformation();
-
-            return result;
-        }
-
-        public void UpdateConfigInformation(Config_Information updatedConfigInfo)
-        {
-            
-        }
-
-        public void FilterDataGrid_ByDestination(DataGridView dgv, string orderType)
-        {
-            dataGridViewFilter.FilterDataGrid_ByDestination(dgv, orderType);
-        }
-
+        #endregion
     }
 }

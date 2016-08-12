@@ -17,6 +17,7 @@
         Config_Information GetConfigInformation();
 
         void UpdateConfigInformation(Config_Information updatedConfigInfo);
-        void FilterDataGrid_ByDestination(DataGridView dgv, string orderType);
+        void FilterDataGrid_ByDestination(DataGridView dgv, string shipMethod);
+        void FilterDataGrid_ByDeliveryOption(DataGridView dgv, string deliveryOption);
     }
 }

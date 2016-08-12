@@ -47,7 +47,7 @@
         {
             decimal result = 0;
             result = (orders > 0 ? ((((decimal)orders - (decimal)ordersFailed) / (decimal)orders) * 100) : 0);
-            Math.Round(result, 2);
+            result = Math.Round(result, 2);
             return result;
         }
 

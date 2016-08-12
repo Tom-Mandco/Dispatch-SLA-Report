@@ -11,6 +11,7 @@
 
     class App : IApp
     {
+        #region Initialization
         private readonly ILog logger;
         private readonly IDataHandler dataHandler;
         private readonly IExcelHandler excelHandler;
@@ -24,7 +25,9 @@
             this.detailBreakDownDT = detailBreakDownDT;
             this.excelHandler = excelHandler;
         }
+        #endregion
 
+        #region Set Data Sources
         public void SetDataSourceToCustomTimeFrame(MainForm mainForm)
         {
             try
@@ -34,8 +37,8 @@
 
                 if (mainForm.dtpReportTo.Value >= DateTime.Now.AddDays(-1))
                 {
-                   IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails24Hours = dataHandler.FilterDateRangeFromSLADetails(slaReportDetails, DateTime.Now.AddDays(-1), DateTime.Now);
-                   Bind24HrDisplayData_ToForm(mainForm, slaReportDetails24Hours);
+                    IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails24Hours = dataHandler.FilterDateRangeFromSLADetails(slaReportDetails, DateTime.Now.AddDays(-1), DateTime.Now);
+                    Bind24HrDisplayData_ToForm(mainForm, slaReportDetails24Hours);
                 }
 
                 #region Apply DataTable to DataGridView
@@ -71,7 +74,9 @@
                 logger.Error(ex.StackTrace);
             }
         }
+        #endregion
 
+        #region Bind Display Data To Form
         private void BindCustomDisplayData_ToForm(MainForm mainForm, IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails)
         {
             DisplayData displayData = dataHandler.BindSLAData_ToDisplayData(slaReportDetails);
@@ -93,11 +98,11 @@
             labels.Add(mainForm.lblCustStandardSLADtlPct);
             labels.Add(mainForm.lblCustStoreSLADtlPct);
             labels.Add(mainForm.lblCustInternationalSLADtlPct);
+            labels.Add(mainForm.lblCustTotalSLADtlPct);
             AssignColourCodedPct_ToLabels(labels, configInfo.Standard_SLA_Percentage_High, configInfo.Standard_SLA_Percentage_Low);
 
             labels.Clear();
             labels.Add(mainForm.lblCustExpressSLADtlPct);
-            labels.Add(mainForm.lblCustTotalSLADtlPct);
             AssignColourCodedPct_ToLabels(labels, configInfo.Express_SLA_Percentage_High, configInfo.Express_SLA_Percentage_Low);
 
             mainForm.lblDGVHeader.Text = string.Format("{0: dd MMM yy HH:mm:ss} - {1: dd MMM yy HH:mm:ss}",
@@ -169,17 +174,23 @@
             AssignColourCodedPct_ToLabels(labels, configInfo.Express_SLA_Percentage_High, configInfo.Express_SLA_Percentage_Low);
             #endregion
         }
+        #endregion
 
+        #region Retrieve Data
         public Config_Information GetConfigInformation()
         {
             return dataHandler.GetConfigInformation();
         }
+        #endregion
 
+        #region Update Data
         public void UpdateConfigInformation(Config_Information updatedConfigInfo)
         {
             dataHandler.UpdateConfigInformation(updatedConfigInfo);
         }
+        #endregion
 
+        #region Utilities
         private void AssignColourCodedPct_ToLabels(List<Label> labels, int pctHigh, int pctLow)
         {
             float labelValue = 0;
@@ -195,7 +206,9 @@
                     label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             }
         }
+        #endregion
 
+        #region Binding DataGridView Data
         private void BindDataToDGV(MainForm mainForm, DataTable dataTable)
         {
             mainForm.dgvDetailBreakdown.DataSource = dataTable;
@@ -208,24 +221,32 @@
             dataHandler.FilterDataGrid_ByDestination(dgv, shipMethod);
         }
 
+        public void FilterDGV_ByDeliveryOption(DataGridView dgv, string deliveryOption)
+        {
+            dataHandler.FilterDataGrid_ByDeliveryOption(dgv, deliveryOption);
+        }
+        #endregion
+
+        #region Exporting to Excel
         public void ExportDGV_ToExcel(MainForm mainForm)
         {
             DataTable dt = (mainForm.dgvDetailBreakdown.DataSource as DataTable);
-            excelHandler.writeToExcel(dt);
+            excelHandler.writeToExcel(dt, new DateTime(1, 1, 1), new DateTime(1, 1, 1));
         }
 
         public void ExportCleanReport_24Hrs_ToExcel()
         {
             IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(DateTime.Now.AddDays(-1), DateTime.Now);
             DataTable dt = dataHandler.BindSLAData_ToDataTable(slaReportDetails);
-            excelHandler.writeToExcel(dt);
+            excelHandler.writeToExcel(dt, DateTime.Now.AddDays(-1), DateTime.Now);
         }
 
         public void ExportCleanReport_CustomTimeFrame_ToExcel(MainForm mainForm)
         {
             IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(mainForm.dtpReportFrom.Value, mainForm.dtpReportTo.Value);
             DataTable dt = dataHandler.BindSLAData_ToDataTable(slaReportDetails);
-            excelHandler.writeToExcel(dt);
+            excelHandler.writeToExcel(dt, mainForm.dtpReportFrom.Value, mainForm.dtpReportTo.Value);
         }
+        #endregion
     }
 }

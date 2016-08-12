@@ -15,27 +15,24 @@
             this.logger = logger;
         }
 
-        public void WriteToExcel(DataTable dt)
+        public void WriteToExcel(DataTable dt, DateTime dateFrom, DateTime dateTo)
         {
-            logger.Info("Writing to Excel");
-            XLWorkbook workbook = new XLWorkbook(string.Format("{0}{4}-{5}-{6} {1} - {2}{3}",
+            string spreadsheetTimeFrame = (dateFrom == dateTo ? "Custom Data Filter" : string.Format("{0: dd.MM.yy HH-mm-ss} to {1: dd.MM.yy HH-mm-ss}", dateFrom, dateTo));
+            string amalgamatedSpreadsheetName = string.Format("{0}{1} for {4} - {2}{3}",
                     ConfigurationManager.AppSettings["ExcelFilePath"],
                     ConfigurationManager.AppSettings["ExcelFileName"],
                     ConfigurationManager.AppSettings["RunLevel"],
                     ConfigurationManager.AppSettings["FileExtension"],
-                    System.DateTime.Now.Day,
-                    System.DateTime.Now.Month,
-                    System.DateTime.Now.Year));
-            try
-            {
-                workbook.Worksheets.Add(dt, "Dispatch SLA Report");
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex.Message);
-                logger.Error(ex.StackTrace);
-            }
-            workbook.Save();
+                    spreadsheetTimeFrame);
+
+            logger.Info("Writing to Excel");
+            XLWorkbook workbook = new XLWorkbook();
+
+            workbook.Worksheets.Add(dt, "Dispatch SLA Report");
+
+            workbook.SaveAs(amalgamatedSpreadsheetName);
+
+            System.Diagnostics.Process.Start(amalgamatedSpreadsheetName);
         }
     }
 }

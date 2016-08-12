@@ -19,12 +19,12 @@
 
 
         #region Main Functions
-        public void writeToExcel(DataTable dt)
+        public void writeToExcel(DataTable dt, DateTime dateFrom, DateTime dateTo)
         {
             logger.Info("Excel Hander - Write to Excel: Started");
             try
             {
-                excelWriter.WriteToExcel(dt);
+                excelWriter.WriteToExcel(dt, dateFrom, dateTo);
             }
             catch (Exception ex)
             {

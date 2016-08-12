@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbLast24Hrs = new System.Windows.Forms.GroupBox();
             this.lbl24HrsStoreSLADtlPct = new System.Windows.Forms.Label();
             this.lbl24HrsStandardSLADtlPct = new System.Windows.Forms.Label();
@@ -427,6 +427,7 @@
             this.cbUseCutoffTimes.TabIndex = 29;
             this.cbUseCutoffTimes.Text = "Filter by cutoff times";
             this.cbUseCutoffTimes.UseVisualStyleBackColor = true;
+            this.cbUseCutoffTimes.Visible = false;
             this.cbUseCutoffTimes.CheckedChanged += new System.EventHandler(this.cbUseCutoffTimes_CheckedChanged);
             // 
             // pnDestinationFilter
@@ -436,7 +437,7 @@
             this.pnDestinationFilter.Controls.Add(this.rbExtendedDetailFilter_All);
             this.pnDestinationFilter.Controls.Add(this.rbExtendedDetail_International);
             this.pnDestinationFilter.Controls.Add(this.rbExtendedDetail_Standard);
-            this.pnDestinationFilter.Location = new System.Drawing.Point(485, 6);
+            this.pnDestinationFilter.Location = new System.Drawing.Point(552, 6);
             this.pnDestinationFilter.Name = "pnDestinationFilter";
             this.pnDestinationFilter.Size = new System.Drawing.Size(148, 65);
             this.pnDestinationFilter.TabIndex = 8;
@@ -494,14 +495,14 @@
             this.dgvDetailBreakdown.AllowUserToOrderColumns = true;
             this.dgvDetailBreakdown.AllowUserToResizeColumns = false;
             this.dgvDetailBreakdown.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetailBreakdown.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetailBreakdown.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDetailBreakdown.ColumnHeadersHeight = 25;
             this.dgvDetailBreakdown.Location = new System.Drawing.Point(6, 102);
             this.dgvDetailBreakdown.Name = "dgvDetailBreakdown";
@@ -870,7 +871,7 @@
             this.pnDGVFilter_ByShipMethod.Controls.Add(this.rbDGVFilter_ByShipMethod_Express);
             this.pnDGVFilter_ByShipMethod.Controls.Add(this.rbDGVFilter_ByShipMethod_All);
             this.pnDGVFilter_ByShipMethod.Controls.Add(this.rbDGVFilter_ByShipMethod_Standard);
-            this.pnDGVFilter_ByShipMethod.Location = new System.Drawing.Point(331, 6);
+            this.pnDGVFilter_ByShipMethod.Location = new System.Drawing.Point(361, 6);
             this.pnDGVFilter_ByShipMethod.Name = "pnDGVFilter_ByShipMethod";
             this.pnDGVFilter_ByShipMethod.Size = new System.Drawing.Size(148, 65);
             this.pnDGVFilter_ByShipMethod.TabIndex = 9;
@@ -893,6 +894,7 @@
             this.rbDGVFilter_ByShipMethod_Express.TabIndex = 3;
             this.rbDGVFilter_ByShipMethod_Express.Text = "Express";
             this.rbDGVFilter_ByShipMethod_Express.UseVisualStyleBackColor = true;
+            this.rbDGVFilter_ByShipMethod_Express.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_DeliveryOption);
             // 
             // rbDGVFilter_ByShipMethod_All
             // 
@@ -905,6 +907,7 @@
             this.rbDGVFilter_ByShipMethod_All.TabStop = true;
             this.rbDGVFilter_ByShipMethod_All.Text = "All";
             this.rbDGVFilter_ByShipMethod_All.UseVisualStyleBackColor = true;
+            this.rbDGVFilter_ByShipMethod_All.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_DeliveryOption);
             // 
             // rbDGVFilter_ByShipMethod_Standard
             // 
@@ -915,6 +918,7 @@
             this.rbDGVFilter_ByShipMethod_Standard.TabIndex = 6;
             this.rbDGVFilter_ByShipMethod_Standard.Text = "Standard";
             this.rbDGVFilter_ByShipMethod_Standard.UseVisualStyleBackColor = true;
+            this.rbDGVFilter_ByShipMethod_Standard.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_DeliveryOption);
             // 
             // MainForm
             // 

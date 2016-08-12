@@ -1,9 +1,10 @@
 ﻿namespace MandCo.Applications.DispatchSLAReport.Interfaces
 {
-    using System.Data;
+    using System;
+using System.Data;
 
     public interface IExcelHandler
     {
-        void writeToExcel(DataTable dt);
+        void writeToExcel(DataTable dt, DateTime dateFrom, DateTime dateTo);
     }
 }

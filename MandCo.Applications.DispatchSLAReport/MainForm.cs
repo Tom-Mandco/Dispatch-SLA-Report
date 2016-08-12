@@ -94,9 +94,21 @@
                 app.FilterDGV(dgvDetailBreakdown, "All");
         }
 
+        private void ApplyDGVFilter_DeliveryOption(object sender, EventArgs e)
+        {
+            if (rbDGVFilter_ByShipMethod_Express.Checked)
+                app.FilterDGV_ByDeliveryOption(dgvDetailBreakdown, "Express");
+            else if (rbDGVFilter_ByShipMethod_Standard.Checked)
+                app.FilterDGV_ByDeliveryOption(dgvDetailBreakdown, "Standard");
+            else
+                app.FilterDGV_ByDeliveryOption(dgvDetailBreakdown, "All");
+        }
+
         private void btnCustPrintReport_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             app.ExportCleanReport_CustomTimeFrame_ToExcel(this);
+            Cursor.Current = Cursors.Default;
         }
 
         private void cbUseCutoffTimes_CheckedChanged(object sender, EventArgs e)
@@ -106,12 +118,16 @@
 
         private void btnLast24HrsPrintReport_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             app.ExportCleanReport_24Hrs_ToExcel();
+            Cursor.Current = Cursors.Default;
         }
 
         private void btnExportCurrentScreenToExcel_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             app.ExportDGV_ToExcel(this);
+            Cursor.Current = Cursors.Default;
         }
     }
 }
