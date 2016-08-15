@@ -92,7 +92,15 @@
                 updatedConfigInto.Store_SLA_Percentage_High = storeHigh;
                 updatedConfigInto.Store_SLA_Percentage_Low = storeLow;
 
-                app.UpdateConfigInformation(updatedConfigInto);
+                try
+                {
+                    app.UpdateConfigInformation(updatedConfigInto);
+                }
+                catch(Exception ex)
+                {
+                    logger.Error(ex.Message);
+                    logger.Error(ex.StackTrace);
+                }
             }
         }
 

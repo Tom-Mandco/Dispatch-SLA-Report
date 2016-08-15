@@ -41,11 +41,11 @@
   <ItemGroup>
     <Compile Include="Classes\DataAdapter.cs" />
     <Compile Include="Classes\DataTableFactory.cs" />
-    <Compile Include="Classes\PerformInsert.cs" />
+    <Compile Include="Classes\PerformUpdate.cs" />
     <Compile Include="Classes\PerformLookup.cs" />
     <Compile Include="Interfaces\IAdaptData.cs" />
     <Compile Include="Interfaces\IDataTableFactory.cs" />
-    <Compile Include="Interfaces\IPerformInsert.cs" />
+    <Compile Include="Interfaces\IPerformUpdate.cs" />
     <Compile Include="Interfaces\IPerformLookup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

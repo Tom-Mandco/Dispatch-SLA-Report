@@ -7,8 +7,10 @@
     {
         public static string GetSql(string fileName)
         {
-            var filePath = string.Format(@"{0}\Sql\{1}.sql", AppDomain.CurrentDomain.BaseDirectory, fileName);
-            return File.ReadAllText(filePath);
+            var sqlFolder = System.Configuration.ConfigurationManager.AppSettings["SqlDirectory"];
+            var sqlFileLocation = string.Format("{0}{1}.sql", sqlFolder, fileName);
+            var sql = File.ReadAllText(sqlFileLocation);
+            return sql;
         }
     }
 }

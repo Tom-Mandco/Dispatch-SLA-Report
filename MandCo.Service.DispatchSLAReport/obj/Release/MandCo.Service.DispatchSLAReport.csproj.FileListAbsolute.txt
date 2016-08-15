@@ -9,4 +9,3 @@ F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\Mand
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\MandCo.Data.DispatchSLAReport.pdb
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\obj\Release\MandCo.Service.DispatchSLAReport.dll
 F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\obj\Release\MandCo.Service.DispatchSLAReport.pdb
-F:\dev\Git\Dispatch-SLA-Report\MandCo.Service.DispatchSLAReport\bin\Release\MandCo.Data.pdb

@@ -130,6 +130,34 @@
             return result;
         }
 
+        public string[] ReturnUpdatedConfigData_ToArray(Config_Information updatedConfigInfo)
+        {
+            List<string> result = new List<string>();
+
+            result.Add(updatedConfigInfo.Express_SLA_Time.TimeOfDay.ToString());
+            result.Add(updatedConfigInfo.Express_Cutoff_Time.TimeOfDay.ToString());
+            result.Add(updatedConfigInfo.Express_SLA_Percentage_High.ToString());
+            result.Add(updatedConfigInfo.Express_SLA_Percentage_Low.ToString());
+
+            result.Add(updatedConfigInfo.International_SLA_Time.TimeOfDay.ToString());
+            result.Add(updatedConfigInfo.International_Cutoff_Time.TimeOfDay.ToString());
+            result.Add(updatedConfigInfo.International_SLA_Percentage_High.ToString());
+            result.Add(updatedConfigInfo.International_SLA_Percentage_Low.ToString());
+
+            result.Add(updatedConfigInfo.Standard_SLA_Time.TimeOfDay.ToString());
+            result.Add(updatedConfigInfo.Standard_Cutoff_Time.TimeOfDay.ToString());
+            result.Add(updatedConfigInfo.Standard_SLA_Percentage_High.ToString());
+            result.Add(updatedConfigInfo.Standard_SLA_Percentage_Low.ToString());
+
+            result.Add(updatedConfigInfo.Store_SLA_Time.TimeOfDay.ToString());
+            result.Add(updatedConfigInfo.Store_Cutoff_Time.TimeOfDay.ToString());
+            result.Add(updatedConfigInfo.Store_SLA_Percentage_High.ToString());
+            result.Add(updatedConfigInfo.Store_SLA_Percentage_Low.ToString());
+
+            return result.ToArray();
+        }
+        
+
         private TimeSpan GetTimeDifference_ToTimeSpan(DateTime timeFrom, DateTime timeTo)
         {
             return timeTo - timeFrom;

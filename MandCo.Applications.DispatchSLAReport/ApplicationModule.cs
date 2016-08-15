@@ -38,6 +38,7 @@
             Bind(typeof(IPopulateDataTables)).To(typeof(PopulateDataTable));
             Bind(typeof(IRepository)).To(typeof(OracleRepository)).InSingletonScope().WithConstructorArgument("connectionString", connectionString);
             Bind(typeof(IPerformLookup)).To(typeof(PerformLookup));
+            Bind(typeof(IPerformUpdate)).To(typeof(PerformUpdate));
             Bind(typeof(IDataTableFactory)).To(typeof(DataTableFactory));
             Bind(typeof(IHandleCalculations)).To(typeof(CalculationHandler));
             Bind(typeof(IAdaptData)).To(typeof(DataAdapter));

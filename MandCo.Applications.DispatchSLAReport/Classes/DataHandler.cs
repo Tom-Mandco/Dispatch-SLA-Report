@@ -14,16 +14,18 @@
         private readonly ILog logger;
         private readonly IPopulateDataTables dataTablePopulator;
         private readonly IPerformLookup performLookup;
+        private readonly IPerformUpdate performUpdate;
         private readonly IHandleCalculations caclulationHandler;
         private readonly IDataFilter dataFilter;
         private readonly IFilterDataGridViews dataGridViewFilter;
 
-        public DataHandler(ILog logger, IPerformLookup performLookup, IPopulateDataTables dataTablePopulator,
+        public DataHandler(ILog logger, IPerformLookup performLookup, IPerformUpdate performUpdate, IPopulateDataTables dataTablePopulator,
                             IHandleCalculations calculationHandler, IDataFilter dataFilter, IFilterDataGridViews dataGridViewFilter)
         {
             this.logger = logger;
             this.dataTablePopulator = dataTablePopulator;
             this.performLookup = performLookup;
+            this.performUpdate = performUpdate;
             this.caclulationHandler = calculationHandler;
             this.dataFilter = dataFilter;
             this.dataGridViewFilter = dataGridViewFilter;
@@ -73,7 +75,7 @@
         #region Updated Data
         public void UpdateConfigInformation(Config_Information updatedConfigInfo)
         {
-
+            performUpdate.UpdateConfigInformation(updatedConfigInfo);
         }
         #endregion
 
