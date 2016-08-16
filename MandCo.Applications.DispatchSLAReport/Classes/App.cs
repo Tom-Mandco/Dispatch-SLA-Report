@@ -35,12 +35,6 @@
                 IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(mainForm.dtpReportFrom.Value, mainForm.dtpReportTo.Value);
                 BindCustomDisplayData_ToForm(mainForm, slaReportDetails);
 
-                if (mainForm.dtpReportTo.Value >= DateTime.Now.AddDays(-1))
-                {
-                    IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails24Hours = dataHandler.FilterDateRangeFromSLADetails(slaReportDetails, DateTime.Now.AddDays(-1), DateTime.Now);
-                    Bind24HrDisplayData_ToForm(mainForm, slaReportDetails24Hours);
-                }
-
                 #region Apply DataTable to DataGridView
                 detailBreakDownDT = dataHandler.BindSLAData_ToDataTable(slaReportDetails);
                 BindDataToDGV(mainForm, detailBreakDownDT);
@@ -59,7 +53,7 @@
             {
                 IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(DateTime.Now.AddDays(-1), DateTime.Now);
 
-                mainForm.lblDGVHeader.Text = string.Format("{0: dd MMM yy HH:mm:ss} - {1: dd MMM yy HH:mm:ss}",
+                mainForm.lblDGVHeader.Text = string.Format("Data from cut off on : {0: dd MMM yy} until {1: dd MMM yy HH:mm:ss}",
                                                 DateTime.Now.AddDays(-1),
                                                 DateTime.Now);
 
@@ -146,10 +140,6 @@
         private void Bind24HrDisplayData_ToForm(MainForm mainForm, IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails)
         {
             Config_Information configInfo = dataHandler.GetConfigInformation();
-
-            #region Filter Cutoff Times
-            IEnumerable<Cleansed_SLA_Report_Details> filteredSLAReportDetails = dataHandler.FilterCutOffTimes(slaReportDetails, configInfo, DateTime.Now.AddDays(-1));
-            #endregion
 
             DisplayData displayData = dataHandler.BindSLAData_ToDisplayData(slaReportDetails);
             List<Label> labels = new List<Label>();

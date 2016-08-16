@@ -12,10 +12,13 @@
         {
             List<Cleansed_SLA_Report_Details> list = new List<Cleansed_SLA_Report_Details>();
             Cleansed_SLA_Report_Details cleansedLine;
+            DateTime orderDate;
 
             foreach (var detail in fullSLADetails)
             {
-                if (detail.Order_Date >= dateFrom && detail.Order_Date <= dateTo)
+                orderDate = (detail.Released_Date.Year == 1 ? detail.Order_Date : detail.Released_Date);
+
+                if ((orderDate >= dateFrom) && (orderDate <= dateTo))
                 {
                     cleansedLine = new Cleansed_SLA_Report_Details();
                     cleansedLine.Order_Number = detail.Order_Number;
@@ -38,34 +41,44 @@
             return result;
         }
 
-        public IEnumerable<Cleansed_SLA_Report_Details> FilterCutOffTimes(IEnumerable<Cleansed_SLA_Report_Details> fullSLADetails, Config_Information configInfo, DateTime lastDate)
+        public IEnumerable<Cleansed_SLA_Report_Details> FilterCutOffTimes(IEnumerable<Cleansed_SLA_Report_Details> fullSLADetails, Config_Information configInfo, DateTime lastDate, DateTime toDate)
         {
             List<Cleansed_SLA_Report_Details> list = new List<Cleansed_SLA_Report_Details>();
             Cleansed_SLA_Report_Details cleansedLine;
 
-            DateTime CutOffTime = lastDate.Date;
+            DateTime fromCutOffTime = lastDate.Date;
+            DateTime toCutOffTime = toDate.Date;
+            DateTime orderDate;
 
             foreach (var detail in fullSLADetails)
             {
+                fromCutOffTime = lastDate.Date;
+                toCutOffTime = toDate.Date;
+
                 if (detail.Delivery_Option == "Express")
                 {
-                    CutOffTime += configInfo.Express_Cutoff_Time.TimeOfDay;
+                    fromCutOffTime += configInfo.Express_Cutoff_Time.TimeOfDay;
+                    toCutOffTime += configInfo.Express_Cutoff_Time.TimeOfDay;
                 }
                 else if (detail.Ship_Method == "Standard")
                 {
-                    CutOffTime += configInfo.Standard_Cutoff_Time.TimeOfDay;
+                    fromCutOffTime += configInfo.Standard_Cutoff_Time.TimeOfDay;
+                    toCutOffTime += configInfo.Standard_Cutoff_Time.TimeOfDay;
                 }
                 else if (detail.Ship_Method == "Store")
                 {
-                    CutOffTime += configInfo.Store_Cutoff_Time.TimeOfDay;
+                    fromCutOffTime += configInfo.Store_Cutoff_Time.TimeOfDay;
+                    toCutOffTime += configInfo.Store_Cutoff_Time.TimeOfDay;
                 }
                 else if (detail.Ship_Method == "International")
                 {
-                    CutOffTime += configInfo.International_Cutoff_Time.TimeOfDay;
+                    fromCutOffTime += configInfo.International_Cutoff_Time.TimeOfDay;
+                    toCutOffTime += configInfo.International_Cutoff_Time.TimeOfDay;
                 }
                 
+                orderDate = (detail.Released_Date.Year == 1 ? detail.Order_Date : detail.Released_Date);
 
-                if (detail.Order_Date >= CutOffTime)
+                if ((orderDate >= fromCutOffTime) && (orderDate <= toCutOffTime))
                 {
                     cleansedLine = new Cleansed_SLA_Report_Details();
                     cleansedLine.Order_Number = detail.Order_Number;

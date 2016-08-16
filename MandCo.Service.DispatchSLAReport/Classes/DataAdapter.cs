@@ -166,13 +166,23 @@
         private bool CalculateSLAMet(Config_Information configInfo, Cleansed_SLA_Report_Details cleansedLine)
         {
             bool result = false;
+            if(cleansedLine.Order_Number.StartsWith("EA"))
+            {
+                result = false;
+            }
+            TimeSpan expressSundayExtraTime = new TimeSpan(0,0,0);
+            DateTime orderDate = (cleansedLine.Released_Date.Year == 1 ? cleansedLine.Date_Imported : cleansedLine.Released_Date);
             DateTime cutOffDeadline = configInfo.Standard_Cutoff_Time;
             DateTime slaDeadline = configInfo.Standard_SLA_Time;
 
-            if (cleansedLine.Delivery_Option == "Express")
+            bool isWeekend = CheckForWeekend(orderDate, configInfo);
+
+            if (cleansedLine.Delivery_Option == "Express" && !isWeekend)
             {
                 cutOffDeadline = configInfo.Express_Cutoff_Time;
                 slaDeadline = configInfo.Express_SLA_Time;
+                if (orderDate.DayOfWeek == DayOfWeek.Sunday && (orderDate.TimeOfDay >= configInfo.Standard_Cutoff_Time.TimeOfDay && orderDate.TimeOfDay <= configInfo.Express_Cutoff_Time.TimeOfDay))
+                    expressSundayExtraTime = (configInfo.Standard_Cutoff_Time.TimeOfDay - configInfo.Express_SLA_Time.TimeOfDay);
             }
             else
             {
@@ -191,8 +201,9 @@
 
             DateTime shipDate = (cleansedLine.Ship_Date.Year == 1 ? DateTime.Now : cleansedLine.Ship_Date);
 
-            TimeSpan alottedTime = CalculateAlottedTime(cleansedLine.Released_Date, cutOffDeadline, slaDeadline);
-            TimeSpan timeTaken = GetTimeDifference_ToTimeSpan(cleansedLine.Released_Date, shipDate);
+            TimeSpan alottedTime = CalculateAlottedTime(orderDate, cutOffDeadline, slaDeadline);
+            alottedTime = alottedTime.Add(expressSundayExtraTime);
+            TimeSpan timeTaken = GetTimeDifference_ToTimeSpan(orderDate, shipDate);
 
             result = (alottedTime > timeTaken ? true : false);
 
@@ -202,12 +213,32 @@
         private TimeSpan CalculateAlottedTime(DateTime dateOrdered, DateTime cutOffDeadline, DateTime slaDeadline)
         {
             TimeSpan result;
-            TimeSpan additionalTime = TimeSpan.FromHours(24);
 
             result = slaDeadline.TimeOfDay - dateOrdered.TimeOfDay;
 
             if (dateOrdered.TimeOfDay > cutOffDeadline.TimeOfDay)
                 result = new TimeSpan(1,result.Hours,result.Minutes,result.Seconds);
+
+            return result;
+        }
+
+        private bool CheckForWeekend(DateTime date, Config_Information configInfo)
+        {
+            bool result = false;
+
+            if (date.DayOfWeek == DayOfWeek.Friday && date.TimeOfDay >= configInfo.Express_Cutoff_Time.TimeOfDay)
+                result = true;
+            else if (date.DayOfWeek == DayOfWeek.Saturday)
+                result = true;
+            else if (date.DayOfWeek == DayOfWeek.Sunday && date.TimeOfDay <= configInfo.Standard_Cutoff_Time.TimeOfDay)
+                result = true;
+                
+
+
+                
+                    
+
+
 
             return result;
         }

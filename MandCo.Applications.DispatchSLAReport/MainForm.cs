@@ -29,6 +29,7 @@
             try
             {
                 dtpReportFrom.Value = DateTime.Now.AddDays(-7);
+                app.SetDataSourceToLast24Hours(this);
                 app.SetDataSourceToCustomTimeFrame(this);
             }
             catch(Exception ex)
@@ -85,7 +86,7 @@
         private void ApplyDGVFilter_ShipDestination(object sender, EventArgs e)
         {
             if (rbExtendedDetail_Standard.Checked)
-                app.FilterDGV(dgvDetailBreakdown, "Standard");
+                app.FilterDGV(dgvDetailBreakdown, "Home");
             else if (rbExtendedDetail_International.Checked)
                 app.FilterDGV(dgvDetailBreakdown, "International");
             else if (rbExtendedDetail_Store.Checked)
@@ -111,11 +112,6 @@
             Cursor.Current = Cursors.Default;
         }
 
-        private void cbUseCutoffTimes_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnLast24HrsPrintReport_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -128,6 +124,11 @@
             Cursor.Current = Cursors.WaitCursor;
             app.ExportDGV_ToExcel(this);
             Cursor.Current = Cursors.Default;
+        }
+
+        private void cbUseCutoffTimes_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

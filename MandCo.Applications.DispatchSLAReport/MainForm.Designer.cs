@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbLast24Hrs = new System.Windows.Forms.GroupBox();
             this.lbl24HrsStoreSLADtlPct = new System.Windows.Forms.Label();
             this.lbl24HrsStandardSLADtlPct = new System.Windows.Forms.Label();
@@ -58,8 +58,14 @@
             this.btnOpenConfigSettings = new System.Windows.Forms.Button();
             this.btnReportCustomDateRange = new System.Windows.Forms.Button();
             this.pnExtendedDetail = new System.Windows.Forms.Panel();
-            this.cbUseCutoffTimes = new System.Windows.Forms.CheckBox();
+            this.pnDGVFilter_ByShipMethod = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.rbDGVFilter_ByShipMethod_Express = new System.Windows.Forms.RadioButton();
+            this.rbDGVFilter_ByShipMethod_All = new System.Windows.Forms.RadioButton();
+            this.rbDGVFilter_ByShipMethod_Standard = new System.Windows.Forms.RadioButton();
+            this.btnExportCurrentScreenToExcel = new System.Windows.Forms.Button();
             this.pnDestinationFilter = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.rbExtendedDetail_Store = new System.Windows.Forms.RadioButton();
             this.rbExtendedDetailFilter_All = new System.Windows.Forms.RadioButton();
             this.rbExtendedDetail_International = new System.Windows.Forms.RadioButton();
@@ -99,16 +105,10 @@
             this.lblReportTo = new System.Windows.Forms.Label();
             this.lblReportFrom = new System.Windows.Forms.Label();
             this.dtpReportFrom = new System.Windows.Forms.DateTimePicker();
-            this.btnExportCurrentScreenToExcel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pnDGVFilter_ByShipMethod = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.rbDGVFilter_ByShipMethod_Express = new System.Windows.Forms.RadioButton();
-            this.rbDGVFilter_ByShipMethod_All = new System.Windows.Forms.RadioButton();
-            this.rbDGVFilter_ByShipMethod_Standard = new System.Windows.Forms.RadioButton();
             this.gbLast24Hrs.SuspendLayout();
             this.gbCustomSLAStats.SuspendLayout();
             this.pnExtendedDetail.SuspendLayout();
+            this.pnDGVFilter_ByShipMethod.SuspendLayout();
             this.pnDestinationFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailBreakdown)).BeginInit();
             this.pnSLACriteriaMetKey.SuspendLayout();
@@ -117,7 +117,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbTopCriteriaMetKey)).BeginInit();
             this.pnOrderTotalsWithinSpecifiedTimeFrame.SuspendLayout();
             this.gbCustomDateRange.SuspendLayout();
-            this.pnDGVFilter_ByShipMethod.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbLast24Hrs
@@ -390,7 +389,7 @@
             this.btnOpenConfigSettings.Name = "btnOpenConfigSettings";
             this.btnOpenConfigSettings.Size = new System.Drawing.Size(285, 23);
             this.btnOpenConfigSettings.TabIndex = 1;
-            this.btnOpenConfigSettings.Text = "Meddle with ye olde conflagration";
+            this.btnOpenConfigSettings.Text = "Configuration Options";
             this.btnOpenConfigSettings.UseVisualStyleBackColor = true;
             this.btnOpenConfigSettings.Click += new System.EventHandler(this.btnOpenConfigSettings_Click);
             // 
@@ -408,7 +407,6 @@
             // 
             this.pnExtendedDetail.Controls.Add(this.pnDGVFilter_ByShipMethod);
             this.pnExtendedDetail.Controls.Add(this.btnExportCurrentScreenToExcel);
-            this.pnExtendedDetail.Controls.Add(this.cbUseCutoffTimes);
             this.pnExtendedDetail.Controls.Add(this.pnDestinationFilter);
             this.pnExtendedDetail.Controls.Add(this.dgvDetailBreakdown);
             this.pnExtendedDetail.Controls.Add(this.lblDGVHeader);
@@ -418,17 +416,70 @@
             this.pnExtendedDetail.Size = new System.Drawing.Size(1081, 382);
             this.pnExtendedDetail.TabIndex = 2;
             // 
-            // cbUseCutoffTimes
+            // pnDGVFilter_ByShipMethod
             // 
-            this.cbUseCutoffTimes.AutoSize = true;
-            this.cbUseCutoffTimes.Location = new System.Drawing.Point(6, 79);
-            this.cbUseCutoffTimes.Name = "cbUseCutoffTimes";
-            this.cbUseCutoffTimes.Size = new System.Drawing.Size(119, 17);
-            this.cbUseCutoffTimes.TabIndex = 29;
-            this.cbUseCutoffTimes.Text = "Filter by cutoff times";
-            this.cbUseCutoffTimes.UseVisualStyleBackColor = true;
-            this.cbUseCutoffTimes.Visible = false;
-            this.cbUseCutoffTimes.CheckedChanged += new System.EventHandler(this.cbUseCutoffTimes_CheckedChanged);
+            this.pnDGVFilter_ByShipMethod.Controls.Add(this.label2);
+            this.pnDGVFilter_ByShipMethod.Controls.Add(this.rbDGVFilter_ByShipMethod_Express);
+            this.pnDGVFilter_ByShipMethod.Controls.Add(this.rbDGVFilter_ByShipMethod_All);
+            this.pnDGVFilter_ByShipMethod.Controls.Add(this.rbDGVFilter_ByShipMethod_Standard);
+            this.pnDGVFilter_ByShipMethod.Location = new System.Drawing.Point(361, 6);
+            this.pnDGVFilter_ByShipMethod.Name = "pnDGVFilter_ByShipMethod";
+            this.pnDGVFilter_ByShipMethod.Size = new System.Drawing.Size(148, 65);
+            this.pnDGVFilter_ByShipMethod.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(21, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Filter by Ship Method";
+            // 
+            // rbDGVFilter_ByShipMethod_Express
+            // 
+            this.rbDGVFilter_ByShipMethod_Express.AutoSize = true;
+            this.rbDGVFilter_ByShipMethod_Express.Location = new System.Drawing.Point(3, 44);
+            this.rbDGVFilter_ByShipMethod_Express.Name = "rbDGVFilter_ByShipMethod_Express";
+            this.rbDGVFilter_ByShipMethod_Express.Size = new System.Drawing.Size(62, 17);
+            this.rbDGVFilter_ByShipMethod_Express.TabIndex = 3;
+            this.rbDGVFilter_ByShipMethod_Express.Text = "Express";
+            this.rbDGVFilter_ByShipMethod_Express.UseVisualStyleBackColor = true;
+            this.rbDGVFilter_ByShipMethod_Express.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_DeliveryOption);
+            // 
+            // rbDGVFilter_ByShipMethod_All
+            // 
+            this.rbDGVFilter_ByShipMethod_All.AutoSize = true;
+            this.rbDGVFilter_ByShipMethod_All.Checked = true;
+            this.rbDGVFilter_ByShipMethod_All.Location = new System.Drawing.Point(3, 25);
+            this.rbDGVFilter_ByShipMethod_All.Name = "rbDGVFilter_ByShipMethod_All";
+            this.rbDGVFilter_ByShipMethod_All.Size = new System.Drawing.Size(36, 17);
+            this.rbDGVFilter_ByShipMethod_All.TabIndex = 2;
+            this.rbDGVFilter_ByShipMethod_All.TabStop = true;
+            this.rbDGVFilter_ByShipMethod_All.Text = "All";
+            this.rbDGVFilter_ByShipMethod_All.UseVisualStyleBackColor = true;
+            this.rbDGVFilter_ByShipMethod_All.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_DeliveryOption);
+            // 
+            // rbDGVFilter_ByShipMethod_Standard
+            // 
+            this.rbDGVFilter_ByShipMethod_Standard.AutoSize = true;
+            this.rbDGVFilter_ByShipMethod_Standard.Location = new System.Drawing.Point(75, 44);
+            this.rbDGVFilter_ByShipMethod_Standard.Name = "rbDGVFilter_ByShipMethod_Standard";
+            this.rbDGVFilter_ByShipMethod_Standard.Size = new System.Drawing.Size(68, 17);
+            this.rbDGVFilter_ByShipMethod_Standard.TabIndex = 6;
+            this.rbDGVFilter_ByShipMethod_Standard.Text = "Standard";
+            this.rbDGVFilter_ByShipMethod_Standard.UseVisualStyleBackColor = true;
+            this.rbDGVFilter_ByShipMethod_Standard.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_DeliveryOption);
+            // 
+            // btnExportCurrentScreenToExcel
+            // 
+            this.btnExportCurrentScreenToExcel.Location = new System.Drawing.Point(951, 79);
+            this.btnExportCurrentScreenToExcel.Name = "btnExportCurrentScreenToExcel";
+            this.btnExportCurrentScreenToExcel.Size = new System.Drawing.Size(131, 23);
+            this.btnExportCurrentScreenToExcel.TabIndex = 30;
+            this.btnExportCurrentScreenToExcel.Text = "Export To Excel";
+            this.btnExportCurrentScreenToExcel.UseVisualStyleBackColor = true;
+            this.btnExportCurrentScreenToExcel.Click += new System.EventHandler(this.btnExportCurrentScreenToExcel_Click);
             // 
             // pnDestinationFilter
             // 
@@ -441,6 +492,15 @@
             this.pnDestinationFilter.Name = "pnDestinationFilter";
             this.pnDestinationFilter.Size = new System.Drawing.Size(148, 65);
             this.pnDestinationFilter.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Filter by Destination";
             // 
             // rbExtendedDetail_Store
             // 
@@ -482,9 +542,9 @@
             this.rbExtendedDetail_Standard.AutoSize = true;
             this.rbExtendedDetail_Standard.Location = new System.Drawing.Point(59, 25);
             this.rbExtendedDetail_Standard.Name = "rbExtendedDetail_Standard";
-            this.rbExtendedDetail_Standard.Size = new System.Drawing.Size(68, 17);
+            this.rbExtendedDetail_Standard.Size = new System.Drawing.Size(53, 17);
             this.rbExtendedDetail_Standard.TabIndex = 5;
-            this.rbExtendedDetail_Standard.Text = "Standard";
+            this.rbExtendedDetail_Standard.Text = "Home";
             this.rbExtendedDetail_Standard.UseVisualStyleBackColor = true;
             this.rbExtendedDetail_Standard.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_ShipDestination);
             // 
@@ -495,14 +555,14 @@
             this.dgvDetailBreakdown.AllowUserToOrderColumns = true;
             this.dgvDetailBreakdown.AllowUserToResizeColumns = false;
             this.dgvDetailBreakdown.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetailBreakdown.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetailBreakdown.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDetailBreakdown.ColumnHeadersHeight = 25;
             this.dgvDetailBreakdown.Location = new System.Drawing.Point(6, 102);
             this.dgvDetailBreakdown.Name = "dgvDetailBreakdown";
@@ -812,12 +872,13 @@
             // 
             // dtpReportTo
             // 
-            this.dtpReportTo.CustomFormat = "dd MMM yyyy  HH:mm:ss";
+            this.dtpReportTo.CustomFormat = "dd MMM yyyy";
             this.dtpReportTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpReportTo.Location = new System.Drawing.Point(6, 119);
             this.dtpReportTo.Name = "dtpReportTo";
             this.dtpReportTo.Size = new System.Drawing.Size(203, 20);
             this.dtpReportTo.TabIndex = 28;
+            this.dtpReportTo.Value = new System.DateTime(2016, 8, 16, 0, 0, 0, 0);
             // 
             // lblReportTo
             // 
@@ -839,86 +900,13 @@
             // 
             // dtpReportFrom
             // 
-            this.dtpReportFrom.CustomFormat = "dd MMM yyyy  HH:mm:ss";
+            this.dtpReportFrom.CustomFormat = "dd MMM yyyy";
             this.dtpReportFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpReportFrom.Location = new System.Drawing.Point(6, 54);
             this.dtpReportFrom.Name = "dtpReportFrom";
             this.dtpReportFrom.Size = new System.Drawing.Size(203, 20);
             this.dtpReportFrom.TabIndex = 25;
-            // 
-            // btnExportCurrentScreenToExcel
-            // 
-            this.btnExportCurrentScreenToExcel.Location = new System.Drawing.Point(951, 79);
-            this.btnExportCurrentScreenToExcel.Name = "btnExportCurrentScreenToExcel";
-            this.btnExportCurrentScreenToExcel.Size = new System.Drawing.Size(131, 23);
-            this.btnExportCurrentScreenToExcel.TabIndex = 30;
-            this.btnExportCurrentScreenToExcel.Text = "Export To Excel";
-            this.btnExportCurrentScreenToExcel.UseVisualStyleBackColor = true;
-            this.btnExportCurrentScreenToExcel.Click += new System.EventHandler(this.btnExportCurrentScreenToExcel_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Filter by Destination";
-            // 
-            // pnDGVFilter_ByShipMethod
-            // 
-            this.pnDGVFilter_ByShipMethod.Controls.Add(this.label2);
-            this.pnDGVFilter_ByShipMethod.Controls.Add(this.rbDGVFilter_ByShipMethod_Express);
-            this.pnDGVFilter_ByShipMethod.Controls.Add(this.rbDGVFilter_ByShipMethod_All);
-            this.pnDGVFilter_ByShipMethod.Controls.Add(this.rbDGVFilter_ByShipMethod_Standard);
-            this.pnDGVFilter_ByShipMethod.Location = new System.Drawing.Point(361, 6);
-            this.pnDGVFilter_ByShipMethod.Name = "pnDGVFilter_ByShipMethod";
-            this.pnDGVFilter_ByShipMethod.Size = new System.Drawing.Size(148, 65);
-            this.pnDGVFilter_ByShipMethod.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 4);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Filter by Ship Method";
-            // 
-            // rbDGVFilter_ByShipMethod_Express
-            // 
-            this.rbDGVFilter_ByShipMethod_Express.AutoSize = true;
-            this.rbDGVFilter_ByShipMethod_Express.Location = new System.Drawing.Point(3, 44);
-            this.rbDGVFilter_ByShipMethod_Express.Name = "rbDGVFilter_ByShipMethod_Express";
-            this.rbDGVFilter_ByShipMethod_Express.Size = new System.Drawing.Size(62, 17);
-            this.rbDGVFilter_ByShipMethod_Express.TabIndex = 3;
-            this.rbDGVFilter_ByShipMethod_Express.Text = "Express";
-            this.rbDGVFilter_ByShipMethod_Express.UseVisualStyleBackColor = true;
-            this.rbDGVFilter_ByShipMethod_Express.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_DeliveryOption);
-            // 
-            // rbDGVFilter_ByShipMethod_All
-            // 
-            this.rbDGVFilter_ByShipMethod_All.AutoSize = true;
-            this.rbDGVFilter_ByShipMethod_All.Checked = true;
-            this.rbDGVFilter_ByShipMethod_All.Location = new System.Drawing.Point(3, 25);
-            this.rbDGVFilter_ByShipMethod_All.Name = "rbDGVFilter_ByShipMethod_All";
-            this.rbDGVFilter_ByShipMethod_All.Size = new System.Drawing.Size(36, 17);
-            this.rbDGVFilter_ByShipMethod_All.TabIndex = 2;
-            this.rbDGVFilter_ByShipMethod_All.TabStop = true;
-            this.rbDGVFilter_ByShipMethod_All.Text = "All";
-            this.rbDGVFilter_ByShipMethod_All.UseVisualStyleBackColor = true;
-            this.rbDGVFilter_ByShipMethod_All.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_DeliveryOption);
-            // 
-            // rbDGVFilter_ByShipMethod_Standard
-            // 
-            this.rbDGVFilter_ByShipMethod_Standard.AutoSize = true;
-            this.rbDGVFilter_ByShipMethod_Standard.Location = new System.Drawing.Point(75, 44);
-            this.rbDGVFilter_ByShipMethod_Standard.Name = "rbDGVFilter_ByShipMethod_Standard";
-            this.rbDGVFilter_ByShipMethod_Standard.Size = new System.Drawing.Size(68, 17);
-            this.rbDGVFilter_ByShipMethod_Standard.TabIndex = 6;
-            this.rbDGVFilter_ByShipMethod_Standard.Text = "Standard";
-            this.rbDGVFilter_ByShipMethod_Standard.UseVisualStyleBackColor = true;
-            this.rbDGVFilter_ByShipMethod_Standard.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_DeliveryOption);
+            this.dtpReportFrom.Value = new System.DateTime(2016, 8, 16, 0, 0, 0, 0);
             // 
             // MainForm
             // 
@@ -940,6 +928,8 @@
             this.gbCustomSLAStats.PerformLayout();
             this.pnExtendedDetail.ResumeLayout(false);
             this.pnExtendedDetail.PerformLayout();
+            this.pnDGVFilter_ByShipMethod.ResumeLayout(false);
+            this.pnDGVFilter_ByShipMethod.PerformLayout();
             this.pnDestinationFilter.ResumeLayout(false);
             this.pnDestinationFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailBreakdown)).EndInit();
@@ -952,8 +942,6 @@
             this.pnOrderTotalsWithinSpecifiedTimeFrame.PerformLayout();
             this.gbCustomDateRange.ResumeLayout(false);
             this.gbCustomDateRange.PerformLayout();
-            this.pnDGVFilter_ByShipMethod.ResumeLayout(false);
-            this.pnDGVFilter_ByShipMethod.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1029,7 +1017,6 @@
         public System.Windows.Forms.GroupBox gbLast24Hrs;
         private System.Windows.Forms.Button btnOpenConfigSettings;
         public System.Windows.Forms.Label lblDGVHeader;
-        public System.Windows.Forms.CheckBox cbUseCutoffTimes;
         private System.Windows.Forms.Button btnExportCurrentScreenToExcel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnDGVFilter_ByShipMethod;

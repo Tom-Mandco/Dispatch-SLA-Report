@@ -38,9 +38,9 @@
             return dataFilter.FilterDateRangeFromSLADetails(fullSLADetails, dateFrom, dateTo);
         }
 
-        public IEnumerable<Cleansed_SLA_Report_Details> FilterCutOffTimes(IEnumerable<Cleansed_SLA_Report_Details> fullSLADetails, Config_Information configInfo, DateTime lastDate)
+        public IEnumerable<Cleansed_SLA_Report_Details> FilterCutOffTimes(IEnumerable<Cleansed_SLA_Report_Details> fullSLADetails, Config_Information configInfo, DateTime lastDate, DateTime toDate)
         {
-            return dataFilter.FilterCutOffTimes(fullSLADetails, configInfo, lastDate);
+            return dataFilter.FilterCutOffTimes(fullSLADetails, configInfo, lastDate, toDate);
         }
         #endregion
 
@@ -59,7 +59,9 @@
         #region Retrieve Data
         public IEnumerable<Cleansed_SLA_Report_Details> GetSLAReportDetails(DateTime fromDate, DateTime toDate)
         {
-            return performLookup.GetOrderDataFromSLATable(fromDate, toDate);
+            IEnumerable<Cleansed_SLA_Report_Details> preFilteredDetails = performLookup.GetOrderDataFromSLATable(fromDate, toDate);
+
+            return FilterCutOffTimes(preFilteredDetails, GetConfigInformation(), fromDate, toDate);
         }
 
         public Config_Information GetConfigInformation()
