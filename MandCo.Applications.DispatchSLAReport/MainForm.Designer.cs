@@ -445,7 +445,7 @@
             this.rbDGVFilter_ByShipMethod_Express.TabIndex = 3;
             this.rbDGVFilter_ByShipMethod_Express.Text = "Express";
             this.rbDGVFilter_ByShipMethod_Express.UseVisualStyleBackColor = true;
-            this.rbDGVFilter_ByShipMethod_Express.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_DeliveryOption);
+            this.rbDGVFilter_ByShipMethod_Express.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter);
             // 
             // rbDGVFilter_ByShipMethod_All
             // 
@@ -458,7 +458,7 @@
             this.rbDGVFilter_ByShipMethod_All.TabStop = true;
             this.rbDGVFilter_ByShipMethod_All.Text = "All";
             this.rbDGVFilter_ByShipMethod_All.UseVisualStyleBackColor = true;
-            this.rbDGVFilter_ByShipMethod_All.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_DeliveryOption);
+            this.rbDGVFilter_ByShipMethod_All.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter);
             // 
             // rbDGVFilter_ByShipMethod_Standard
             // 
@@ -469,7 +469,7 @@
             this.rbDGVFilter_ByShipMethod_Standard.TabIndex = 6;
             this.rbDGVFilter_ByShipMethod_Standard.Text = "Standard";
             this.rbDGVFilter_ByShipMethod_Standard.UseVisualStyleBackColor = true;
-            this.rbDGVFilter_ByShipMethod_Standard.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_DeliveryOption);
+            this.rbDGVFilter_ByShipMethod_Standard.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter);
             // 
             // btnExportCurrentScreenToExcel
             // 
@@ -511,7 +511,7 @@
             this.rbExtendedDetail_Store.TabIndex = 3;
             this.rbExtendedDetail_Store.Text = "Store";
             this.rbExtendedDetail_Store.UseVisualStyleBackColor = true;
-            this.rbExtendedDetail_Store.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_ShipDestination);
+            this.rbExtendedDetail_Store.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter);
             // 
             // rbExtendedDetailFilter_All
             // 
@@ -524,7 +524,7 @@
             this.rbExtendedDetailFilter_All.TabStop = true;
             this.rbExtendedDetailFilter_All.Text = "All";
             this.rbExtendedDetailFilter_All.UseVisualStyleBackColor = true;
-            this.rbExtendedDetailFilter_All.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_ShipDestination);
+            this.rbExtendedDetailFilter_All.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter);
             // 
             // rbExtendedDetail_International
             // 
@@ -535,7 +535,7 @@
             this.rbExtendedDetail_International.TabIndex = 6;
             this.rbExtendedDetail_International.Text = "International";
             this.rbExtendedDetail_International.UseVisualStyleBackColor = true;
-            this.rbExtendedDetail_International.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_ShipDestination);
+            this.rbExtendedDetail_International.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter);
             // 
             // rbExtendedDetail_Standard
             // 
@@ -546,7 +546,7 @@
             this.rbExtendedDetail_Standard.TabIndex = 5;
             this.rbExtendedDetail_Standard.Text = "Home";
             this.rbExtendedDetail_Standard.UseVisualStyleBackColor = true;
-            this.rbExtendedDetail_Standard.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter_ShipDestination);
+            this.rbExtendedDetail_Standard.CheckedChanged += new System.EventHandler(this.ApplyDGVFilter);
             // 
             // dgvDetailBreakdown
             // 

@@ -3,6 +3,7 @@
     using System;
     using System.Windows.Forms;
     using Interfaces;
+    using System.Collections.Generic;
 
     public partial class MainForm : Form
     {
@@ -29,6 +30,7 @@
             try
             {
                 dtpReportFrom.Value = DateTime.Now.AddDays(-7);
+                dtpReportTo.Value = DateTime.Now;
                 app.SetDataSourceToLast24Hours(this);
                 app.SetDataSourceToCustomTimeFrame(this);
             }
@@ -83,26 +85,32 @@
 
         }
 
-        private void ApplyDGVFilter_ShipDestination(object sender, EventArgs e)
+        private void ApplyDGVFilter(object sender, EventArgs e)
         {
-            if (rbExtendedDetail_Standard.Checked)
-                app.FilterDGV(dgvDetailBreakdown, "Home");
-            else if (rbExtendedDetail_International.Checked)
-                app.FilterDGV(dgvDetailBreakdown, "International");
-            else if (rbExtendedDetail_Store.Checked)
-                app.FilterDGV(dgvDetailBreakdown, "Store");
-            else
-                app.FilterDGV(dgvDetailBreakdown, "All");
-        }
+            List<RadioButton> shipDestinationRadioButtons = new List<RadioButton>();
+            shipDestinationRadioButtons.Add(rbExtendedDetailFilter_All);
+            shipDestinationRadioButtons.Add(rbExtendedDetail_Standard);
+            shipDestinationRadioButtons.Add(rbExtendedDetail_Store);
+            shipDestinationRadioButtons.Add(rbExtendedDetail_International);
 
-        private void ApplyDGVFilter_DeliveryOption(object sender, EventArgs e)
-        {
-            if (rbDGVFilter_ByShipMethod_Express.Checked)
-                app.FilterDGV_ByDeliveryOption(dgvDetailBreakdown, "Express");
-            else if (rbDGVFilter_ByShipMethod_Standard.Checked)
-                app.FilterDGV_ByDeliveryOption(dgvDetailBreakdown, "Standard");
-            else
-                app.FilterDGV_ByDeliveryOption(dgvDetailBreakdown, "All");
+            List<RadioButton> shipDeliveryTypeRadioButtons = new List<RadioButton>();
+            shipDeliveryTypeRadioButtons.Add(rbDGVFilter_ByShipMethod_All);
+            shipDeliveryTypeRadioButtons.Add(rbDGVFilter_ByShipMethod_Express);
+            shipDeliveryTypeRadioButtons.Add(rbDGVFilter_ByShipMethod_Standard);
+
+            foreach(RadioButton destinationRadioBtn in shipDestinationRadioButtons)
+            {
+                if(destinationRadioBtn.Checked)
+                {
+                    foreach (RadioButton deliveryRadioBtn in shipDeliveryTypeRadioButtons)
+                    {
+                        if(deliveryRadioBtn.Checked)
+                        {
+                            app.FilterDGV_ByDelivery(dgvDetailBreakdown, destinationRadioBtn.Text, deliveryRadioBtn.Text);
+                        }
+                    }
+                }
+            }
         }
 
         private void btnCustPrintReport_Click(object sender, EventArgs e)

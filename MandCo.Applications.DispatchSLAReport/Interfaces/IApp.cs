@@ -10,8 +10,7 @@
 
         Config_Information GetConfigInformation();
         void UpdateConfigInformation(Config_Information updatedConfigInfo);
-        void FilterDGV(DataGridView dgv, string shipMethod);
-        void FilterDGV_ByDeliveryOption(DataGridView dgv, string deliveryOption);
+        void FilterDGV_ByDelivery(DataGridView dgv, string shipMethod, string deliveryOption);
 
         void ExportDGV_ToExcel(MainForm mainForm);
         void ExportCleanReport_24Hrs_ToExcel();

@@ -53,8 +53,7 @@
             {
                 IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(DateTime.Now.AddDays(-1), DateTime.Now);
 
-                mainForm.lblDGVHeader.Text = string.Format("Data from cut off on : {0: dd MMM yy} until {1: dd MMM yy HH:mm:ss}",
-                                                DateTime.Now.AddDays(-1),
+                mainForm.lblDGVHeader.Text = string.Format("Real-time data correct as of {0: dd MMM yy HH:mm:ss}",
                                                 DateTime.Now);
 
                 Bind24HrDisplayData_ToForm(mainForm, slaReportDetails);
@@ -84,7 +83,7 @@
             mainForm.lblCustStandardSLADtlPct.Text = displayData.StandardOrdersSLAPct.ToString();
             mainForm.lblCustStoreSLADtlPct.Text = displayData.StoreOrdersSLAPct.ToString();
 
-            mainForm.gbCustomSLAStats.Text = string.Format("{0} - {1}",
+            mainForm.gbCustomSLAStats.Text = string.Format("{0: dd MMM yyyy} - {1: dd MMM yyyy}",
                                                             mainForm.dtpReportFrom.Value,
                                                             mainForm.dtpReportTo.Value);
 
@@ -151,7 +150,7 @@
             mainForm.lbl24HrsStandardSLADtlPct.Text = displayData.StandardOrdersSLAPct.ToString();
             mainForm.lbl24HrsStoreSLADtlPct.Text = displayData.StoreOrdersSLAPct.ToString();
 
-            mainForm.gbLast24Hrs.Text = "Statistics from cut off point on : " + DateTime.Now.AddDays(-1).ToLongDateString();
+            mainForm.gbLast24Hrs.Text = "Statistics from cut off point on " + DateTime.Now.AddDays(-1).ToLongDateString();
 
             labels.Add(mainForm.lbl24HrsStandardSLADtlPct);
             labels.Add(mainForm.lbl24HrsStoreSLADtlPct);
@@ -206,14 +205,9 @@
             mainForm.dgvDetailBreakdown.Refresh();
         }
 
-        public void FilterDGV(DataGridView dgv, string shipMethod)
+        public void FilterDGV_ByDelivery(DataGridView dgv, string shipMethod, string deliveryOption)
         {
-            dataHandler.FilterDataGrid_ByDestination(dgv, shipMethod);
-        }
-
-        public void FilterDGV_ByDeliveryOption(DataGridView dgv, string deliveryOption)
-        {
-            dataHandler.FilterDataGrid_ByDeliveryOption(dgv, deliveryOption);
+            dataHandler.FilterDataGrid_ByDelivery(dgv, shipMethod, deliveryOption);
         }
         #endregion
 

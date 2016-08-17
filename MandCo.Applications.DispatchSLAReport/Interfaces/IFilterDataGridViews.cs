@@ -4,7 +4,6 @@
 
     public interface IFilterDataGridViews
     {
-        void FilterDataGrid_ByDestination(DataGridView dgv, string shipMethod);
-        void FilterDataGrid_ByDeliveryOption(DataGridView dgv, string deliveryOption);
+        void FilterDataGrid_ByDelivery(DataGridView dgv, string shipMethod, string deliveryOption);
     }
 }

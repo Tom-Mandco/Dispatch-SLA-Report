@@ -166,58 +166,31 @@
         private bool CalculateSLAMet(Config_Information configInfo, Cleansed_SLA_Report_Details cleansedLine)
         {
             bool result = false;
-            if(cleansedLine.Order_Number.StartsWith("EA"))
+
+            if(cleansedLine.Order_Number == "2994716")
             {
                 result = false;
             }
-            TimeSpan expressSundayExtraTime = new TimeSpan(0,0,0);
+
             DateTime orderDate = (cleansedLine.Released_Date.Year == 1 ? cleansedLine.Date_Imported : cleansedLine.Released_Date);
-            DateTime cutOffDeadline = configInfo.Standard_Cutoff_Time;
-            DateTime slaDeadline = configInfo.Standard_SLA_Time;
+            DateTime shipDate = (cleansedLine.Ship_Date.Year == 1 ? DateTime.Now.AddDays(1) : cleansedLine.Ship_Date);
+            DateTime cutOffDeadline = CalculateCutOffTime(orderDate, configInfo, cleansedLine.Delivery_Option, cleansedLine.Ship_Method);
+            DateTime slaDeadline = CalculateSLATime(orderDate, configInfo, cleansedLine.Delivery_Option, cleansedLine.Ship_Method);
 
-            bool isWeekend = CheckForWeekend(orderDate, configInfo);
-
-            if (cleansedLine.Delivery_Option == "Express" && !isWeekend)
+            if (orderDate > cutOffDeadline)
             {
-                cutOffDeadline = configInfo.Express_Cutoff_Time;
-                slaDeadline = configInfo.Express_SLA_Time;
-                if (orderDate.DayOfWeek == DayOfWeek.Sunday && (orderDate.TimeOfDay >= configInfo.Standard_Cutoff_Time.TimeOfDay && orderDate.TimeOfDay <= configInfo.Express_Cutoff_Time.TimeOfDay))
-                    expressSundayExtraTime = (configInfo.Standard_Cutoff_Time.TimeOfDay - configInfo.Express_SLA_Time.TimeOfDay);
+                if (shipDate < slaDeadline.AddDays(1))
+                {
+                    result = true;
+                }
             }
             else
             {
-                switch (cleansedLine.Ship_Method)
+                if (shipDate < slaDeadline)
                 {
-                    case "Store":
-                        cutOffDeadline = configInfo.Store_Cutoff_Time;
-                        slaDeadline = configInfo.Store_SLA_Time;
-                        break;
-                    case "International":
-                        cutOffDeadline = configInfo.International_Cutoff_Time;
-                        slaDeadline = configInfo.International_SLA_Time;
-                        break;
+                    result = true;
                 }
             }
-
-            DateTime shipDate = (cleansedLine.Ship_Date.Year == 1 ? DateTime.Now : cleansedLine.Ship_Date);
-
-            TimeSpan alottedTime = CalculateAlottedTime(orderDate, cutOffDeadline, slaDeadline);
-            alottedTime = alottedTime.Add(expressSundayExtraTime);
-            TimeSpan timeTaken = GetTimeDifference_ToTimeSpan(orderDate, shipDate);
-
-            result = (alottedTime > timeTaken ? true : false);
-
-            return result;
-        }
-
-        private TimeSpan CalculateAlottedTime(DateTime dateOrdered, DateTime cutOffDeadline, DateTime slaDeadline)
-        {
-            TimeSpan result;
-
-            result = slaDeadline.TimeOfDay - dateOrdered.TimeOfDay;
-
-            if (dateOrdered.TimeOfDay > cutOffDeadline.TimeOfDay)
-                result = new TimeSpan(1,result.Hours,result.Minutes,result.Seconds);
 
             return result;
         }
@@ -232,15 +205,82 @@
                 result = true;
             else if (date.DayOfWeek == DayOfWeek.Sunday && date.TimeOfDay <= configInfo.Standard_Cutoff_Time.TimeOfDay)
                 result = true;
-                
+            return result;
+        }
 
+        private DateTime CalculateCutOffTime(DateTime orderDate, Config_Information configInfo, string deliveryOption, string shipMethod)
+        {
+            DateTime result = orderDate.Date;
+            bool isWeekend = CheckForWeekend(orderDate,configInfo);
 
-                
-                    
+            if (deliveryOption == "Express")
+            {
+                if(isWeekend)
+                    result += configInfo.Standard_Cutoff_Time.TimeOfDay;
+                else
+                    result += configInfo.Express_Cutoff_Time.TimeOfDay;
+            }
+            else
+            {
+                switch (shipMethod)
+                {
+                    case "Home":
+                        result += configInfo.Standard_Cutoff_Time.TimeOfDay;
+                        break;
+                    case "Store":
+                        result += configInfo.Store_Cutoff_Time.TimeOfDay;
+                        break;
+                    case "International":
+                        result += configInfo.International_Cutoff_Time.TimeOfDay;
+                        break;
+                }
+            }
 
+            return result;
+        }
 
+        private DateTime CalculateSLATime(DateTime orderDate, Config_Information configInfo, string deliveryOption, string shipMethod)
+        {
+            DateTime result = orderDate.Date;
+            bool isWeekend = CheckForWeekend(orderDate, configInfo);
+
+            if (deliveryOption == "Express")
+            {
+                if (isWeekend)
+                {
+                    if(orderDate.DayOfWeek == DayOfWeek.Sunday && orderDate.TimeOfDay <= configInfo.Express_SLA_Time.TimeOfDay)
+                    {
+                        result += configInfo.Express_SLA_Time.TimeOfDay;
+                        result.AddDays(1);
+                    }
+                    else
+                    {
+                        result += configInfo.Standard_SLA_Time.TimeOfDay;
+                    }
+                }
+                else
+                {
+                    result += configInfo.Express_SLA_Time.TimeOfDay;
+                }
+            }
+            else
+            {
+                switch (shipMethod)
+                {
+                    case "Home":
+                        result += configInfo.Standard_SLA_Time.TimeOfDay;
+                        break;
+                    case "Store":
+                        result += configInfo.Store_SLA_Time.TimeOfDay;
+                        break;
+                    case "International":
+                        result += configInfo.International_SLA_Time.TimeOfDay;
+                        break;
+                }
+            }
 
             return result;
         }
     }
+
 }

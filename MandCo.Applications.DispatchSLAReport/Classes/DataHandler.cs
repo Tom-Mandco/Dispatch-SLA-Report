@@ -45,14 +45,9 @@
         #endregion
 
         #region Filter DataGridView
-        public void FilterDataGrid_ByDestination(DataGridView dgv, string shipMethod)
+        public void FilterDataGrid_ByDelivery(DataGridView dgv, string shipMethod, string deliveryOption)
         {
-            dataGridViewFilter.FilterDataGrid_ByDestination(dgv, shipMethod);
-        }
-
-        public void FilterDataGrid_ByDeliveryOption(DataGridView dgv, string deliveryOption)
-        {
-            dataGridViewFilter.FilterDataGrid_ByDeliveryOption(dgv, deliveryOption);
+            dataGridViewFilter.FilterDataGrid_ByDelivery(dgv, shipMethod, deliveryOption);
         }
         #endregion
 

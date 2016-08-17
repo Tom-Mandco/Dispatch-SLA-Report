@@ -60,7 +60,7 @@
                     fromCutOffTime += configInfo.Express_Cutoff_Time.TimeOfDay;
                     toCutOffTime += configInfo.Express_Cutoff_Time.TimeOfDay;
                 }
-                else if (detail.Ship_Method == "Standard")
+                else if (detail.Ship_Method == "Home")
                 {
                     fromCutOffTime += configInfo.Standard_Cutoff_Time.TimeOfDay;
                     toCutOffTime += configInfo.Standard_Cutoff_Time.TimeOfDay;
@@ -77,22 +77,24 @@
                 }
                 
                 orderDate = (detail.Released_Date.Year == 1 ? detail.Order_Date : detail.Released_Date);
-
-                if ((orderDate >= fromCutOffTime) && (orderDate <= toCutOffTime))
+                if ((detail.Released_Date.Year != 1) && (!detail.Order_Number.StartsWith("E") || !detail.Order_Number.StartsWith("R")))
                 {
-                    cleansedLine = new Cleansed_SLA_Report_Details();
-                    cleansedLine.Order_Number = detail.Order_Number;
-                    cleansedLine.Ship_Method = detail.Ship_Method;
-                    cleansedLine.Delivery_Option = detail.Delivery_Option;
-                    cleansedLine.Date_Imported = detail.Date_Imported;
-                    cleansedLine.Order_Date = detail.Order_Date;
-                    cleansedLine.Released_Date = detail.Released_Date;
-                    cleansedLine.Ship_Date = detail.Ship_Date;
-                    cleansedLine.SLA_Met = detail.SLA_Met;
-                    cleansedLine.Time_To_Import = detail.Time_To_Import;
-                    cleansedLine.Time_To_Release = detail.Time_To_Release;
+                    if ((orderDate >= fromCutOffTime) && (orderDate <= toCutOffTime))
+                    {
+                        cleansedLine = new Cleansed_SLA_Report_Details();
+                        cleansedLine.Order_Number = detail.Order_Number;
+                        cleansedLine.Ship_Method = detail.Ship_Method;
+                        cleansedLine.Delivery_Option = detail.Delivery_Option;
+                        cleansedLine.Date_Imported = detail.Date_Imported;
+                        cleansedLine.Order_Date = detail.Order_Date;
+                        cleansedLine.Released_Date = detail.Released_Date;
+                        cleansedLine.Ship_Date = detail.Ship_Date;
+                        cleansedLine.SLA_Met = detail.SLA_Met;
+                        cleansedLine.Time_To_Import = detail.Time_To_Import;
+                        cleansedLine.Time_To_Release = detail.Time_To_Release;
 
-                    list.Add(cleansedLine);
+                        list.Add(cleansedLine);
+                    }
                 }
             }
 

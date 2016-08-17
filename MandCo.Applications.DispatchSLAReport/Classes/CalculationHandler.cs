@@ -108,7 +108,7 @@
                             if (!detail.SLA_Met)
                                 internationalOrdersFailed++;
                             break;
-                        case "Standard":
+                        case "Home":
                             standardOrders++;
                             if (!detail.SLA_Met)
                                 standardOrdersFailed++;
