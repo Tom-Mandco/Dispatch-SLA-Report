@@ -4,11 +4,14 @@
     using System.Windows.Forms;
     using Interfaces;
     using System.Collections.Generic;
+    using System.Threading;
+    using System.Configuration;
 
     public partial class MainForm : Form
     {
         private readonly ILog logger;
         private readonly IApp app;
+        static Thread ms_oThread = null;
 
         public MainForm(ILog logger, IApp app)
         {
@@ -18,6 +21,24 @@
             logger.Info("Application Started");
         }
 
+
+
+        static public void ShowSplashScreen()
+        {
+            ms_oThread = new Thread(new ThreadStart(SplashScreen.ShowForm));
+            ms_oThread.IsBackground = true;
+            ms_oThread.SetApartmentState(ApartmentState.STA);
+
+
+
+            ms_oThread.Start();
+        }
+
+        static public void CloseSplashScreen()
+        {
+            ms_oThread.Abort();
+        }
+
         private void btnLast24HrsViewReport_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -25,14 +46,32 @@
             Cursor.Current = Cursors.Default;
         }
 
+        private void RenderAdminVisibility()
+        {
+            this.btnOpenConfigSettings.Visible = true;
+        }
+
+        
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             try
             {
+                DateTime dtStart = DateTime.Now;
+                ShowSplashScreen();
+
                 dtpReportFrom.Value = DateTime.Now.AddDays(-7);
                 dtpReportTo.Value = DateTime.Now;
+                logger.Info("Setting start up data sources");
                 app.SetDataSourceToLast24Hours(this);
                 app.SetDataSourceToCustomTimeFrame(this);
+
+                if (app.Return_AdminStatus_ToBool())
+                    RenderAdminVisibility();
+
+                CloseSplashScreen();
+                TimeSpan totalTimeTakenToLoad = DateTime.Now - dtStart;
+                logger.Info("Time taken to load initial screen: {0:ss'.'FFFF' ms'}", totalTimeTakenToLoad);
             }
             catch(Exception ex)
             {
@@ -132,11 +171,6 @@
             Cursor.Current = Cursors.WaitCursor;
             app.ExportDGV_ToExcel(this);
             Cursor.Current = Cursors.Default;
-        }
-
-        private void cbUseCutoffTimes_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

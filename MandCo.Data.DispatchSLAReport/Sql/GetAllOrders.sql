@@ -6,28 +6,25 @@ Select ord.order_number,
        rel.release_date,
        shp.ship_date
 From   (select unique to_char(o.order_number) order_number, 
-          case when o.deliver_to = 2 then 'Store' else
-            case when lower(p.ship_method) like '%express%' then 'Home' else 
-              case when (lower(p.ship_method) like '%standard%' or lower(p.ship_method) like '%free%') 
-                        and lower(p.ship_method) not like '%european%' 
-                        and lower(p.ship_method) not like '%worldwide%' 
-                        and lower(p.ship_method) not like '%russia%' 
-                        and lower(p.ship_method) not like '%international%' then 'Standard' else
-              'International' end end end ship_method,
+          case when o.deliver_to = 2 then 'Store' else 
+            case when o.del_country_code in ('UK','GB',' ', null) then 'Home'
+              else 'International' end end ship_method,
            o.order_date,
            o.del_country_code,
            o.source_channel,
            o.del_option
-           from pos_order_ship_price p,
-                pos_channel_orders o
-           where o.order_number = p.order_number
-           and   o.last_update >= to_date(@0, 'YYYY-MM-DD HH24-MI-SS')
-           and   o.last_update <= to_date(@1, 'YYYY-MM-DD HH24-MI-SS')
+           from pos_channel_orders o
+           where o.order_date >= to_date(@0, 'YYYY-MM-DD HH24-MI-SS')
+           and   o.order_date <= to_date(@1, 'YYYY-MM-DD HH24-MI-SS')
            and   o.order_status <> 9
            and   exists (select 1 from pos_channel_order_items i 
                          where i.order_number = o.order_number 
                          and i.source_channel = o.source_channel 
                          and i.fulfil_store_flag <> 'Y')
+           and not exists (select 1 from web_grp_pick_nostk wgpn 
+                           where wgpn.web_order_number = o.order_number 
+                           and wgpn.source_channel = o.source_channel
+                           and wgpn.stock_in_warehouse = 'N' )
            ) ord,
        (select unique wo.order_number order_number, 
            min(wo.last_update) release_date

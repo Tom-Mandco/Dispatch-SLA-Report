@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.gbLast24Hrs = new System.Windows.Forms.GroupBox();
             this.lbl24HrsStoreSLADtlPct = new System.Windows.Forms.Label();
             this.lbl24HrsStandardSLADtlPct = new System.Windows.Forms.Label();
@@ -105,6 +106,7 @@
             this.lblReportTo = new System.Windows.Forms.Label();
             this.lblReportFrom = new System.Windows.Forms.Label();
             this.dtpReportFrom = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             this.gbLast24Hrs.SuspendLayout();
             this.gbCustomSLAStats.SuspendLayout();
             this.pnExtendedDetail.SuspendLayout();
@@ -133,7 +135,7 @@
             this.gbLast24Hrs.Controls.Add(this.lbl24HrsInternationalSLAHdr);
             this.gbLast24Hrs.Controls.Add(this.lbl24HrsExpressSLAHdr);
             this.gbLast24Hrs.Controls.Add(this.lbl24HrsTotalSLAHdr);
-            this.gbLast24Hrs.Location = new System.Drawing.Point(9, 42);
+            this.gbLast24Hrs.Location = new System.Drawing.Point(9, 81);
             this.gbLast24Hrs.Name = "gbLast24Hrs";
             this.gbLast24Hrs.Size = new System.Drawing.Size(279, 193);
             this.gbLast24Hrs.TabIndex = 0;
@@ -266,7 +268,7 @@
             this.gbCustomSLAStats.Controls.Add(this.lblCustStandardSLADtlPct);
             this.gbCustomSLAStats.Controls.Add(this.lblCustExpressSLADtlPct);
             this.gbCustomSLAStats.Controls.Add(this.lblCustInternationalSLADtlPct);
-            this.gbCustomSLAStats.Location = new System.Drawing.Point(294, 42);
+            this.gbCustomSLAStats.Location = new System.Drawing.Point(294, 81);
             this.gbCustomSLAStats.Name = "gbCustomSLAStats";
             this.gbCustomSLAStats.Size = new System.Drawing.Size(281, 193);
             this.gbCustomSLAStats.TabIndex = 1;
@@ -385,12 +387,13 @@
             // 
             // btnOpenConfigSettings
             // 
-            this.btnOpenConfigSettings.Location = new System.Drawing.Point(804, 12);
+            this.btnOpenConfigSettings.Location = new System.Drawing.Point(0, 70);
             this.btnOpenConfigSettings.Name = "btnOpenConfigSettings";
-            this.btnOpenConfigSettings.Size = new System.Drawing.Size(285, 23);
+            this.btnOpenConfigSettings.Size = new System.Drawing.Size(131, 23);
             this.btnOpenConfigSettings.TabIndex = 1;
             this.btnOpenConfigSettings.Text = "Configuration Options";
             this.btnOpenConfigSettings.UseVisualStyleBackColor = true;
+            this.btnOpenConfigSettings.Visible = false;
             this.btnOpenConfigSettings.Click += new System.EventHandler(this.btnOpenConfigSettings_Click);
             // 
             // btnReportCustomDateRange
@@ -411,9 +414,9 @@
             this.pnExtendedDetail.Controls.Add(this.dgvDetailBreakdown);
             this.pnExtendedDetail.Controls.Add(this.lblDGVHeader);
             this.pnExtendedDetail.Controls.Add(this.pnSLACriteriaMetKey);
-            this.pnExtendedDetail.Location = new System.Drawing.Point(9, 241);
+            this.pnExtendedDetail.Location = new System.Drawing.Point(9, 280);
             this.pnExtendedDetail.Name = "pnExtendedDetail";
-            this.pnExtendedDetail.Size = new System.Drawing.Size(1081, 382);
+            this.pnExtendedDetail.Size = new System.Drawing.Size(1081, 405);
             this.pnExtendedDetail.TabIndex = 2;
             // 
             // pnDGVFilter_ByShipMethod
@@ -473,7 +476,7 @@
             // 
             // btnExportCurrentScreenToExcel
             // 
-            this.btnExportCurrentScreenToExcel.Location = new System.Drawing.Point(951, 79);
+            this.btnExportCurrentScreenToExcel.Location = new System.Drawing.Point(947, 76);
             this.btnExportCurrentScreenToExcel.Name = "btnExportCurrentScreenToExcel";
             this.btnExportCurrentScreenToExcel.Size = new System.Drawing.Size(131, 23);
             this.btnExportCurrentScreenToExcel.TabIndex = 30;
@@ -568,22 +571,22 @@
             this.dgvDetailBreakdown.Name = "dgvDetailBreakdown";
             this.dgvDetailBreakdown.RowHeadersVisible = false;
             this.dgvDetailBreakdown.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetailBreakdown.Size = new System.Drawing.Size(1075, 277);
+            this.dgvDetailBreakdown.Size = new System.Drawing.Size(1072, 300);
             this.dgvDetailBreakdown.TabIndex = 7;
             // 
             // lblDGVHeader
             // 
             this.lblDGVHeader.AutoSize = true;
             this.lblDGVHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDGVHeader.Location = new System.Drawing.Point(206, 79);
+            this.lblDGVHeader.Location = new System.Drawing.Point(349, 79);
             this.lblDGVHeader.Name = "lblDGVHeader";
-            this.lblDGVHeader.Size = new System.Drawing.Size(683, 20);
+            this.lblDGVHeader.Size = new System.Drawing.Size(360, 20);
             this.lblDGVHeader.TabIndex = 1;
-            this.lblDGVHeader.Text = "Orders which failed SLA for time period:  08/08/1665 00:00:00 - 09/08/1948 05:46:" +
-    "21";
+            this.lblDGVHeader.Text = " 08/08/1665 00:00:00 - 09/08/1948 05:46:21";
             // 
             // pnSLACriteriaMetKey
             // 
+            this.pnSLACriteriaMetKey.Controls.Add(this.btnOpenConfigSettings);
             this.pnSLACriteriaMetKey.Controls.Add(this.lblCriteriaNotMetKey);
             this.pnSLACriteriaMetKey.Controls.Add(this.lblMidCriteriaMetKey);
             this.pnSLACriteriaMetKey.Controls.Add(this.lblTopCriteriaMetKey);
@@ -592,7 +595,7 @@
             this.pnSLACriteriaMetKey.Controls.Add(this.pbTopCriteriaMetKey);
             this.pnSLACriteriaMetKey.Location = new System.Drawing.Point(6, 6);
             this.pnSLACriteriaMetKey.Name = "pnSLACriteriaMetKey";
-            this.pnSLACriteriaMetKey.Size = new System.Drawing.Size(319, 65);
+            this.pnSLACriteriaMetKey.Size = new System.Drawing.Size(285, 93);
             this.pnSLACriteriaMetKey.TabIndex = 0;
             // 
             // lblCriteriaNotMetKey
@@ -671,9 +674,9 @@
             this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblExpressOrdersHdr);
             this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblTotalOrdersMetSLAHdr);
             this.pnOrderTotalsWithinSpecifiedTimeFrame.Controls.Add(this.lblTotalOrdersHdr);
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Location = new System.Drawing.Point(804, 42);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Location = new System.Drawing.Point(804, 75);
             this.pnOrderTotalsWithinSpecifiedTimeFrame.Name = "pnOrderTotalsWithinSpecifiedTimeFrame";
-            this.pnOrderTotalsWithinSpecifiedTimeFrame.Size = new System.Drawing.Size(286, 247);
+            this.pnOrderTotalsWithinSpecifiedTimeFrame.Size = new System.Drawing.Size(286, 266);
             this.pnOrderTotalsWithinSpecifiedTimeFrame.TabIndex = 0;
             // 
             // lblStoreOrdersMetSLADtl
@@ -863,7 +866,7 @@
             this.gbCustomDateRange.Controls.Add(this.lblReportFrom);
             this.gbCustomDateRange.Controls.Add(this.dtpReportFrom);
             this.gbCustomDateRange.Controls.Add(this.btnReportCustomDateRange);
-            this.gbCustomDateRange.Location = new System.Drawing.Point(581, 42);
+            this.gbCustomDateRange.Location = new System.Drawing.Point(581, 81);
             this.gbCustomDateRange.Name = "gbCustomDateRange";
             this.gbCustomDateRange.Size = new System.Drawing.Size(217, 193);
             this.gbCustomDateRange.TabIndex = 24;
@@ -908,17 +911,28 @@
             this.dtpReportFrom.TabIndex = 25;
             this.dtpReportFrom.Value = new System.DateTime(2016, 8, 16, 0, 0, 0, 0);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(363, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(379, 37);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Dispatch SLA Dashboard";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1103, 627);
-            this.Controls.Add(this.btnOpenConfigSettings);
+            this.ClientSize = new System.Drawing.Size(1103, 698);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.pnOrderTotalsWithinSpecifiedTimeFrame);
             this.Controls.Add(this.gbCustomDateRange);
             this.Controls.Add(this.pnExtendedDetail);
             this.Controls.Add(this.gbCustomSLAStats);
             this.Controls.Add(this.gbLast24Hrs);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Dispatch SLA Report (ws1160)";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -943,6 +957,7 @@
             this.gbCustomDateRange.ResumeLayout(false);
             this.gbCustomDateRange.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1024,6 +1039,7 @@
         private System.Windows.Forms.RadioButton rbDGVFilter_ByShipMethod_Express;
         private System.Windows.Forms.RadioButton rbDGVFilter_ByShipMethod_All;
         private System.Windows.Forms.RadioButton rbDGVFilter_ByShipMethod_Standard;
+        private System.Windows.Forms.Label label3;
     }
 }
 

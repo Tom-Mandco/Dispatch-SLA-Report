@@ -32,8 +32,12 @@
         {
             try
             {
+                logger.Info("Retrieving data for custom time frame : {0} to {1}",
+                            mainForm.dtpReportFrom.Value,
+                            mainForm.dtpReportTo.Value);
                 IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(mainForm.dtpReportFrom.Value, mainForm.dtpReportTo.Value);
                 BindCustomDisplayData_ToForm(mainForm, slaReportDetails);
+                logger.Info("Successfully retrieved data.");
 
                 #region Apply DataTable to DataGridView
                 detailBreakDownDT = dataHandler.BindSLAData_ToDataTable(slaReportDetails);
@@ -83,7 +87,7 @@
             mainForm.lblCustStandardSLADtlPct.Text = displayData.StandardOrdersSLAPct.ToString();
             mainForm.lblCustStoreSLADtlPct.Text = displayData.StoreOrdersSLAPct.ToString();
 
-            mainForm.gbCustomSLAStats.Text = string.Format("{0: dd MMM yyyy} - {1: dd MMM yyyy}",
+            mainForm.gbCustomSLAStats.Text = string.Format("{0:dd MMM yyyy} - {1:dd MMM yyyy}",
                                                             mainForm.dtpReportFrom.Value,
                                                             mainForm.dtpReportTo.Value);
 
@@ -98,7 +102,7 @@
             labels.Add(mainForm.lblCustExpressSLADtlPct);
             AssignColourCodedPct_ToLabels(labels, configInfo.Express_SLA_Percentage_High, configInfo.Express_SLA_Percentage_Low);
 
-            mainForm.lblDGVHeader.Text = string.Format("{0: dd MMM yy HH:mm:ss} - {1: dd MMM yy HH:mm:ss}",
+            mainForm.lblDGVHeader.Text = string.Format("{0:dd MMM yy HH:mm:ss} - {1:dd MMM yy HH:mm:ss}",
                                                         mainForm.dtpReportFrom.Value,
                                                         mainForm.dtpReportTo.Value);
             #endregion
@@ -194,6 +198,20 @@
                 else
                     label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             }
+        }
+
+
+        public bool Return_AdminStatus_ToBool()
+        {
+            bool result = false;
+            Config_Information configInfo = new Config_Information();
+
+            configInfo = dataHandler.GetConfigInformation();
+
+            if (configInfo.Admin_Accounts.Contains(Environment.UserName))
+                result = true;
+
+            return result;
         }
         #endregion
 
