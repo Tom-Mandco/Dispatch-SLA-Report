@@ -933,7 +933,12 @@
             this.Controls.Add(this.gbCustomSLAStats);
             this.Controls.Add(this.gbLast24Hrs);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1115, 728);
+            this.MinimumSize = new System.Drawing.Size(1115, 728);
             this.Name = "MainForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dispatch SLA Report (ws1160)";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.gbLast24Hrs.ResumeLayout(false);
