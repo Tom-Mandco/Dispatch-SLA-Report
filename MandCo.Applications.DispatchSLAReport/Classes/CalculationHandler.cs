@@ -7,6 +7,13 @@
 
     public class CalculationHandler : IHandleCalculations
     {
+        private readonly ILog logger;
+
+        public CalculationHandler(ILog logger)
+        {
+            this.logger = logger;
+        }
+
         public DisplayData CalculateSLADeadlines_ToDisplayData(IEnumerable<Cleansed_SLA_Report_Details> SLAReportDetails)
         {
             #region Declarations
@@ -95,6 +102,7 @@
             {
                 if (detail.Delivery_Option == "Express")
                 {
+                    logger.Trace("{0}|{1}", detail.Order_Number, detail.Order_Date);
                     expressOrders++;
                     if (!detail.SLA_Met)
                         expressOrdersFailed++;

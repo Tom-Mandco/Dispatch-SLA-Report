@@ -52,6 +52,11 @@
 
             foreach (var detail in fullSLADetails)
             {
+                if (detail.Order_Number == "3050713")
+                {
+                    Console.WriteLine("Found order 3050713");
+                }
+
                 fromCutOffTime = lastDate.Date;
                 toCutOffTime = toDate.Date;
 
@@ -75,7 +80,7 @@
                     fromCutOffTime += configInfo.International_Cutoff_Time.TimeOfDay;
                     toCutOffTime += configInfo.International_Cutoff_Time.TimeOfDay;
                 }
-                
+
                 orderDate = (detail.Released_Date.Year == 1 ? detail.Order_Date : detail.Released_Date);
                 if ((detail.Released_Date.Year != 1) && (!detail.Order_Number.StartsWith("E") || !detail.Order_Number.StartsWith("R")))
                 {

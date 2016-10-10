@@ -35,7 +35,12 @@
                 logger.Info("Retrieving data for custom time frame : {0} to {1}",
                             mainForm.dtpReportFrom.Value,
                             mainForm.dtpReportTo.Value);
-                IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(mainForm.dtpReportFrom.Value, mainForm.dtpReportTo.Value);
+
+                DateTime ReportFrom = mainForm.dtpReportFrom.Value.Date;
+                DateTime ReportTo = mainForm.dtpReportTo.Value.Date;
+                ReportTo = ReportTo.Add(new TimeSpan(23, 59, 59));
+
+                IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(ReportFrom, ReportTo);
                 BindCustomDisplayData_ToForm(mainForm, slaReportDetails);
                 logger.Info("Successfully retrieved data.");
 

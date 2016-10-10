@@ -102,6 +102,9 @@
                 CloseSplashScreen();
                 TimeSpan totalTimeTakenToLoad = DateTime.Now - dtStart;
                 logger.Info("Time taken to load initial screen: {0:ss'.'FFFF' ms'}", totalTimeTakenToLoad);
+
+                this.TopMost = true;
+                this.TopMost = false;
             }
             catch (Exception ex)
             {

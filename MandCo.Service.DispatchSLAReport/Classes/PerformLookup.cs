@@ -29,7 +29,7 @@
         {
             string formattedDateFrom = string.Format("{0:yyyy-MM-dd HH-mm-ss}", dateFrom);
             string formattedDateTo = string.Format("{0:yyyy-MM-dd HH-mm-ss}", dateTo);
-            
+
             IEnumerable<Raw_SLA_Report_Data> rawSLAReportDetails = oracleRepository.GetAllOrderDetailsForSpecifiedTimes(formattedDateFrom, formattedDateTo);
 
             IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataAdapter.InterpretRawSLAData(rawSLAReportDetails, GetConfigurationInformation());
