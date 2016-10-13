@@ -102,7 +102,7 @@
             {
                 if (detail.Delivery_Option == "Express")
                 {
-                    logger.Trace("{0}|{1}", detail.Order_Number, detail.Order_Date);
+                    //logger.Trace("{0}|{1}", detail.Order_Number, detail.Order_Date);
                     expressOrders++;
                     if (!detail.SLA_Met)
                         expressOrdersFailed++;

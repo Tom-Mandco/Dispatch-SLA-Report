@@ -24,5 +24,8 @@ namespace MandCo.Data.DispatchSLAReport.Models
         public DateTime Store_Cutoff_Time { get; set; }
         public int Store_SLA_Percentage_High { get; set; }
         public int Store_SLA_Percentage_Low { get; set; }
+
+        public DateTime Weekend_SLA_Time { get; set; }
+        public DateTime Weekend_Cutoff_Time { get; set; }
     }
 }

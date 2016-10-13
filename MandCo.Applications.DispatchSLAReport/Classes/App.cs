@@ -32,13 +32,13 @@
         {
             try
             {
-                logger.Info("Retrieving data for custom time frame : {0} to {1}",
-                            mainForm.dtpReportFrom.Value,
-                            mainForm.dtpReportTo.Value);
-
                 DateTime ReportFrom = mainForm.dtpReportFrom.Value.Date;
                 DateTime ReportTo = mainForm.dtpReportTo.Value.Date;
                 ReportTo = ReportTo.Add(new TimeSpan(23, 59, 59));
+
+                logger.Info("Retrieving data for custom time frame : {0} to {1}",
+                            ReportFrom,
+                            ReportTo);
 
                 IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(ReportFrom, ReportTo);
                 BindCustomDisplayData_ToForm(mainForm, slaReportDetails);
@@ -60,7 +60,15 @@
         {
             try
             {
-                IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(DateTime.Now.AddDays(-1), DateTime.Now);
+                DateTime ReportFrom = DateTime.Now.AddDays(-1).Date;
+                DateTime ReportTo = DateTime.Now.Date;
+                ReportTo = ReportTo.Add(new TimeSpan(23, 59, 59));
+
+                logger.Info("Retrieving data for custom time frame : {0} to {1}",
+                    ReportFrom,
+                    ReportTo);
+
+                IEnumerable<Cleansed_SLA_Report_Details> slaReportDetails = dataHandler.GetSLAReportDetails(ReportFrom, ReportTo);
 
                 mainForm.lblDGVHeader.Text = string.Format("Real-time data correct as of {0: dd MMM yy HH:mm:ss}",
                                                 DateTime.Now);
@@ -92,7 +100,7 @@
             mainForm.lblCustStandardSLADtlPct.Text = displayData.StandardOrdersSLAPct.ToString();
             mainForm.lblCustStoreSLADtlPct.Text = displayData.StoreOrdersSLAPct.ToString();
 
-            mainForm.gbCustomSLAStats.Text = string.Format("{0:dd MMM yyyy} - {1:dd MMM yyyy}",
+            mainForm.gbCustomSLAStats.Text = string.Format("{0:dd MMMM yyyy} - {1:dd MMMM yyyy}",
                                                             mainForm.dtpReportFrom.Value,
                                                             mainForm.dtpReportTo.Value);
 
@@ -107,7 +115,7 @@
             labels.Add(mainForm.lblCustExpressSLADtlPct);
             AssignColourCodedPct_ToLabels(labels, configInfo.Express_SLA_Percentage_High, configInfo.Express_SLA_Percentage_Low);
 
-            mainForm.lblDGVHeader.Text = string.Format("{0:dd MMM yy HH:mm:ss} - {1:dd MMM yy HH:mm:ss}",
+            mainForm.lblDGVHeader.Text = string.Format("{0:dd MMMM yy} - {1:dd MMMM yy}",
                                                         mainForm.dtpReportFrom.Value,
                                                         mainForm.dtpReportTo.Value);
             #endregion

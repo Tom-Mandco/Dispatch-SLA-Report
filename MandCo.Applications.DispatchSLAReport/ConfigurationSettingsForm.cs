@@ -25,7 +25,7 @@
         private void populateConfigInfo()
         {
             Config_Information configInfo = app.GetConfigInformation();
-            
+
             tbExpressPctHigh.Text = configInfo.Express_SLA_Percentage_High.ToString();
             tbExpressPctLow.Text = configInfo.Express_SLA_Percentage_Low.ToString();
 
@@ -50,6 +50,11 @@
 
             dtpStoreCutOff.Value = configInfo.Store_Cutoff_Time;
             dtpStoreSLA.Value = configInfo.Store_SLA_Time;
+
+            dtpWeekendCutOff.Value = configInfo.Weekend_Cutoff_Time;
+            dtpWeekendSLA.Value = configInfo.Weekend_SLA_Time;
+
+            lblAdminAccs.Text = configInfo.Admin_Accounts;
         }
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
@@ -92,14 +97,23 @@
                 updatedConfigInto.Store_SLA_Percentage_High = storeHigh;
                 updatedConfigInto.Store_SLA_Percentage_Low = storeLow;
 
+                updatedConfigInto.Weekend_Cutoff_Time = dtpWeekendCutOff.Value;
+                updatedConfigInto.Weekend_SLA_Time = dtpWeekendSLA.Value;
+
+                updatedConfigInto.Admin_Accounts = lblAdminAccs.Text;
+
                 try
                 {
                     app.UpdateConfigInformation(updatedConfigInto);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     logger.Error(ex.Message);
                     logger.Error(ex.StackTrace);
+                }
+                finally
+                {
+                    this.Close();
                 }
             }
         }
@@ -107,7 +121,7 @@
         private void btnDiscardChanges_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you wish to revert all changes?", "Discard changes", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-            if(result == System.Windows.Forms.DialogResult.Yes)
+            if (result == System.Windows.Forms.DialogResult.Yes)
                 populateConfigInfo();
         }
 

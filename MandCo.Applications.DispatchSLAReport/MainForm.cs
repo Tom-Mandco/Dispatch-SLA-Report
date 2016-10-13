@@ -90,6 +90,7 @@
                 DateTime dtStart = DateTime.Now;
                 ShowSplashScreen();
 
+                lblRelease.Text = string.Format("Release: {0}", ConfigurationManager.AppSettings["ReleaseVersion"].ToString());
                 dtpReportFrom.Value = DateTime.Now.AddDays(-7);
                 dtpReportTo.Value = DateTime.Now;
                 logger.Info("Setting start up data sources");

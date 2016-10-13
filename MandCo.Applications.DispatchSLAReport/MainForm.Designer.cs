@@ -107,6 +107,7 @@
             this.lblReportFrom = new System.Windows.Forms.Label();
             this.dtpReportFrom = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblRelease = new System.Windows.Forms.Label();
             this.gbLast24Hrs.SuspendLayout();
             this.gbCustomSLAStats.SuspendLayout();
             this.pnExtendedDetail.SuspendLayout();
@@ -578,7 +579,7 @@
             // 
             this.lblDGVHeader.AutoSize = true;
             this.lblDGVHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDGVHeader.Location = new System.Drawing.Point(349, 79);
+            this.lblDGVHeader.Location = new System.Drawing.Point(375, 79);
             this.lblDGVHeader.Name = "lblDGVHeader";
             this.lblDGVHeader.Size = new System.Drawing.Size(360, 20);
             this.lblDGVHeader.TabIndex = 1;
@@ -921,11 +922,23 @@
             this.label3.TabIndex = 25;
             this.label3.Text = "Dispatch SLA Dashboard";
             // 
+            // lblRelease
+            // 
+            this.lblRelease.AutoSize = true;
+            this.lblRelease.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRelease.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lblRelease.Location = new System.Drawing.Point(12, 9);
+            this.lblRelease.Name = "lblRelease";
+            this.lblRelease.Size = new System.Drawing.Size(61, 13);
+            this.lblRelease.TabIndex = 26;
+            this.lblRelease.Text = "Release: ";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1103, 698);
+            this.ClientSize = new System.Drawing.Size(1099, 689);
+            this.Controls.Add(this.lblRelease);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pnOrderTotalsWithinSpecifiedTimeFrame);
             this.Controls.Add(this.gbCustomDateRange);
@@ -1045,6 +1058,7 @@
         private System.Windows.Forms.RadioButton rbDGVFilter_ByShipMethod_All;
         private System.Windows.Forms.RadioButton rbDGVFilter_ByShipMethod_Standard;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblRelease;
     }
 }
 

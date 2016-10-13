@@ -3,7 +3,7 @@
     using Interfaces;
     using MandCo.Data.DispatchSLAReport.Models;
     using System;
-    using System.Collections.Generic; 
+    using System.Collections.Generic;
 
     public class DataAdapter : IAdaptData
     {
@@ -91,6 +91,15 @@
                         break;
                     #endregion
 
+                    #region Set Weekend Configs
+                    case "WKDCUT":
+                        result.Weekend_Cutoff_Time = Convert.ToDateTime(detail.DELIMITEDDATASTRING);
+                        break;
+                    case "WKDSLA":
+                        result.Weekend_SLA_Time = Convert.ToDateTime(detail.DELIMITEDDATASTRING);
+                        break;
+                    #endregion
+
                     default:
                         break;
                 }
@@ -105,7 +114,7 @@
             Cleansed_SLA_Report_Details cleansedLine;
             DateTime dateImported, dateReleased;
 
-            foreach(var detail in _rawSLAData)
+            foreach (var detail in _rawSLAData)
             {
                 cleansedLine = new Cleansed_SLA_Report_Details();
                 cleansedLine.Order_Number = detail.ORDER_NUMBER;
@@ -154,9 +163,14 @@
             result.Add(updatedConfigInfo.Store_SLA_Percentage_High.ToString());
             result.Add(updatedConfigInfo.Store_SLA_Percentage_Low.ToString());
 
+            result.Add(updatedConfigInfo.Weekend_Cutoff_Time.TimeOfDay.ToString());
+            result.Add(updatedConfigInfo.Weekend_SLA_Time.TimeOfDay.ToString());
+
+            result.Add(updatedConfigInfo.Admin_Accounts);
+
             return result.ToArray();
         }
-        
+
 
         private TimeSpan GetTimeDifference_ToTimeSpan(DateTime timeFrom, DateTime timeTo)
         {
@@ -167,7 +181,7 @@
         {
             bool result = false;
 
-            if(cleansedLine.Order_Number == "2994716")
+            if (cleansedLine.Order_Number == "2994716")
             {
                 result = false;
             }
@@ -203,7 +217,7 @@
                 result = true;
             else if (date.DayOfWeek == DayOfWeek.Saturday)
                 result = true;
-            else if (date.DayOfWeek == DayOfWeek.Sunday && date.TimeOfDay <= configInfo.Standard_Cutoff_Time.TimeOfDay)
+            else if (date.DayOfWeek == DayOfWeek.Sunday && date.TimeOfDay <= configInfo.Weekend_Cutoff_Time.TimeOfDay)
                 result = true;
             return result;
         }
@@ -211,28 +225,36 @@
         private DateTime CalculateCutOffTime(DateTime orderDate, Config_Information configInfo, string deliveryOption, string shipMethod)
         {
             DateTime result = orderDate.Date;
-            bool isWeekend = CheckForWeekend(orderDate,configInfo);
+            bool isWeekend = CheckForWeekend(orderDate, configInfo);
 
-            if (deliveryOption == "Express")
+
+            if (isWeekend)
             {
-                if(isWeekend)
-                    result += configInfo.Standard_Cutoff_Time.TimeOfDay;
-                else
-                    result += configInfo.Express_Cutoff_Time.TimeOfDay;
+                result += configInfo.Weekend_Cutoff_Time.TimeOfDay;
             }
             else
             {
-                switch (shipMethod)
+                if (deliveryOption == "Express")
                 {
-                    case "Home":
-                        result += configInfo.Standard_Cutoff_Time.TimeOfDay;
-                        break;
-                    case "Store":
-                        result += configInfo.Store_Cutoff_Time.TimeOfDay;
-                        break;
-                    case "International":
-                        result += configInfo.International_Cutoff_Time.TimeOfDay;
-                        break;
+                    result += configInfo.Express_Cutoff_Time.TimeOfDay;
+
+                    if (deliveryOption == "Express" && orderDate.DayOfWeek == DayOfWeek.Sunday && orderDate.TimeOfDay <= configInfo.Express_SLA_Time.TimeOfDay)
+                        result = result.AddDays(1);
+                }
+                else
+                {
+                    switch (shipMethod)
+                    {
+                        case "Home":
+                            result += configInfo.Standard_Cutoff_Time.TimeOfDay;
+                            break;
+                        case "Store":
+                            result += configInfo.Store_Cutoff_Time.TimeOfDay;
+                            break;
+                        case "International":
+                            result += configInfo.International_Cutoff_Time.TimeOfDay;
+                            break;
+                    }
                 }
             }
 
@@ -244,38 +266,34 @@
             DateTime result = orderDate.Date;
             bool isWeekend = CheckForWeekend(orderDate, configInfo);
 
-            if (deliveryOption == "Express")
+
+            if (isWeekend)
             {
-                if (isWeekend)
-                {
-                    if(orderDate.DayOfWeek == DayOfWeek.Sunday && orderDate.TimeOfDay <= configInfo.Express_SLA_Time.TimeOfDay)
-                    {
-                        result += configInfo.Express_SLA_Time.TimeOfDay;
-                        result.AddDays(1);
-                    }
-                    else
-                    {
-                        result += configInfo.Standard_SLA_Time.TimeOfDay;
-                    }
-                }
-                else
-                {
-                    result += configInfo.Express_SLA_Time.TimeOfDay;
-                }
+                result += configInfo.Weekend_SLA_Time.TimeOfDay;
             }
             else
             {
-                switch (shipMethod)
+                if (deliveryOption == "Express")
                 {
-                    case "Home":
-                        result += configInfo.Standard_SLA_Time.TimeOfDay;
-                        break;
-                    case "Store":
-                        result += configInfo.Store_SLA_Time.TimeOfDay;
-                        break;
-                    case "International":
-                        result += configInfo.International_SLA_Time.TimeOfDay;
-                        break;
+                    result += configInfo.Express_SLA_Time.TimeOfDay;
+                    //Express delivery ordered on a Sunday before the weekday express SLA cut off time gets until Monday Express SLA time to complete
+                    if (deliveryOption == "Express" && orderDate.DayOfWeek == DayOfWeek.Sunday && orderDate.TimeOfDay <= configInfo.Express_SLA_Time.TimeOfDay)
+                        result = result.AddDays(1);
+                }
+                else
+                {
+                    switch (shipMethod)
+                    {
+                        case "Home":
+                            result += configInfo.Standard_SLA_Time.TimeOfDay;
+                            break;
+                        case "Store":
+                            result += configInfo.Store_SLA_Time.TimeOfDay;
+                            break;
+                        case "International":
+                            result += configInfo.International_SLA_Time.TimeOfDay;
+                            break;
+                    }
                 }
             }
 

@@ -52,13 +52,10 @@
 
             foreach (var detail in fullSLADetails)
             {
-                if (detail.Order_Number == "3050713")
-                {
-                    Console.WriteLine("Found order 3050713");
-                }
-
                 fromCutOffTime = lastDate.Date;
                 toCutOffTime = toDate.Date;
+
+
 
                 if (detail.Delivery_Option == "Express")
                 {
@@ -107,5 +104,6 @@
 
             return result;
         }
+
     }
 }
