@@ -2,12 +2,20 @@
 {
     using Interfaces;
     using MandCo.Data.DispatchSLAReport.Models;
+    using MandCo.Service.DispatchSLAReport.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Data;
 
     class DataFilter : IDataFilter
     {
+        private IAdaptData dataAdapter;
+
+        public DataFilter(IAdaptData dataAdapter)
+        {
+            this.dataAdapter = dataAdapter;
+        }
+
         public IEnumerable<Cleansed_SLA_Report_Details> FilterDateRangeFromSLADetails(IEnumerable<Cleansed_SLA_Report_Details> fullSLADetails, DateTime dateFrom, DateTime dateTo)
         {
             List<Cleansed_SLA_Report_Details> list = new List<Cleansed_SLA_Report_Details>();
@@ -55,9 +63,17 @@
                 fromCutOffTime = lastDate.Date;
                 toCutOffTime = toDate.Date;
 
+                if (detail.Order_Number == "01004281015020000200")
+                {
+                    fromCutOffTime.AddDays(0);
+                }
 
-
-                if (detail.Delivery_Option == "Express")
+                if (dataAdapter.CheckForWeekend(detail.Order_Date, configInfo))
+                {
+                    fromCutOffTime += configInfo.Weekend_Cutoff_Time.TimeOfDay;
+                    toCutOffTime += configInfo.Weekend_Cutoff_Time.TimeOfDay;
+                }
+                else if (detail.Delivery_Option == "Express")
                 {
                     fromCutOffTime += configInfo.Express_Cutoff_Time.TimeOfDay;
                     toCutOffTime += configInfo.Express_Cutoff_Time.TimeOfDay;

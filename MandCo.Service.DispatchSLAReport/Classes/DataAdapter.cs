@@ -181,7 +181,7 @@
         {
             bool result = false;
 
-            if (cleansedLine.Order_Number == "2994716")
+            if (cleansedLine.Order_Number == "01004281015020000200")
             {
                 result = false;
             }
@@ -209,7 +209,7 @@
             return result;
         }
 
-        private bool CheckForWeekend(DateTime date, Config_Information configInfo)
+        public bool CheckForWeekend(DateTime date, Config_Information configInfo)
         {
             bool result = false;
 
