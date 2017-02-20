@@ -77,6 +77,12 @@
                 {
                     fromCutOffTime += configInfo.Express_Cutoff_Time.TimeOfDay;
                     toCutOffTime += configInfo.Express_Cutoff_Time.TimeOfDay;
+
+                    if (triggerSundayExpressRule(detail.Order_Date, configInfo))
+                    {
+                        fromCutOffTime = fromCutOffTime.AddDays(1);
+                        toCutOffTime = toCutOffTime.AddDays(1);
+                    }
                 }
                 else if (detail.Ship_Method == "Home")
                 {
@@ -116,10 +122,22 @@
                 }
             }
 
+
+
             IEnumerable<Cleansed_SLA_Report_Details> result = list;
 
             return result;
         }
+        private bool triggerSundayExpressRule(DateTime orderDate, Config_Information configInfo)
+        {
+            bool result = false;
 
+            if(orderDate.DayOfWeek == DayOfWeek.Sunday && orderDate.TimeOfDay <= configInfo.Express_SLA_Time.TimeOfDay)
+            {
+                result = true;
+            }
+
+            return result;
+        }
     }
 }
