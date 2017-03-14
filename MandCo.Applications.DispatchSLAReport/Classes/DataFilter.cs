@@ -57,17 +57,13 @@
             DateTime fromCutOffTime = lastDate.Date;
             DateTime toCutOffTime = toDate.Date;
             DateTime orderDate;
+            bool isExemptFromView = false;
 
             foreach (var detail in fullSLADetails)
             {
                 fromCutOffTime = lastDate.Date;
                 toCutOffTime = toDate.Date;
-
-                if (detail.Order_Number == "01004281015020000200")
-                {
-                    fromCutOffTime.AddDays(0);
-                }
-
+                
                 if (dataAdapter.CheckForWeekend(detail.Order_Date, configInfo))
                 {
                     fromCutOffTime += configInfo.Weekend_Cutoff_Time.TimeOfDay;
@@ -78,10 +74,9 @@
                     fromCutOffTime += configInfo.Express_Cutoff_Time.TimeOfDay;
                     toCutOffTime += configInfo.Express_Cutoff_Time.TimeOfDay;
 
-                    if (triggerSundayExpressRule(detail.Order_Date, configInfo))
+                    if(toCutOffTime.DayOfWeek == DayOfWeek.Sunday)
                     {
-                        fromCutOffTime = fromCutOffTime.AddDays(1);
-                        toCutOffTime = toCutOffTime.AddDays(1);
+                        isExemptFromView = triggerSundayExpressRule(detail.Order_Date, configInfo);
                     }
                 }
                 else if (detail.Ship_Method == "Home")
@@ -101,7 +96,7 @@
                 }
 
                 orderDate = (detail.Released_Date.Year == 1 ? detail.Order_Date : detail.Released_Date);
-                if ((detail.Released_Date.Year != 1) && (!detail.Order_Number.StartsWith("E") || !detail.Order_Number.StartsWith("R")))
+                if ((detail.Released_Date.Year != 1) && (!detail.Order_Number.StartsWith("E") || !detail.Order_Number.StartsWith("R")) && !isExemptFromView)
                 {
                     if ((orderDate >= fromCutOffTime) && (orderDate <= toCutOffTime))
                     {
@@ -122,8 +117,6 @@
                 }
             }
 
-
-
             IEnumerable<Cleansed_SLA_Report_Details> result = list;
 
             return result;
@@ -132,7 +125,7 @@
         {
             bool result = false;
 
-            if(orderDate.DayOfWeek == DayOfWeek.Sunday && orderDate.TimeOfDay <= configInfo.Express_SLA_Time.TimeOfDay)
+            if (orderDate.DayOfWeek == DayOfWeek.Sunday && orderDate.TimeOfDay >= configInfo.Weekend_Cutoff_Time.TimeOfDay)
             {
                 result = true;
             }
