@@ -63,7 +63,13 @@
             {
                 fromCutOffTime = lastDate.Date;
                 toCutOffTime = toDate.Date;
-                
+                isExemptFromView = false;
+
+                if (detail.Order_Number == "3337681")
+                {
+                    fromCutOffTime.AddDays(0);
+                }
+
                 if (dataAdapter.CheckForWeekend(detail.Order_Date, configInfo))
                 {
                     fromCutOffTime += configInfo.Weekend_Cutoff_Time.TimeOfDay;
@@ -96,9 +102,9 @@
                 }
 
                 orderDate = (detail.Released_Date.Year == 1 ? detail.Order_Date : detail.Released_Date);
-                if ((detail.Released_Date.Year != 1) && (!detail.Order_Number.StartsWith("E") || !detail.Order_Number.StartsWith("R")) && !isExemptFromView)
+                if ((detail.Released_Date.Year != 1) && (!detail.Order_Number.StartsWith("E") || !detail.Order_Number.StartsWith("R")))
                 {
-                    if ((orderDate >= fromCutOffTime) && (orderDate <= toCutOffTime))
+                    if ((orderDate >= fromCutOffTime) && (orderDate <= toCutOffTime) && !isExemptFromView)
                     {
                         cleansedLine = new Cleansed_SLA_Report_Details();
                         cleansedLine.Order_Number = detail.Order_Number;
